@@ -1,28 +1,28 @@
 <div class="col-md">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
-      <li class="breadcrumb-item"><a routerLink="/financeiro/contas-receber">Contas a Receber</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Cadastro de Contas a Receber</li>
-    </ol>
-  </nav>
+  <app-header-lv2 heading="Contas a Receber Cadastro" linkAnterior="/financeiro/contas-receber"
+                  headingAnterior="Contas a Receber"></app-header-lv2>
 </div>
 
 <div class="col-md">
     <form #contasReceberForm="ngForm" (ngSubmit)="(contasReceberForm)" autocomplete="off">
 
         <div class="form-row">
-            <div class="ui-fluid ui-g-6 ui-sm-12">
+            <div class="ui-fluid ui-g-5 ui-sm-12">
                 <label for="descricao">Descrição</label>
                 <input type="text" pInputText id="descricao" required ngModel name="descricao" #descricao="ngModel">
                 <app-message [control]="descricao" error="required" text="Preencha este campo."></app-message>
             </div>
-            <div class="ui-fluid ui-g-3 ui-sm-12">
+            <div class="ui-fluid ui-g-2 ui-sm-12">
+                <label>Grupo de Recebimento</label>
+                <p-dropdown [options]="gruposRecebimentos" [autoWidth]="false" placeholder="Selecione" name="tipoRecebimento"
+                            ngModel #tipoRecebimento></p-dropdown>
+            </div>
+          <div class="ui-fluid ui-g-3 ui-sm-12">
                 <label>Categoria</label>
                 <p-dropdown [options]="categorias" [autoWidth]="false" placeholder="Selecione" name="categoria"
                             ngModel #categoria [filter]="true"></p-dropdown>
             </div>
-            <div class="ui-fluid ui-g-3 ui-sm-12">
+            <div class="ui-fluid ui-g-2 ui-sm-12">
                 <label>Conta Bancária</label>
                 <p-dropdown [options]="contas" [autoWidth]="false" placeholder="Selecione" name="conta"
                             ngModel #conta></p-dropdown>
@@ -70,7 +70,7 @@
 
 
     </form>
-    <div class="ui-g mt-3">
-        <button pButton type="button" label="Salvar" ></button>
-    </div>
+</div>
+<div class="col-md">
+  <button class="btn btn-success">Salvar</button>
 </div>

@@ -7,6 +7,8 @@ import { SharedModule } from '../../../shared/shared.module';
 import { ContasReceberRoutingModule } from './contas-receber.routing.module';
 import { ContasReceberComponent } from './contas-receber.component';
 import { ContasReceberDataComponent } from './contas-receber-data/contas-receber-data.component';
+import { ContasReceberLoteComponent } from './contas-receber-lote/contas-receber-lote.component';
+import { ContasReceberBaseAnteriorComponent } from './contas-receber-base-anterior/contas-receber-base-anterior.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { ContasReceberDataComponent } from './contas-receber-data/contas-receber
     BsDropdownModule.forRoot(),
     ContasReceberRoutingModule
   ],
-  declarations: [ContasReceberComponent, ContasReceberDataComponent]
+  declarations: [ContasReceberComponent, ContasReceberDataComponent, ContasReceberLoteComponent, ContasReceberBaseAnteriorComponent]
 })
 export class ContasReceberModule { }

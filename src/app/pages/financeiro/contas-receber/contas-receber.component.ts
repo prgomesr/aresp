@@ -18,7 +18,8 @@ export class ContasReceberComponent implements OnInit {
   periodos = [
     {label: 'Mês atual', value: 1},
     {label: 'Últimos 7 dias', value: 2},
-    {label: 'Todos', value: 3},
+    {label: 'Hoje', value: 3},
+    {label: 'Todos', value: 4}
   ];
   constructor() { }
 
