@@ -1,0 +1,130 @@
+  <div class="col-md">
+    <h1>Contas a Receber</h1>
+  </div>
+
+  <div class="col-md">
+    <hr>
+  </div>
+
+  <div class="col-md">
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="card border-success mb-3">
+          <div class="card-body text-success">
+            <h5 class="card-title" style="text-align: center">R$ 4.900,17</h5>
+            <footer style="text-align: center">Contas Recebidas</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-info mb-3">
+          <div class="card-body text-info">
+            <h5 class="card-title" style="text-align: center">R$ 45.113,08</h5>
+            <footer style="text-align: center">Contas a Receber</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-danger mb-3">
+          <div class="card-body text-danger">
+            <h5 class="card-title" style="text-align: center">R$ 0,00</h5>
+            <footer style="text-align: center">Contas não Recebidas</footer>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md">
+    <div class="btn-toolbar clearfix" role="toolbar">
+
+      <div class="btn-group" dropdown>
+        <button type="button" class="btn btn-danger">Action</button>
+        <button type="button" dropdownToggle class="btn btn-danger dropdown-toggle dropdown-toggle-split">
+          <span class="caret"></span>
+          <span class="sr-only">Split button!</span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Something else
+            here</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="btn-group ml-2" dropdown>
+        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+          Button dropdown <span class="caret"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+          </li>
+        </ul>
+      </div>
+
+
+      <div class="btn-group ml-2" role="group">
+        <button type="button" class="btn btn-outline-secondary fa fa-database"
+        pTooltip="Gerar remessa" tooltipPosition="top"></button>
+      </div>
+
+      <div class="input-group ml-2 col-md-4">
+        <select class="form-control" id="periodo">
+          <option *ngFor="let p of periodos">{{p.label}}</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md" style="margin-top: 10px">
+      <p-table [value]="contas" [responsive]="true" [paginator]="true" [rowsPerPageOptions]="[5,10,15,20,30]"
+      [rows]="10">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th style="width: 2.25em">
+                      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                  </th>
+                  <th style="width: 4em">Ref.</th>
+                  <th style="width: 6.4em">Vencimento</th>
+                  <th style="width: 7em">Recebimento</th>
+                  <th class="text-table-left">Cliente</th>
+                  <th style="width: 11em">Descrição</th>
+                  <th style="width: 6.4em">Valor</th>
+                  <th style="width: 6.4em">Recebido</th>
+                  <th style="width: 7em">Status</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-conta let-rowData>
+              <tr [pSelectableRow]="rowData">
+                  <td>
+                      <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                  </td>
+                  <td>{{conta.referencia}}</td>
+                  <td>{{conta.vencimento}}</td>
+                  <td>{{conta.recebimento}}</td>
+                  <td class="text-table-left">{{conta.cliente}}</td>
+                  <td>{{conta.descricao}}</td>
+                  <td>{{conta.valor}}</td>
+                  <td>{{conta.recebido}}</td>
+                  <td>
+                      <span class="badge status-span"
+                            [ngClass]="{'badge-info': conta.status === 'A VENCER', 'badge-success': conta.status === 'PAGO',
+                'badge-warning': conta.status === 'EM ABERTO'}">{{conta.status}}</span>
+                  </td>
+              </tr>
+          </ng-template>
+      </p-table>
+  </div>

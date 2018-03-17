@@ -1,0 +1,70 @@
+  <div class="col-md">
+    <h1>Contas a Pagar</h1>
+  </div>
+
+  <div class="col-md">
+    <hr>
+  </div>
+
+  <div class="col-md">
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="card border-success mb-3">
+          <div class="card-body text-success">
+            <h5 class="card-title" style="text-align: center">R$ 4.900,17</h5>
+            <footer style="text-align: center">Contas Pagas</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-info mb-3">
+          <div class="card-body text-info">
+            <h5 class="card-title" style="text-align: center">R$ 45.113,08</h5>
+            <footer style="text-align: center">Contas a Pagar</footer>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card border-danger mb-3">
+          <div class="card-body text-danger">
+            <h5 class="card-title" style="text-align: center">R$ 0,00</h5>
+            <footer style="text-align: center">Contas Vencidas</footer>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md">
+    <div class="btn-toolbar clearfix" role="toolbar">
+
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary fa fa-plus"
+                pTooltip="Novo" tooltipPosition="top" routerLink="/financeiro/contas-pagar/novo"></button>
+      </div>
+
+      <div class="btn-group ml-5" role="group">
+        <button type="button" class="btn btn-outline-secondary fa fa-trash-o"
+                pTooltip="Excluir" tooltipPosition="top"></button>
+      </div>
+
+      <div class="btn-group ml-2" role="group">
+        <button type="button" class="btn btn-outline-secondary">Emitir cheque</button>
+      </div>
+
+      <div class="input-group ml-2 col-md-4">
+        <select class="form-control" id="periodo">
+          <option *ngFor="let p of periodos">{{p.label}}</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md" style="margin-top: 10px">
+    <!--Table aqui -->
+  </div>
