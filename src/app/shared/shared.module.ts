@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { MessageComponent } from './message/message.component';
 import { HeaderLv1Component } from './header-lv1/header-lv1.component';
@@ -19,7 +20,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { SplitButtonModule } from 'primeng/splitbutton';
-import {RouterModule} from '@angular/router';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {RouterModule} from '@angular/router';
     TableModule,
     CheckboxModule,
     SplitButtonModule,
+    CurrencyMaskModule,
     MessageComponent,
     HeaderLv1Component,
     HeaderLv2Component

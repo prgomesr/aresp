@@ -50,7 +50,8 @@
         </div>
         <div class="ui-fluid ui-g-2 ui-sm-12">
           <label for="valor">Valor</label>
-          <input type="text" pInputText id="valor" required ngModel name="valor" #valor="ngModel">
+          <input type="text" pInputText id="valor" required ngModel name="valor" #valor="ngModel"
+                 currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
           <app-message [control]="valor" error="required" text="Preencha este campo."></app-message>
         </div>
       </div>
