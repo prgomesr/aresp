@@ -1,0 +1,106 @@
+{
+  "bancos": [
+    {
+      "nome": "Banco do Brasil",
+      "numero": "001",
+      "telefone": "17 3131 3131",
+      "id": 1
+    },
+    {
+      "nome": "Santander",
+      "numero": "033",
+      "telefone": "17 3131 3232",
+      "id": 2
+    }
+  ],
+  "grupos": [
+    {
+      "nome": "BB1",
+      "id": 1
+    },
+    {
+      "nome": "Boleto",
+      "id": 2
+    }
+  ],
+  "operadoras": [
+    {
+      "nome": "Visa",
+      "imagem": "imagem.jpg",
+      "id": 1
+    },
+    {
+      "nome": "Master",
+      "imagem": "imagem.jpg",
+      "id": 2
+    }
+  ],
+  "secretarias": [
+    {
+      "nome": "Educação",
+      "id": 1
+    },
+    {
+      "nome": "Segurança Pública",
+      "id": 2
+    }
+  ],
+  "statusParcelas": [
+    {
+      "situacao": "Em dia",
+      "descricao": "Pagamentos em dia",
+      "id": 1
+    },
+    {
+      "situacao": "Em atraso",
+      "descricao": "Em atraso por 30 dias ou mais",
+      "id": 2
+    }
+  ],
+  "tiposPagamentos": [
+    {
+      "nome": "Dinheiro",
+      "id": 1
+    },
+    {
+      "nome": "Cheque",
+      "id": 2
+    }
+  ],
+  "tiposRecebimentos": [
+    {
+      "nome": "Mensalidade",
+      "id": 1
+    },
+    {
+      "nome": "Aluguel de quadra",
+      "id": 2
+    }
+  ],
+  "tiposSocios": [
+    {
+      "nome": "Funcionário Público",
+      "id": 1
+    },
+    {
+      "nome": "Sócio Contribuinte",
+      "id": 2
+    }
+  ],
+  "convenios": [
+    {
+      "nome": "Cielo",
+      "numero": "7777777",
+      "telefone": "11 3131 3131",
+      "observacao": "Enviar remessa todo dia 15",
+      "id": 1
+    },
+    {
+      "nome": "Bradesco",
+      "numero": "565656",
+      "telefone": "17 3131 3131",
+      "observacao": "",
+      "id": 2
+    }
+  ]
+}
