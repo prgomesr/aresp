@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="col-md">
+    <h1>Cadastro de Fornecedor</h1>
+  </div>
+
+  <div class="col-md">
+    <hr>
+  </div>
+
+  <div class="col-md">
+      <form #fornecedorForm="ngForm" (ngSubmit)="(fornecedorForm)" autocomplete="off">
+
+        <div class="form-row">
+          <div class="ui-fluid ui-g-3">
+            <label>CNPJ</label>
+            <p-inputMask mask="99.999.999/9999-99" name="cnpj" ngModel required #cnpj="ngModel"></p-inputMask>
+            <app-message [control]="cnpj" error="required" text="Preencha este campo."></app-message>
+          </div>
+          <div class="ui-fluid ui-g-5">
+            <label for="razao">Razão Social</label>
+            <input type="text" pInputText id="razao" required ngModel name="razao" #razao="ngModel">
+            <app-message [control]="razao" error="required" text="Preencha este campo."></app-message>
+          </div>
+          <div class="ui-fluid ui-g-4">
+            <label for="fantasia">Nome Fantasia</label>
+            <input type="text" pInputText id="fantasia" required ngModel name="fantasia" #fantasia="ngModel">
+            <app-message [control]="fantasia" error="required" text="Preencha este campo."></app-message>
+          </div>
+          <div class="ui-fluid ui-g-5">
+            <label for="fantasia">E-mail</label>
+            <input type="text" pInputText id="email" required ngModel name="email">
+          </div>
+          <div class="ui-fluid ui-g-3">
+            <label for="telefone">Telefone</label>
+            <input type="text" pInputText id="telefone" required ngModel name="telefone" #telefone="ngModel">
+            <app-message [control]="telefone" error="required" text="Preencha este campo."></app-message>
+          </div>
+          <div class="ui-fluid ui-g-4">
+            <label for="contato">Contato</label>
+            <input type="text" pInputText id="contato" required ngModel name="contato">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Salvar</button>
+        <button class="btn btn-outline-primary" routerLink="/instancias/fornecedor"><i class="fa fa-search"></i>Voltar para a pesquisa</button>
+
+      </form>
+    </div>
+</div>

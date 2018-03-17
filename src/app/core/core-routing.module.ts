@@ -13,7 +13,22 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
       { path: 'financeiro/contas-pagar', loadChildren: '../pages/financeiro/contas-pagar/contas-pagar.module#ContasPagarModule' },
-      { path: 'financeiro/contas-receber', loadChildren: '../pages/financeiro/contas-receber/contas-receber.module#ContasReceberModule' }
+      { path: 'financeiro/contas-receber', loadChildren: '../pages/financeiro/contas-receber/contas-receber.module#ContasReceberModule' },
+      { path: 'instancias/cliente', loadChildren: '../pages/cadastros/instancias/cliente/cliente.module#ClienteModule' },
+      { path: 'instancias/empresa', loadChildren: '../pages/cadastros/instancias/empresa/empresa.module#EmpresaModule' },
+      { path: 'instancias/fornecedor', loadChildren: '../pages/cadastros/instancias/fornecedor/fornecedor.module#FornecedorModule' },
+      { path: 'diversos/banco', loadChildren: '../pages/cadastros/diversos/banco/banco.module#BancoModule' },
+      { path: 'diversos/convenio', loadChildren: '../pages/cadastros/diversos/convenio/convenio.module#ConvenioModule' },
+      { path: 'diversos/grupo', loadChildren: '../pages/cadastros/diversos/grupo/grupo.module#GrupoModule' },
+      { path: 'diversos/operadora', loadChildren: '../pages/cadastros/diversos/operadora/operadora.module#OperadoraModule' },
+      { path: 'diversos/secretaria', loadChildren: '../pages/cadastros/diversos/secretaria/secretaria.module#SecretariaModule' },
+      { path: 'diversos/status-parcela', loadChildren: '../pages/cadastros/diversos/status-parcela/status-parcela.module' +
+        '#StatusParcelaModule' },
+      { path: 'diversos/tipo-pagamento', loadChildren: '../pages/cadastros/diversos/tipo-pagamento/tipo-pagamento.module' +
+        '#TipoPagamentoModule' },
+      { path: 'diversos/tipo-recebimento', loadChildren: '../pages/cadastros/diversos/tipo-recebimento/tipo-recebimento.module' +
+        '#TipoRecebimentoModule' },
+      { path: 'diversos/tipo-socio', loadChildren: '../pages/cadastros/diversos/tipo-socio/tipo-socio.module#TipoSocioModule' },
     ]
   }
 

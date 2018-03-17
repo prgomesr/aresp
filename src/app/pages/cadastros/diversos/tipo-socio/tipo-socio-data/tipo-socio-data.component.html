@@ -1,0 +1,28 @@
+<div class="container">
+
+  <div class="col-md">
+    <h1>Cadastro de Tipo de Sócio</h1>
+  </div>
+
+  <div class="col-md">
+    <hr>
+  </div>
+
+  <div class="col-md">
+    <form #tipoSocioForm="ngForm" (ngSubmit)="salvar(tipoSocioForm)" autocomplete="off">
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel>
+          <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Salvar</button>
+      <button class="btn btn-outline-primary" routerLink="/diversos/tipo-socio">
+        <i class="fa fa-search">Voltar para a pesquisa</i></button>
+
+    </form>
+  </div>
+</div>

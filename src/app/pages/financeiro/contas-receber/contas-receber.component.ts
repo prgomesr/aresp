@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class ContasReceberComponent implements OnInit {
 
   contas = [
-      {vencimento: '10/03/2018', referencia: 'MAR', recebimento: '', cliente: 'PEDRO ALVES',
+      {emissao: '15/02/2018', vencimento: '10/03/2018', referencia: 'MAR', recebimento: '', cliente: 'PEDRO ALVES',
           descricao: 'ALUGUEL DE QUADRA', valor: '2.570,00', recebido: '', status: 'EM ABERTO'},
-      {vencimento: '10/04/2018', referencia: 'ABR', recebimento: '15/03/2018', cliente: 'MARIA APARECIDA DA SILVA PEREIRA',
-          descricao: 'MENSALIDADE', valor: '70,00', recebido: '70,00', status: 'PAGO'},
-      {vencimento: '10/04/2018', referencia: 'ABR', recebimento: '', cliente: 'CARLOS AUGUSTO ALVES CARDOSO',
-          descricao: 'CONVENIO MEDICO', valor: '631,00', recebido: '', status: 'A VENCER'},
+      {emissao: '15/03/2018', vencimento: '10/04/2018', referencia: 'ABR', recebimento: '15/03/2018', cliente: 'MARIA APARECIDA ' +
+        'DA SILVA PEREIRA', descricao: 'MENSALIDADE', valor: '70,00', recebido: '70,00', status: 'PAGO'},
+      {emissao: '15/03/2018', vencimento: '10/04/2018', referencia: 'ABR', recebimento: '', cliente: 'CARLOS AUGUSTO ALVES CARDOSO',
+          descricao: 'CONVENIO MEDICO', valor: '631,00', recebido: '', status: 'A VENCER'}
   ];
   periodos = [
     {label: 'Mês atual', value: 1},

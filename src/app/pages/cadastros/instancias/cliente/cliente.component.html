@@ -1,0 +1,52 @@
+  <div class="col-md">
+    <h1>Clientes</h1>
+  </div>
+
+  <div class="col-md">
+    <hr>
+  </div>
+
+  <div class="col-md">
+    <div class="btn-toolbar" role="toolbar">
+      <div class="btn-group mr-2" role="group">
+        <button type="button" class="btn btn-outline-secondary fa fa-trash-o"
+                pTooltip="Excluir" tooltipPosition="top"></button>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary fa fa-plus"
+                pTooltip="Novo" tooltipPosition="top" routerLink="/instancias/cliente/novo"></button>
+      </div>
+      <div class="input-group ml-auto">
+        <input type="text" class="form-control" placeholder="Estou procurando...">
+        <div class="input-group-prepend">
+          <div class="input-group-text" id="btnGroupAddon2"><a href="#" class="fa fa-search"></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md" style="margin-top: 10px">
+    <p-dataTable [value]="dados" [paginator]="true" [rows]="10" [responsive]="true"
+      [rowsPerPageOptions]="[5,10,15,20,25]">
+      <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+      <p-column field="id" header="Id" [style]="{'width': '52px', 'text-align': 'center'}"></p-column>
+      <p-column field="nome" header="Nome"></p-column>
+      <p-column field="cpf" header="CPF" [style]="{'width': '150px', 'text-align': 'center'}"></p-column>
+      <p-column field="telefone" header="Telefone" [style]="{'width': '130px', 'text-align': 'center'}"></p-column>
+      <p-column field="email" header="E-mail"></p-column>
+      <p-column field="status" header="Status" [style]="{'width': '110px'}">
+        <ng-template let-cli="rowData" pTemplate="body">
+          <span class="badge status-span"
+                [ngClass]="{'badge-success': cli.status === 'Em dia', 'badge-danger': cli.status === 'Cancelado',
+                'badge-warning': cli.status === 'Inadimplente'}">{{cli.status}}</span>
+        </ng-template>
+      </p-column>
+      <p-column [style]="{'width': '80px', 'text-align': 'center'}">
+        <ng-template pTemplate="body">
+          <a class="fa fa-eye" pTooltip="Detalhes" tooltipPosition="top" routerLink="/instancias/cliente/detalhes"></a>
+          <a href="#" class="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+          <a type="button" class="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"></a>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>

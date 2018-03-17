@@ -1,0 +1,181 @@
+<div class="col-md clearfix">
+  <div class="float-left ml-auto">
+    <h1>Cadastro de Cliente</h1>
+  </div>
+  <div class="float-right mr-auto">
+    <button class="btn btn-outline-primary" routerLink="/instancias/cliente"><i class="fa fa-search"></i>Voltar para a pesquisa</button>
+  </div>
+  </div>
+
+  <div class="col-md">
+    <hr>
+  </div>
+
+  <div class="ui-g">
+    <form #clienteForm="ngForm" (ngSubmit)="salvar(clienteForm)" autocomplete="off">
+
+      <div class="ui-g">
+
+        <div class="ui-fluid ui-g-2 ui-sm-12">
+          <label>CPF</label>
+          <p-inputMask mask="999.999.999-99" name="cpf" ngModel required #cpf="ngModel"></p-inputMask>
+          <app-message [control]="cpf" error="required" text="Preencha este campo."></app-message>
+        </div>
+        <div class="ui-fluid ui-g-2 ui-sm-12">
+          <label for="rg">RG</label>
+          <input type="text" id="rg" pInputText name="rg" ngModel>
+        </div>
+        <div class="ui-fluid ui-g-4 ui-sm-12">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" pInputText #nome="ngModel" name="nome" ngModel required minlength="3">
+          <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
+          <app-message [control]="nome" error="minlength" text="Mínimo 3 caracteres."></app-message>
+        </div>
+        <div class="ui-fluid ui-g-2 ui-sm-12">
+          <label for="nasc">Nascimento</label>
+          <p-calendar [(ngModel)]="dateValue" [locale]="pt" dateFormat="dd/mm/yy" [showIcon]="true"
+                      [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" id="nasc"
+                      ngModel name="nascimento" required #nascimento="ngModel"></p-calendar>
+          <app-message [control]="nascimento" error="required" text="Preencha este campo."></app-message>
+        </div>
+        <div class="ui-fluid ui-g-2 ui-sm-12">
+          <label>Sexo</label>
+          <p-selectButton [options]="sexo" name="sexo" ngModel required></p-selectButton>
+        </div>
+      </div>
+
+      <div class="ui-g">
+
+        <div class="ui-fluid ui-g-3 ui-sm-12">
+          <label for="pai">Nome do Pai</label>
+          <input type="text" id="pai" pInputText name="pai" ngModel>
+        </div>
+        <div class="ui-fluid ui-g-3 ui-sm-12">
+          <label for="mae">Nome da Mãe</label>
+          <input type="text" id="mae" pInputText name="mae" ngModel>
+        </div>
+        <div class="ui-fluid ui-g-2 ui-sm-12">
+          <label>Estado Civil</label>
+          <p-dropdown [options]="estCivil" [autoWidth]="false" placeholder="Selecione" name="estadoCivil" ngModel></p-dropdown>
+        </div>
+        <div class="ui-fluid ui-g-2 ui-sm-12">
+          <label>Tipo de Sócio</label>
+          <p-dropdown [options]="tiposSocios" [autoWidth]="false" placeholder="Selecione" name="tipoSocio"
+                      ngModel required></p-dropdown>
+        </div>
+        <div class="ui-fluid ui-g-2 ui-sm-12">
+          <label>Secretaria</label>
+          <p-dropdown [options]="secretarias" [autoWidth]="false" placeholder="Selecione" name="secretatia" ngModel></p-dropdown>
+        </div>
+
+      </div>
+
+      <div class="ui-g">
+
+        <div class="ui-fluid ui-g-12 ui-sm-12">
+          <label for="foto">Foto 3x4</label>
+          <textarea id="foto" pInputTextarea [rows]="3"></textarea>
+        </div>
+
+      </div>
+      <div class="ui-g">
+
+        <div class="ui-fluid ui-g-12 ui-sm-12">
+          <label for="obs">Observação</label>
+          <textarea id="obs" pInputTextarea [rows]="3" name="observacao" ngModel></textarea>
+        </div>
+
+      </div>
+      <p-tabView [activeIndex]="index">
+
+        <p-tabPanel header="Contato" leftIcon="fa fa-address-book">
+
+          <div class="ui-g">
+
+            <div class="ui-fluid ui-g-12 ui-sm-12">
+              <label for="email">E-mail</label>
+              <input type="text" id="email" pInputText name="email" ngModel>
+            </div>
+
+          </div>
+          <div class="ui-g">
+
+            <div class="ui-fluid ui-g-12 ui-sm-12">
+              <label>Telefone</label>
+
+            </div>
+
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Dados Bancários" leftIcon="fa fa-credit-card">
+
+          <div class="ui-g">
+
+            <div class="ui-fluid ui-g-9 ui-sm-12">
+              <label for="titularConta">Nome do Titular</label>
+              <input type="text" id="titularConta" pInputText value="{{nome.value}}" name="nomeTitular" ngModel
+                     required #nomeTitular="ngModel">
+              <app-message [control]="nomeTitular" error="required" text="Preencha este campo."></app-message>
+            </div>
+
+          </div>
+
+          <div class="ui-g">
+
+            <div class="ui-fluid ui-g-2 ui-sm-12">
+              <label>Conta</label>
+              <input type="text" pInputText name="conta" ngModel #conta="ngModel" required>
+              <app-message [control]="conta" error="required" text="Preencha este campo."></app-message>
+            </div>
+            <div class="ui-fluid ui-g-1 ui-sm-12">
+              <label>Dígito</label>
+              <p-inputMask mask="9" name="digitoConta" ngModel></p-inputMask>
+            </div>
+            <div class="ui-fluid ui-g-2 ui-sm-12">
+              <label>Agência</label>
+              <p-inputMask mask="9999" name="agencia" ngModel #agencia="ngModel" required></p-inputMask>
+              <app-message [control]="agencia" error="required" text="Preencha este campo."></app-message>
+            </div>
+            <div class="ui-fluid ui-g-1 ui-sm-12">
+              <label>Dígito</label>
+              <p-inputMask mask="9" name="digitoAgencia" ngModel></p-inputMask>
+            </div>
+            <div class="ui-fluid ui-g-3 ui-sm-12">
+              <label>Banco</label>
+              <p-dropdown [options]="bancos" [autoWidth]="false" placeholder="Selecione" name="banco" ngModel></p-dropdown>
+            </div>
+
+          </div>
+
+          <div class="ui-g">
+
+            <div class="ui-fluid ui-g-4 ui-sm-12">
+              <label>Número do Cartão</label>
+              <p-inputMask mask="9999.9999.9999.9999" name="numeroCartao" ngModel
+              #numeroCartao="ngModel" required></p-inputMask>
+              <app-message [control]="numeroCartao" error="required" text="Preencha este campo."></app-message>
+            </div>
+            <div class="ui-fluid ui-g-1 ui-sm-12">
+              <label>Mês</label>
+              <p-inputMask mask="99" name="mesCartao" ngModel #mesCartao="ngModel" required></p-inputMask>
+              <app-message [control]="mesCartao" error="required" text="Preencha este campo."></app-message>
+            </div>
+            <div class="ui-fluid ui-g-1 ui-sm-12">
+              <label>Ano</label>
+              <p-inputMask mask="99" name="anoCartao" ngModel #anoCartao="ngModel" required></p-inputMask>
+              <app-message [control]="anoCartao" error="required" text="Preencha este campo."></app-message>
+            </div>
+            <div class="ui-fluid ui-g-3 ui-sm-12">
+              <label>Operadora</label>
+              <p-dropdown [options]="operadoras" [autoWidth]="false" placeholder="Selecione" name="operadora" ngModel></p-dropdown>
+            </div>
+
+          </div>
+
+        </p-tabPanel>
+        <p-tabPanel header="Dependentes" leftIcon="fa fa-users">
+
+        </p-tabPanel>
+      </p-tabView>
+    </form>
+</div>
