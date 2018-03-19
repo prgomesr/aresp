@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class BancoService {
+export class ContasPagarService {
 
-  url = 'http://localhost:3000/bancos';
+  url = 'http://localhost:3000/pagamentos';
 
   constructor(private http: HttpClient) { }
 

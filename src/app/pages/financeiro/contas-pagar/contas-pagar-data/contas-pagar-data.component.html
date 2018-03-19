@@ -1,12 +1,5 @@
-<div class="col-md">
-  <app-header-lv2 heading="Cadastro de Contas a Pagar" linkAnterior="/financeiro/contas-pagar"
+<app-header-lv2 heading="Cadastro de Contas a Pagar" linkAnterior="/financeiro/contas-pagar"
                   headingAnterior="Contas a Pagar"></app-header-lv2>
-</div>
-
-
-<div class="col-md">
-    <hr>
-  </div>
 
   <div class="col-md">
     <form #contasPagarForm="ngForm" (ngSubmit)="(contasPagarForm)" autocomplete="off">
@@ -20,12 +13,12 @@
         <div class="ui-fluid ui-g-3 ui-sm-12">
           <label>Categoria</label>
           <p-dropdown [options]="categorias" [autoWidth]="false" placeholder="Selecione" name="categoria"
-                      ngModel #categoria [filter]="true"></p-dropdown>
+                      ngModel #categoria [filter]="true" required></p-dropdown>
         </div>
         <div class="ui-fluid ui-g-3 ui-sm-12">
           <label>Conta Bancária</label>
           <p-dropdown [options]="contas" [autoWidth]="false" placeholder="Selecione" name="conta"
-                      ngModel #conta></p-dropdown>
+                      ngModel #conta required></p-dropdown>
         </div>
       </div>
       <div class="form-row">
@@ -46,7 +39,7 @@
         <div class="ui-fluid ui-g-6">
           <label>Fornecedor</label>
           <p-dropdown [options]="fornecedores" [autoWidth]="false" placeholder="Selecione" name="fornecedor"
-                      ngModel #fornecedor [filter]="true"></p-dropdown>
+                      ngModel #fornecedor [filter]="true" required></p-dropdown>
         </div>
         <div class="ui-fluid ui-g-2 ui-sm-12">
           <label for="valor">Valor</label>
@@ -70,7 +63,7 @@
       </div>
 
       <div class="mt-3">
-        <button class="btn btn-success" type="submit">Salvar</button>
+        <button class="btn btn-success" type="submit" [disabled]="contasPagarForm.invalid">Salvar</button>
       </div>
 
     </form>

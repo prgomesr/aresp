@@ -17,6 +17,9 @@ export class ContasReceberDataComponent implements OnInit {
     {label: 'Aluguel de Quadra', value: 2},
     {label: 'Outras', value: 8}
   ];
+  periodos = [
+    {label: 'Mensalmente', value: 1}
+  ];
   gruposRecebimentos = [
     {label: 'Boleto', value: 1},
     {label: 'Cartão', value: 2},
@@ -29,19 +32,10 @@ export class ContasReceberDataComponent implements OnInit {
     {label: '8815-3', value: 3},
     {label: '13003891-3', value: 4}
   ];
-  pt = {
-    firstDayOfWeek: 1,
-    dayNames: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
-    dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
-    dayNamesMin: ["D","S","T","Q","Q","S","S"],
-    monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
-    monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-    today: 'Hoje',
-    clear: 'Limpar'
-  };
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

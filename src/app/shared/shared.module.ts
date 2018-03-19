@@ -7,6 +7,9 @@ import { MessageComponent } from './message/message.component';
 import { HeaderLv1Component } from './header-lv1/header-lv1.component';
 import { HeaderLv2Component } from './header-lv2/header-lv2.component';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
 import { TooltipModule } from 'primeng/tooltip';
 import { DataTableModule } from 'primeng/datatable';
 import { TabViewModule } from 'primeng/tabview';
@@ -26,29 +29,15 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    BsDatepickerModule.forRoot(),
+    TypeaheadModule.forRoot()
   ],
   declarations: [MessageComponent, HeaderLv1Component, HeaderLv2Component],
   exports: [
-    FormsModule,
-    TooltipModule,
-    CommonModule,
-    DataTableModule,
-    TabViewModule,
-    CalendarModule,
-    FileUploadModule,
-    InputTextModule,
-    SelectButtonModule,
-    DropdownModule,
-    InputTextareaModule,
-    InputMaskModule,
-    TableModule,
-    CheckboxModule,
-    SplitButtonModule,
-    CurrencyMaskModule,
-    MessageComponent,
-    HeaderLv1Component,
-    HeaderLv2Component
+    FormsModule, TooltipModule, CommonModule, DataTableModule, TabViewModule, CalendarModule, FileUploadModule, InputTextModule,
+    SelectButtonModule, DropdownModule, InputTextareaModule, InputMaskModule, TableModule, CheckboxModule, SplitButtonModule,
+    CurrencyMaskModule, MessageComponent, HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule
   ]
 })
 export class SharedModule { }

@@ -1,6 +1,4 @@
-  <div class="col-md">
-    <app-header-lv1 heading="Contas a Receber"></app-header-lv1>
-  </div>
+<app-header-lv1 heading="Contas a Receber"></app-header-lv1>
 
   <div class="col-md">
 
@@ -51,7 +49,7 @@
         </ul>
       </div>
 
-      <div class="btn-group ml-2" dropdown>
+      <div class="btn-group ml-2" dropdown *ngIf="rowSelecionada">
         <button dropdownToggle type="button" class="btn btn-success dropdown-toggle">
           Ações <span class="caret"></span>
         </button>
@@ -60,7 +58,8 @@
           <li role="menuitem"><a class="dropdown-item" href="javascript:void (0)"><i class="fa fa-barcode"></i> Emitir boleto</a></li>
           <li role="menuitem"><a class="dropdown-item" href="javascript:void (0)"><i class="fa fa-share-square"></i> Enviar boleto por e-mail</a></li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" href="javascript:void (0)" style="color: red">
+          <li role="menuitem" ><a class="dropdown-item" href="javascript:void (0)"
+                                 style="color: red" (click)="excluir(rowSelecionada)">
             <i class="fa fa-trash"></i> Excluir</a>
           </li>
         </ul>
@@ -83,12 +82,9 @@
 
   <div class="col-md" style="margin-top: 10px">
       <p-table [value]="contas" [responsive]="true" [paginator]="true" [rowsPerPageOptions]="[5,10,15,20,30]"
-      [rows]="10">
+      [rows]="10" selectionMode="single" [(selection)]="rowSelecionada" dataKey="id">
           <ng-template pTemplate="header">
               <tr>
-                  <th style="width: 2.25em">
-                      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                  </th>
                   <th style="width: 6.4em">Emissão</th>
                   <th style="width: 6.4em">Vencimento</th>
                   <th style="width: 4em">Ref.</th>
@@ -102,9 +98,6 @@
           </ng-template>
           <ng-template pTemplate="body" let-conta let-rowData>
               <tr [pSelectableRow]="rowData">
-                  <td>
-                      <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
-                  </td>
                   <td>{{conta.emissao}}</td>
                   <td>{{conta.vencimento}}</td>
                   <td>{{conta.referencia}}</td>
@@ -122,7 +115,7 @@
           </ng-template>
           <ng-template pTemplate="emptymessage">
             <tr>
-              <td [attr.colspan]="10">
+              <td [attr.colspan]="10" class="text-table-left">
                 Nenhum registro encontrado.
               </td>
             </tr>

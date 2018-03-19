@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ToastyService } from 'ng2-toasty';
+
+import { ContasReceberService } from './contas-receber.service';
+
 @Component({
   selector: 'app-contas-receber',
   templateUrl: './contas-receber.component.html',
@@ -7,23 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContasReceberComponent implements OnInit {
 
-  contas = [
-      {emissao: '15/02/2018', vencimento: '10/03/2018', referencia: 'MAR', recebimento: '', cliente: 'PEDRO ALVES',
-          descricao: 'ALUGUEL DE QUADRA', valor: '2.570,00', recebido: '', status: 'EM ABERTO'},
-      {emissao: '15/03/2018', vencimento: '10/04/2018', referencia: 'ABR', recebimento: '15/03/2018', cliente: 'MARIA APARECIDA ' +
-        'DA SILVA PEREIRA', descricao: 'MENSALIDADE', valor: '70,00', recebido: '70,00', status: 'PAGO'},
-      {emissao: '15/03/2018', vencimento: '10/04/2018', referencia: 'ABR', recebimento: '', cliente: 'CARLOS AUGUSTO ALVES CARDOSO',
-          descricao: 'CONVENIO MEDICO', valor: '631,00', recebido: '', status: 'A VENCER'}
-  ];
+  contas = [];
   periodos = [
     {label: 'Mês atual', value: 1},
     {label: 'Últimos 7 dias', value: 2},
     {label: 'Hoje', value: 3},
     {label: 'Todos', value: 4}
   ];
-  constructor() { }
+  constructor(private recebimentoService: ContasReceberService
+  , private  toasty: ToastyService) { }
 
   ngOnInit() {
+    this.consultar();
   }
+
+  consultar() {
+    this.recebimentoService.listar().subscribe(recebimentos => this.contas = recebimentos);
+  }
+
+  excluir(codigo: any) {
+    this.recebimentoService.excluir(codigo.id).subscribe(res => {
+      this.consultar();
+      this.toasty.success('Registro excluído com sucesso.');
+    });
+  }
+
 
 }
