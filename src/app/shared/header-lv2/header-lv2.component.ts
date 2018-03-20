@@ -13,6 +13,7 @@ import {Component, Input, OnInit} from '@angular/core';
       </nav>
     </div>
     <div class="col-md">
+      <h1 class="display-4">{{heading}}</h1>
       <hr>
     </div>
   `,

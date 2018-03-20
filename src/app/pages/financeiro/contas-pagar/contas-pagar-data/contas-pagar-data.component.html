@@ -1,70 +1,72 @@
 <app-header-lv2 heading="Cadastro de Contas a Pagar" linkAnterior="/financeiro/contas-pagar"
                   headingAnterior="Contas a Pagar"></app-header-lv2>
 
-  <div class="col-md">
-    <form #contasPagarForm="ngForm" (ngSubmit)="(contasPagarForm)" autocomplete="off">
-
-      <div class="form-row">
-        <div class="ui-fluid ui-g-6 ui-sm-12">
-          <label for="descricao">Descrição</label>
-          <input type="text" pInputText id="descricao" required ngModel name="descricao" #descricao="ngModel">
-          <app-message [control]="descricao" error="required" text="Preencha este campo."></app-message>
-        </div>
-        <div class="ui-fluid ui-g-3 ui-sm-12">
-          <label>Categoria</label>
-          <p-dropdown [options]="categorias" [autoWidth]="false" placeholder="Selecione" name="categoria"
-                      ngModel #categoria [filter]="true" required></p-dropdown>
-        </div>
-        <div class="ui-fluid ui-g-3 ui-sm-12">
-          <label>Conta Bancária</label>
-          <p-dropdown [options]="contas" [autoWidth]="false" placeholder="Selecione" name="conta"
-                      ngModel #conta required></p-dropdown>
-        </div>
+<div class="col-md">
+  <form #contasPagarForm="ngForm" (ngSubmit)="(contasPagarForm)" autocomplete="off">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" id="descricao"
+               required ngModel name="descricao" #descricao="ngModel">
+        <app-message [control]="descricao" error="required" text="Preencha este campo."></app-message>
       </div>
-      <div class="form-row">
-        <div class="ui-fluid ui-g-2 ui-sm-12">
-          <label for="dtCompetencia">Data de competência</label>
-          <p-calendar [locale]="pt" dateFormat="dd/mm/yy" [showIcon]="true"
-                      [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" id="dtCompetencia"
-                      ngModel name="competencia" required #competencia="ngModel"></p-calendar>
-          <app-message [control]="competencia" error="required" text="Preencha este campo."></app-message>
-        </div>
-        <div class="ui-fluid ui-g-2 ui-sm-12">
-          <label for="dtVencimento">Data de vencimento</label>
-          <p-calendar [locale]="pt" dateFormat="dd/mm/yy" [showIcon]="true"
-                      [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" id="dtVencimento"
-                      ngModel name="vencimento" required #vencimento="ngModel"></p-calendar>
-          <app-message [control]="vencimento" error="required" text="Preencha este campo."></app-message>
-        </div>
-        <div class="ui-fluid ui-g-6">
-          <label>Fornecedor</label>
-          <p-dropdown [options]="fornecedores" [autoWidth]="false" placeholder="Selecione" name="fornecedor"
-                      ngModel #fornecedor [filter]="true" required></p-dropdown>
-        </div>
-        <div class="ui-fluid ui-g-2 ui-sm-12">
-          <label for="valor">Valor</label>
-          <input type="text" pInputText id="valor" required ngModel name="valor" #valor="ngModel"
-                 currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
-          <app-message [control]="valor" error="required" text="Preencha este campo."></app-message>
-        </div>
+      <div class="form-group col-md-3">
+        <label for="categoria">Categoria</label>
+        <input type="text" class="form-control" id="categoria" [typeahead]="categorias" typeaheadOptionField="label"
+               name="categoria" ngModel #categoria required>
       </div>
-
-      <div class="form-row">
-        <div class="ui-fluid ui-g-4 ui-sm-12">
-          <p-checkbox name="repetir" value="repetir" label="Repetir?" inputId="repetir"></p-checkbox>
-          <p-dropdown [options]="periodos" [autoWidth]="false" placeholder="Selecione" name="periodo"
-                      ngModel #periodo></p-dropdown>
-        </div>
-        <div class="ui-fluid ui-g-2 ui-sm-12">
-          <label for="ocorrencias">Quantas vezes?</label>
-          <input type="text" pInputText id="ocorrencias" ngModel name="ocorrencias"
-                 #ocorrencias="ngModel">
-        </div>
+      <div class="form-group col-md-3">
+        <label for="conta">Conta Bancária</label>
+        <select id="conta" class="form-control">
+          <option selected>Selecione:</option>
+          <option *ngFor="let conta of contas" required>{{ conta.label }}</option>
+        </select>
       </div>
-
-      <div class="mt-3">
-        <button class="btn btn-success" type="submit" [disabled]="contasPagarForm.invalid">Salvar</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="competencia">Data de Competência</label>
+        <input type="text" class="form-control" id="competencia" bsDatepicker
+               [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="right"  required>
       </div>
-
-    </form>
-  </div>
+      <div class="form-group col-md-2">
+        <label for="vencimento">Data de Vencimento</label>
+        <input type="text" class="form-control" id="vencimento" bsDatepicker
+               [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="fornecedor">Fornecedor</label>
+        <input type="text" class="form-control" id="fornecedor" [typeahead]="fornecedores" typeaheadOptionField="label"
+               name="fornecedor" ngModel #fornecedor required>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="valor">Valor</label>
+        <input type="text" class="form-control" id="valor" name="valor" ngModel #valor required
+               currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Repetir?
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="periodo">Período</label>
+        <select id="periodo" class="form-control">
+          <option selected>Selecione:</option>
+          <option *ngFor="let periodo of periodos">{{ periodo.label }}</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="ocorrencia">Ocorrências</label>
+        <input type="text" class="form-control" id="ocorrencia"
+               ngModel name="ocorrencia" #ocorrencia="ngModel">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="contasPagarForm.invalid">Salvar</button>
+  </form>
+</div>

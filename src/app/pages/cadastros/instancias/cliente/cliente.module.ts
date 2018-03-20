@@ -6,7 +6,6 @@ import { ClienteComponent } from './cliente.component';
 import { ClienteDataComponent } from './cliente-data/cliente-data.component';
 import { SharedModule } from '../../../../shared/shared.module';
 
-
 @NgModule({
   imports: [
     CommonModule,

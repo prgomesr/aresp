@@ -18,6 +18,12 @@ export class ContasReceberComponent implements OnInit {
     {label: 'Hoje', value: 3},
     {label: 'Todos', value: 4}
   ];
+  filtroStatus = [
+    {label: 'Todos', value: 1},
+    {label: 'Pago', value: 2},
+    {label: 'Em aberto', value: 3},
+    {label: 'A vencer', value: 4}
+  ];
   constructor(private recebimentoService: ContasReceberService
   , private  toasty: ToastyService) { }
 

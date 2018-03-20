@@ -40,7 +40,6 @@
         <button type="button" class="btn btn-success" routerLink="/financeiro/contas-receber/novo">Novo</button>
         <button type="button" dropdownToggle class="btn btn-success dropdown-toggle dropdown-toggle-split">
           <span class="caret"></span>
-          <span class="sr-only">Split button!</span>
         </button>
         <ul *dropdownMenu class="dropdown-menu" role="menu">
           <li role="menuitem"><a class="dropdown-item" routerLink="/financeiro/contas-receber/novo-lote">Novo em lote</a></li>
@@ -49,7 +48,7 @@
         </ul>
       </div>
 
-      <div class="btn-group ml-2" dropdown *ngIf="rowSelecionada">
+      <div class="btn-group ml-2" dropdown>
         <button dropdownToggle type="button" class="btn btn-success dropdown-toggle">
           Ações <span class="caret"></span>
         </button>
@@ -74,6 +73,11 @@
       <div class="input-group ml-2 col-md-4">
         <select class="form-control" id="periodo">
           <option *ngFor="let p of periodos">{{p.label}}</option>
+        </select>
+      </div>
+      <div class="input-group col-md-2">
+        <select class="form-control" id="filtroStatus">
+          <option *ngFor="let f of filtroStatus">{{f.label}}</option>
         </select>
       </div>
 
@@ -115,7 +119,7 @@
           </ng-template>
           <ng-template pTemplate="emptymessage">
             <tr>
-              <td [attr.colspan]="10" class="text-table-left">
+              <td [attr.colspan]="" class="text-table-left">
                 Nenhum registro encontrado.
               </td>
             </tr>

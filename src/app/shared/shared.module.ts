@@ -9,21 +9,16 @@ import { HeaderLv2Component } from './header-lv2/header-lv2.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { TooltipModule } from 'primeng/tooltip';
 import { DataTableModule } from 'primeng/datatable';
-import { TabViewModule } from 'primeng/tabview';
-import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
-import { InputTextModule } from 'primeng/inputtext';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { DropdownModule } from 'primeng/dropdown';
-import { InputMaskModule } from 'primeng/inputmask';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TableModule } from 'primeng/table';
-import { CheckboxModule } from 'primeng/checkbox';
-import { SplitButtonModule } from 'primeng/splitbutton';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 
 @NgModule({
@@ -31,13 +26,15 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     CommonModule,
     RouterModule,
     BsDatepickerModule.forRoot(),
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    NgxMaskModule.forRoot(),
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   declarations: [MessageComponent, HeaderLv1Component, HeaderLv2Component],
   exports: [
-    FormsModule, TooltipModule, CommonModule, DataTableModule, TabViewModule, CalendarModule, FileUploadModule, InputTextModule,
-    SelectButtonModule, DropdownModule, InputTextareaModule, InputMaskModule, TableModule, CheckboxModule, SplitButtonModule,
-    CurrencyMaskModule, MessageComponent, HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule
+    FormsModule, TooltipModule, CommonModule, DataTableModule, FileUploadModule, TableModule, CurrencyMaskModule, MessageComponent,
+    HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, NgxMaskModule, TabsModule, ButtonsModule
   ]
 })
 export class SharedModule { }

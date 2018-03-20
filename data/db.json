@@ -197,18 +197,6 @@
       "valor": "70,00",
       "recebido": "",
       "status": "A VENCER",
-      "id": 5
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
       "id": 6
     },
     {
@@ -220,19 +208,7 @@
       "descricao": "MENS. DO CLUBE",
       "valor": "70,00",
       "recebido": "",
-      "status": "A VENCER",
-      "id": 7
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
+      "status": "EM ABERTO",
       "id": 8
     },
     {
@@ -244,7 +220,7 @@
       "descricao": "MENS. DO CLUBE",
       "valor": "70,00",
       "recebido": "",
-      "status": "A VENCER",
+      "status": "PAGO",
       "id": 9
     },
     {
@@ -257,43 +233,7 @@
       "valor": "70,00",
       "recebido": "",
       "status": "A VENCER",
-      "id": 10
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
       "id": 12
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
-      "id": 14
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
-      "id": 15
     },
     {
       "emissao": "10/02/2018",
