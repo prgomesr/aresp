@@ -37,9 +37,9 @@ export class ClienteDataComponent implements OnInit {
     {label: 'Elo', value: 4}
     ];
 
-  sexo = [
-    {label: '', value: 'Masculino', icon: 'fa fa-male'},
-    {label: '', value: 'Feminino', icon: 'fa fa-female'}
+  sexos = [
+    {label: 'Masculino', value: '1'},
+    {label: 'Feminino', value: '2'}
     ];
 
   constructor() {
