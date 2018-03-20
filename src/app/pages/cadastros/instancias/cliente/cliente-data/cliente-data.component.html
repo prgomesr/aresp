@@ -24,9 +24,9 @@
         <label for="nascimento">Data de Nascimento</label>
         <div class="input-group mb-2">
           <input type="text" class="form-control" id="nascimento" name="nascimento" #nascimento="ngModel" ngModel
-                 bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="bottom">
+                 bsDatepicker #dp="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="bottom">
             <div class="input-group-append">
-              <span class="input-group-text" style="color: dodgerblue"><i class="fa fa-calendar"></i></span>
+              <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dp.toggle()"></button>
           </div>
         </div>
       </div>

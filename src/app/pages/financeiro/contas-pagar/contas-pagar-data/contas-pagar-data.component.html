@@ -26,13 +26,23 @@
     <div class="form-row">
       <div class="form-group col-md-2">
         <label for="competencia">Data de Competência</label>
-        <input type="text" class="form-control" id="competencia" bsDatepicker
-               [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="right"  required>
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" id="competencia" required name="competencia" #competencia="ngModel" ngModel
+                 bsDatepicker #dpCompetencia="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="right">
+          <div class="input-group-append">
+            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpCompetencia.toggle()"></button>
+          </div>
+        </div>
       </div>
       <div class="form-group col-md-2">
         <label for="vencimento">Data de Vencimento</label>
-        <input type="text" class="form-control" id="vencimento" bsDatepicker
-               [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" required>
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" id="vencimento" required name="vencimento" #vencimento="ngModel" ngModel
+                 bsDatepicker #dpVencimento="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }">
+          <div class="input-group-append">
+            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpVencimento.toggle()"></button>
+          </div>
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="fornecedor">Fornecedor</label>
