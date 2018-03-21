@@ -172,42 +172,6 @@
       "descricao": "MENS. DO CLUBE",
       "valor": "70,00",
       "recebido": "",
-      "status": "A VENCER",
-      "id": 3
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
-      "id": 4
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
-      "id": 6
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
       "status": "EM ABERTO",
       "id": 8
     },
@@ -222,30 +186,6 @@
       "recebido": "",
       "status": "PAGO",
       "id": 9
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
-      "id": 12
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
-      "id": 16
     }
   ]
 }

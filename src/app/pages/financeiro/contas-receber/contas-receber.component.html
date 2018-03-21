@@ -58,7 +58,7 @@
           <li role="menuitem"><a class="dropdown-item" href="javascript:void (0)"><i class="fa fa-share-square"></i> Enviar boleto por e-mail</a></li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem" ><a class="dropdown-item" href="javascript:void (0)"
-                                 style="color: red" (click)="excluir(rowSelecionada)">
+                                 style="color: red" (click)="openModal(modalExclusao)">
             <i class="fa fa-trash"></i> Excluir</a>
           </li>
         </ul>
@@ -119,10 +119,17 @@
           </ng-template>
           <ng-template pTemplate="emptymessage">
             <tr>
-              <td [attr.colspan]="" class="text-table-left">
+              <td [attr.colspan]="9" class="text-table-left">
                 Nenhum registro encontrado.
               </td>
             </tr>
           </ng-template>
       </p-table>
   </div>
+<ng-template #modalExclusao>
+  <div class="modal-body text-center">
+    <p>Deseja realmente excluir o registro?</p>
+    <button type="button" class="btn btn-default" (click)="confirm(rowSelecionada)" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>

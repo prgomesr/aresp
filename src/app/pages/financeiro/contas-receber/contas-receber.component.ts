@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 
 import { ToastyService } from 'ng2-toasty';
 
 import { ContasReceberService } from './contas-receber.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { ErrorHandlerService } from '../../../core/error-handler.service';
 
 @Component({
   selector: 'app-contas-receber',
@@ -25,7 +28,11 @@ export class ContasReceberComponent implements OnInit {
     {label: 'A vencer', value: 4}
   ];
   constructor(private recebimentoService: ContasReceberService
-  , private  toasty: ToastyService) { }
+  , private  toasty: ToastyService,
+              private modalService: BsModalService) { }
+
+  modalRef: BsModalRef;
+  message: string;
 
   ngOnInit() {
     this.consultar();
@@ -40,6 +47,19 @@ export class ContasReceberComponent implements OnInit {
       this.consultar();
       this.toasty.success('Registro excluído com sucesso.');
     });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(codigo: any) {
+    this.modalRef.hide();
+    this.excluir(codigo);
+  }
+
+  decline(): void {
+    this.modalRef.hide();
   }
 
 
