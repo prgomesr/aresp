@@ -57,8 +57,8 @@
     </div>
     <div class="form-group">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
-        <label class="form-check-label" for="gridCheck">
+        <input class="form-check-input" type="checkbox" id="repetir" #repetir>
+        <label class="form-check-label" for="repetir">
           Repetir?
         </label>
       </div>
@@ -66,7 +66,7 @@
     <div class="form-row">
       <div class="form-group col-md-2">
         <label for="periodo">Período</label>
-        <select id="periodo" class="form-control">
+        <select id="periodo" class="form-control" [disabled]="!repetir.checked">
           <option selected>Selecione:</option>
           <option *ngFor="let periodo of periodos">{{ periodo.label }}</option>
         </select>
@@ -74,7 +74,7 @@
       <div class="form-group col-md-2">
         <label for="ocorrencia">Ocorrências</label>
         <input type="text" class="form-control" id="ocorrencia"
-               ngModel name="ocorrencia" #ocorrencia="ngModel">
+               ngModel name="ocorrencia" #ocorrencia="ngModel" [disabled]="!repetir.checked">
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="contasPagarForm.invalid">Salvar</button>

@@ -22,4 +22,5 @@ export class GrupoComponent implements OnInit {
   consultar() {
     this.grupoService.listar().subscribe(dados => this.grupos = dados);
   }
+
 }

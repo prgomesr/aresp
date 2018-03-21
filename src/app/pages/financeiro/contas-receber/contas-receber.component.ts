@@ -27,9 +27,10 @@ export class ContasReceberComponent implements OnInit {
     {label: 'Em aberto', value: 3},
     {label: 'A vencer', value: 4}
   ];
-  constructor(private recebimentoService: ContasReceberService
-  , private  toasty: ToastyService,
-              private modalService: BsModalService) { }
+  constructor(private recebimentoService: ContasReceberService,
+              private  toasty: ToastyService,
+              private modalService: BsModalService,
+              private errorHandler: ErrorHandlerService) { }
 
   modalRef: BsModalRef;
   message: string;
@@ -39,14 +40,16 @@ export class ContasReceberComponent implements OnInit {
   }
 
   consultar() {
-    this.recebimentoService.listar().subscribe(recebimentos => this.contas = recebimentos);
+    this.recebimentoService.listar().subscribe(recebimentos => this.contas = recebimentos,
+      erro => this.errorHandler.handle(erro));
   }
 
   excluir(codigo: any) {
     this.recebimentoService.excluir(codigo.id).subscribe(res => {
       this.consultar();
       this.toasty.success('Registro excluído com sucesso.');
-    });
+    },
+      erro => this.errorHandler.handle(erro));
   }
 
   openModal(template: TemplateRef<any>) {
