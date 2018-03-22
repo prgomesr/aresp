@@ -1,19 +1,7 @@
-<div class="container">
+<app-header-lv1 heading="Bancos"></app-header-lv1>
+
+<app-button link="/diversos/banco/novo"></app-button>
 
   <div class="col-md">
-    <h1>Bancos</h1>
+      <app-table [dados]="bancos" [cols]="cols"></app-table>
   </div>
-
-  <div class="col-md">
-    <hr>
-  </div>
-
-  <div class="col-md">
-    <!--<app-button text="/diversos/banco/novo"></app-button>-->
-  </div>
-
-  <div class="col-md" style="margin-top: 10px">
-      <!-- table aqui-->
-  </div>
-
-</div>

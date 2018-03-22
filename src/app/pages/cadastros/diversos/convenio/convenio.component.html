@@ -1,19 +1,6 @@
-<div class="container">
-
+<app-header-lv1 heading="Cônvenios"></app-header-lv1>
+<app-button link="/diversos/convenio/novo"></app-button>
   <div class="col-md">
-    <h1>Cônvenios</h1>
+      <app-table [dados]="convenios" [cols]="cols"></app-table>
   </div>
 
-  <div class="col-md">
-    <hr>
-  </div>
-
-  <div class="col-md">
-    <!--<app-button text="/diversos/banco/novo"></app-button>-->
-  </div>
-
-  <div class="col-md" style="margin-top: 10px">
-      <!-- table aqui-->
-  </div>
-
-</div>

@@ -10,7 +10,7 @@ export class StatusParcelaComponent implements OnInit {
 
   dados = [];
   cols = [
-    {field: 'situacao', header: 'Situaçao'},
+    {field: 'situacao', header: 'Situação'},
     {field: 'descricao', header: 'Descrição'}
   ];
   constructor(private statusParcelaService: StatusParcelaService) { }

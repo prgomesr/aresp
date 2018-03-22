@@ -1,27 +1,16 @@
-<div class="container">
-
-  <div class="col-md">
-    <h1>Cadastro de Grupo</h1>
-  </div>
-
-  <div class="col-md">
-    <hr>
-  </div>
+<app-header-lv2 heading="Cadastro de Grupo de Recebimento" linkAnterior="/diversos/grupo" headingAnterior="Grupos de Recebimento"></app-header-lv2>
 
   <div class="col-md">
     <form #grupoForm="ngForm" (ngSubmit)="salvar(grupoForm)" autocomplete="off">
 
       <div class="form-row">
         <div class="col-md-4 mb-3">
-          <label for="nome">Nome</label>
+          <label for="nome">Nome*</label>
           <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel>
           <app-message [control]="nome" text="Preencha este campo." error="required"></app-message>
         </div>
       </div>
 
-      <button class="btn btn-primary" type="submit">Salvar</button>
-      <button class="btn btn-outline-primary" routerLink="/diversos/grupo"><i class="fa fa-search">Voltar para a pesquisa</i></button>
-
+      <button class="btn btn-primary" type="submit" [disabled]="grupoForm.invalid">Salvar</button>
     </form>
   </div>
-</div>

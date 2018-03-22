@@ -1,19 +1,6 @@
-<div class="container">
-
+<app-header-lv1 heading="Tipos de Sócios"></app-header-lv1>
+<app-button link="/diversos/tipo-socio/novo"></app-button>
   <div class="col-md">
-    <h1>Tipos de Sócios</h1>
+      <app-table [dados]="dados" [cols]="cols"></app-table>
   </div>
 
-  <div class="col-md">
-    <hr>
-  </div>
-
-  <div class="col-md">
-    <!--<app-button text="/diversos/banco/novo"></app-button>-->
-  </div>
-
-  <div class="col-md" style="margin-top: 10px">
-      <!-- table aqui-->
-  </div>
-
-</div>

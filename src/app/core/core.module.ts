@@ -11,7 +11,7 @@ import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { LayoutComponent } from './layout/layout.component';
-import {ErrorHandlerService} from './error-handler.service';
+import { ErrorHandlerService } from './error-handler.service';
 
 defineLocale('pt-br', ptBrLocale);
 
