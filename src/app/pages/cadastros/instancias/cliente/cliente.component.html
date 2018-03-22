@@ -1,10 +1,10 @@
 <app-header-lv1 heading="Clientes"></app-header-lv1>
 
   <div class="col-md">
+    <a href="javascript:void(0)" class="fa fa-plus"
+       pTooltip="Novo" tooltipPosition="top" routerLink="/instancias/cliente/novo"> Novo</a>
     <div class="btn-toolbar" role="toolbar">
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-outline-secondary fa fa-plus"
-                pTooltip="Novo" tooltipPosition="top" routerLink="/instancias/cliente/novo"></button>
       </div>
       <div class="input-group ml-auto">
         <input type="text" class="form-control" placeholder="Estou procurando...">
@@ -16,27 +16,44 @@
   </div>
 
   <div class="col-md">
-    <p-dataTable [value]="dados" [paginator]="true" [rows]="10" [responsive]="true"
-      [rowsPerPageOptions]="[5,10,15,20,25]">
-      <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
-      <p-column field="id" header="Id" [style]="{'width': '52px', 'text-align': 'center'}"></p-column>
-      <p-column field="nome" header="Nome"></p-column>
-      <p-column field="cpf" header="CPF" [style]="{'width': '150px', 'text-align': 'center'}"></p-column>
-      <p-column field="telefone" header="Telefone" [style]="{'width': '130px', 'text-align': 'center'}"></p-column>
-      <p-column field="email" header="E-mail"></p-column>
-      <p-column field="status" header="Status" [style]="{'width': '110px'}">
-        <ng-template let-cli="rowData" pTemplate="body">
-          <span class="badge status-span"
-                [ngClass]="{'badge-success': cli.status === 'Em dia', 'badge-danger': cli.status === 'Cancelado',
-                'badge-warning': cli.status === 'Inadimplente'}">{{cli.status}}</span>
-        </ng-template>
-      </p-column>
-      <p-column [style]="{'width': '80px', 'text-align': 'center'}">
-        <ng-template pTemplate="body">
-          <a class="fa fa-eye" pTooltip="Detalhes" tooltipPosition="top" routerLink="/instancias/cliente/detalhes"></a>
-          <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>
-          <a type="button" class="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"></a>
-        </ng-template>
-      </p-column>
-    </p-dataTable>
+    <p-table [value]="clientes" [paginator]="true" [responsive]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30, 50]">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="text-table-left">Nome</th>
+          <th style="width: 150px">CPF</th>
+          <th style="width: 130px">Telefone</th>
+          <th class="text-table-left">E-mail</th>
+          <th style="width: 110px">Status</th>
+          <th style="width: 80px"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-cliente >
+        <tr>
+          <td class="text-table-left">{{cliente.nome}}</td>
+          <td>{{cliente.cpf}}</td>
+          <td>{{cliente.telefone}}</td>
+          <td class="text-table-left">{{cliente.email}}</td>
+          <td>
+            <span class="badge status-span"
+                  [ngClass]="{'badge-success': cliente.status === 'EM DIA', 'badge-danger': cliente.status === 'CANCELADO',
+                'badge-warning': cliente.status === 'INADIMPLENTE'}">{{cliente.status}}</span>
+          </td>
+          <td>
+            <a href="javascript:void(0)" pTooltip="Ativar" tooltipPosition="top"><i class="fa fa-check"
+              *ngIf="cliente.status === 'CANCELADO'"></i></a>
+            <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>
+            <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"><i class="fa fa-eye"></i></a>
+            <a href="javascript:void(0)" pTooltip="Cancelar" tooltipPosition="top"><i class="fa fa-ban"
+              *ngIf="cliente.status === 'EM DIA' || cliente.status === 'INADIMPLENTE'"></i></a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td [attr.colspan]="6" class="text-table-left">
+            Nenhum registro encontrado.
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
