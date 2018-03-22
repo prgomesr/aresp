@@ -122,14 +122,26 @@
   "clientes": [
     {
       "nome": "MARIA DA GLORIA MARTINS SILVEIRA",
+      "status": "EM DIA",
+      "cpf": "458.708.855-23",
+      "telefone": "17 3232-3232",
+      "email": "maria@email.com",
       "id": 1
     },
     {
       "nome": "CLADIO DANIEL GONCALVES",
+      "status": "CANCELADO",
+      "cpf": "678.532.186-72",
+      "telefone": "17 99191-9191",
+      "email": "claudio@email.com",
       "id": 2
     },
     {
       "nome": "JOAQUIM MIGUEL CARDOSO",
+      "status": "INADIMPLENTE",
+      "cpf": "431.392.655-06",
+      "telefone": "34 3434-3434",
+      "email": "joaquim@email.com",
       "id": 3
     }
   ],

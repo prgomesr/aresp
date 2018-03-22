@@ -65,5 +65,7 @@ export class ContasReceberComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  onRowUnselect(event) {
+  }
 
 }
