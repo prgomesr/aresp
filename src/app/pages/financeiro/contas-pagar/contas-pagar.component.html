@@ -41,11 +41,6 @@
                 pTooltip="Novo" tooltipPosition="top" routerLink="/financeiro/contas-pagar/novo"></button>
       </div>
 
-      <div class="btn-group ml-5" role="group">
-        <button type="button" class="btn btn-outline-secondary fa fa-trash-o"
-                pTooltip="Excluir" tooltipPosition="top"></button>
-      </div>
-
       <div class="btn-group ml-2" role="group">
         <button type="button" class="btn btn-outline-secondary">Emitir cheque</button>
       </div>
@@ -59,6 +54,46 @@
     </div>
   </div>
 
-  <div class="col-md" style="margin-top: 10px">
-    <!--Table aqui -->
-  </div>
+<div class="col-md mt-1">
+  <p-table [value]="contas" [paginator]="true" [responsive]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30, 50]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="text-table-left">Descrição</th>
+        <th class="text-table-left">Fornecedor</th>
+        <th style="width: 130px">Vencimento</th>
+        <th style="width: 130px">Pagamento</th>
+        <th style="width: 80px">Parcela</th>
+        <th style="width: 110px">Valor</th>
+        <th style="width: 110px">Situação</th>
+        <th style="width: 80px"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-conta let-rowData>
+      <tr>
+        <td class="text-table-left">{{conta.descricao}}</td>
+        <td class="text-table-left">{{conta.fornecedor}}</td>
+        <td>{{conta.vencimento}}</td>
+        <td>{{conta.pagamento}}</td>
+        <td>{{conta.parcela}}</td>
+        <td>{{conta.valor}}</td>
+        <td>
+            <span class="badge status-span"
+                  [ngClass]="{'badge-success': conta.status === 'PAGA', 'badge-danger': conta.status === 'VENCIDA',
+                'badge-info': conta.status === 'A VENCER'}">{{conta.status}}</span>
+        </td>
+        <td>
+          <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>
+          <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"><i class="fa fa-eye"></i></a>
+          <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [attr.colspan]="8" class="text-table-left">
+          Nenhum registro encontrado.
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

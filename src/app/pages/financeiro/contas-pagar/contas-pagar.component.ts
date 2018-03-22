@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ContasPagarService } from './contas-pagar.service';
+import { ErrorHandlerService } from '../../../core/error-handler.service';
+
 @Component({
   selector: 'app-contas-pagar',
   templateUrl: './contas-pagar.component.html',
@@ -13,11 +16,17 @@ export class ContasPagarComponent implements OnInit {
     {label: 'Últimos 7 dias', value: 2},
     {label: 'Todos', value: 3},
   ];
-  cols = [{}];
 
-  constructor() { }
+  constructor(private pagamentoService: ContasPagarService,
+              private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
+    this.listar();
+  }
+
+  listar() {
+    this.pagamentoService.listar().subscribe(dados => this.contas = dados,
+      err => this.errorHandler.handle(err));
   }
 
 }

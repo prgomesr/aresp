@@ -67,7 +67,7 @@
     </div>
   </div>
 
-  <div class="col-md" style="margin-top: 10px">
+  <div class="col-md mt-1">
       <p-table [value]="contas" [responsive]="true" [paginator]="true" [rowsPerPageOptions]="[10,20,30]"
       [rows]="10" dataKey="id">
           <ng-template pTemplate="header">
@@ -80,12 +80,12 @@
                   <th style="width: 11em">Descrição</th>
                   <th style="width: 6.4em">Valor</th>
                   <th style="width: 6.4em">Recebido</th>
-                  <th style="width: 7em">Status</th>
+                  <th style="width: 7em">Situação</th>
                   <th style="width: 90px"></th>
               </tr>
           </ng-template>
           <ng-template pTemplate="body" let-conta let-rowData>
-              <tr [pSelectableRow]="rowData">
+              <tr>
                   <td>{{conta.emissao}}</td>
                   <td>{{conta.vencimento}}</td>
                   <td>{{conta.referencia}}</td>
@@ -96,8 +96,8 @@
                   <td>{{conta.recebido}}</td>
                   <td>
                       <span class="badge status-span"
-                            [ngClass]="{'badge-info': conta.status === 'A VENCER', 'badge-success': conta.status === 'PAGO',
-                'badge-warning': conta.status === 'EM ABERTO'}">{{conta.status}}</span>
+                            [ngClass]="{'badge-info': conta.status === 'A VENCER', 'badge-success': conta.status === 'PAGA',
+                'badge-danger': conta.status === 'EM ABERTO'}">{{conta.status}}</span>
                   </td>
                   <td>
                     <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>

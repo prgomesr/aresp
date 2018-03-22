@@ -204,8 +204,49 @@
       "descricao": "MENS. DO CLUBE",
       "valor": "70,00",
       "recebido": "",
-      "status": "PAGO",
+      "status": "PAGA",
       "id": 9
+    }
+  ],
+  "pagamentos": [
+    {
+      "descricao": "REBOCO",
+      "categoria": "Obras",
+      "conta": "54.643-7",
+      "competencia": "10/04/2018",
+      "vencimento": "10/04/2018",
+      "fornecedor": "TRANSCAL",
+      "valor": "160,00",
+      "pagamento": "",
+      "parcela": "1/1",
+      "status": "A VENCER",
+      "id": 1
+    },
+    {
+      "descricao": "MATERIAS P/ CONSTRUCAO",
+      "categoria": "Obras",
+      "conta": "54.643-7",
+      "competencia": "10/03/2018",
+      "vencimento": "10/03/2018",
+      "fornecedor": "RIO JARDIM",
+      "valor": "1.560,00",
+      "pagamento": "12/03/2018",
+      "parcela": "2/3",
+      "status": "PAGA",
+      "id": 2
+    },
+    {
+      "descricao": "DADOS MÓVEIS",
+      "categoria": "Conta Fixa",
+      "conta": "54.643-7",
+      "competencia": "20/03/2018",
+      "vencimento": "20/03/2018",
+      "fornecedor": "CLARO",
+      "valor": "210,00",
+      "pagamento": "",
+      "parcela": "1/1",
+      "status": "VENCIDA",
+      "id": 3
     }
   ]
 }
