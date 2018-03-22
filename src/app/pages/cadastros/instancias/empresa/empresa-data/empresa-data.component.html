@@ -1,37 +1,30 @@
-<div class="container">
-
-  <div class="col-md">
-    <h1>Cadastro de Empresa</h1>
-  </div>
-
-  <div class="col-md">
-    <hr>
-  </div>
-
+<app-header-lv2 heading="Cadastro de Empresa" linkAnterior="/instancias/empresa" headingAnterior="Empresas"></app-header-lv2>
   <div class="col-md">
     <form #empresaForm="ngForm" (ngSubmit)="(empresaForm)" autocomplete="off">
 
       <div class="form-row">
-        <div class="ui-fluid ui-g-3">
-          <label>CNPJ</label>
-          <p-inputMask mask="99.999.999/9999-99" name="cnpj" ngModel required #cnpj="ngModel"></p-inputMask>
+        <div class="form-group col-md-3">
+          <label for="cnpj">CNPJ*</label>
+          <input type="text" class="form-control" id="cnpj"
+                 required ngModel name="cnpj" #cnpj="ngModel" mask="99.999.999/9999-99">
           <app-message [control]="cnpj" error="required" text="Preencha este campo."></app-message>
         </div>
-        <div class="ui-fluid ui-g-5">
-          <label for="razao">Razão Social</label>
-          <input type="text" pInputText id="razao" required ngModel name="razao" #razao="ngModel">
+        <div class="form-group col-md-5">
+          <label for="razao">Razão Social*</label>
+          <input type="text" class="form-control" id="razao" required ngModel name="razao" #razao="ngModel">
           <app-message [control]="razao" error="required" text="Preencha este campo."></app-message>
         </div>
-        <div class="ui-fluid ui-g-4">
-          <label for="fantasia">Nome Fantasia</label>
-          <input type="text" pInputText id="fantasia" required ngModel name="fantasia" #fantasia="ngModel">
+        <div class="form-group col-md-4">
+          <label for="fantasia">Nome Fantasia*</label>
+          <input type="text" class="form-control" id="fantasia" required ngModel name="fantasia" #fantasia="ngModel">
           <app-message [control]="fantasia" error="required" text="Preencha este campo."></app-message>
         </div>
       </div>
+      <hr>
+      <div class="form-row">
+        <!-- form de contas bancarias -->
+      </div>
 
-      <button class="btn btn-primary" type="submit">Salvar</button>
-      <button class="btn btn-outline-primary" routerLink="/instancias/empresa"><i class="fa fa-search"></i>Voltar para a pesquisa</button>
-
+      <button class="btn btn-primary" type="submit" [disabled]="empresaForm.invalid">Salvar</button>
     </form>
   </div>
-</div>

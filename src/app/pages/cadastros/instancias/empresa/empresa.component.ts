@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { EmpresaService } from './empresa.service';
+import { ErrorHandlerService } from '../../../../core/error-handler.service';
+
 @Component({
   selector: 'app-empresa',
   templateUrl: './empresa.component.html',
@@ -8,15 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class EmpresaComponent implements OnInit {
 
   empresas = [];
-  cols = [
-    {header: 'Razão Social', field: 'razao'},
-    {header: 'Fantasia', field: 'fantasia'},
-    {header: 'CNPJ', field: 'cnpj'}
-  ];
 
-  constructor() { }
+  constructor(private empresaService: EmpresaService,
+              private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
+    this.listar();
+  }
+
+  listar() {
+    this.empresaService.listar().subscribe(empresas => this.empresas = empresas,
+      err => this.errorHandler.handle(err));
   }
 
 }

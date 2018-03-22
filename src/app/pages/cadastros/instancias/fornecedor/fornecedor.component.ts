@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FornecedorService } from './fornecedor.service';
+import { ErrorHandlerService } from '../../../../core/error-handler.service';
+
 @Component({
   selector: 'app-fornecedor',
   templateUrl: './fornecedor.component.html',
@@ -8,15 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class FornecedorComponent implements OnInit {
 
   fornecedores = [];
-  cols = [
-    {header: 'Nome Fantasia', field: 'fantasia'},
-    {header: 'Telefone', field: 'telefone'},
-    {header: 'Contato', field: 'contato'}
-  ];
 
-  constructor() { }
+  constructor(private fornecedorService: FornecedorService,
+              private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
+    this.listar();
   }
 
+  listar() {
+    this.fornecedorService.listar().subscribe(fornecedores => this.fornecedores = fornecedores,
+        err => this.errorHandler.handle(err));
+  }
 }

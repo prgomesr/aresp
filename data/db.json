@@ -150,6 +150,14 @@
       "id": 3
     }
   ],
+  "empresas": [
+    {
+      "razao": "ASSOCIACAO REGIONAL DOS SERVIDORES PUBLICOS",
+      "fantasia": "ARESP",
+      "cnpj": "46.929.667/0001-74",
+      "id": 1
+    }
+  ],
   "recebimentos": [
     {
       "emissao": "10/02/2018",

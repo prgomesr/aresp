@@ -1,4 +1,5 @@
-<p-table [columns]="cols" [value]="dados" dataKey="id" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10]">
+<p-table [columns]="cols" [value]="dados" dataKey="id" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10]"
+[responsive]="true">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">

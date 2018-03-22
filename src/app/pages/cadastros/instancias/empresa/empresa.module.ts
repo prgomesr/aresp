@@ -4,6 +4,7 @@ import {EmpresaRoutingModule} from './empresa-routing.module';
 import { EmpresaDataComponent } from './empresa-data/empresa-data.component';
 import {EmpresaComponent} from './empresa.component';
 import { SharedModule } from '../../../../shared/shared.module';
+import { EmpresaService } from './empresa.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { SharedModule } from '../../../../shared/shared.module';
     SharedModule,
     EmpresaRoutingModule
   ],
-  declarations: [EmpresaComponent, EmpresaDataComponent]
+  declarations: [EmpresaComponent, EmpresaDataComponent],
+  providers: [EmpresaService]
 })
 export class EmpresaModule { }
