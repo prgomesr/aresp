@@ -10,6 +10,9 @@ import { ContasReceberDataComponent } from './contas-receber-data/contas-receber
 import { ContasReceberLoteComponent } from './contas-receber-lote/contas-receber-lote.component';
 import { ContasReceberBaseAnteriorComponent } from './contas-receber-base-anterior/contas-receber-base-anterior.component';
 import { ContasReceberService } from './contas-receber.service';
+import { TipoRecebimentoService } from '../../cadastros/diversos/tipo-recebimento/tipo-recebimento.service';
+import { GrupoService } from '../../cadastros/diversos/grupo/grupo.service';
+import { ClienteService } from '../../cadastros/instancias/cliente/cliente.service';
 
 @NgModule({
   imports: [
@@ -19,6 +22,6 @@ import { ContasReceberService } from './contas-receber.service';
     ContasReceberRoutingModule
   ],
   declarations: [ContasReceberComponent, ContasReceberDataComponent, ContasReceberLoteComponent, ContasReceberBaseAnteriorComponent],
-  providers: [ContasReceberService]
+  providers: [ContasReceberService, TipoRecebimentoService, GrupoService, ClienteService]
 })
 export class ContasReceberModule { }

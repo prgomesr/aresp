@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ErrorHandlerService} from '../../../../core/error-handler.service';
+import {TipoRecebimentoService} from '../../../cadastros/diversos/tipo-recebimento/tipo-recebimento.service';
+import {GrupoService} from '../../../cadastros/diversos/grupo/grupo.service';
+import {ClienteService} from '../../../cadastros/instancias/cliente/cliente.service';
 
 @Component({
   selector: 'app-contas-receber-data',
@@ -7,35 +11,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContasReceberDataComponent implements OnInit {
 
-  clientes = [
-    {label: 'MARIA DO CARMO PEREIRA', value: 1},
-    {label: 'PEDRO DE ALCANTARA MACHADO', value: 2},
-    {label: 'JOSEFINA BORGES', value: 3}
-    ];
-  categorias = [
-    {label: 'Mensalidade', value: 1},
-    {label: 'Aluguel de Quadra', value: 2},
-    {label: 'Outras', value: 8}
-  ];
+  clientes = [];
+  categorias = [];
   periodos = [
     {label: 'Mensalmente', value: 1}
   ];
-  gruposRecebimentos = [
-    {label: 'Boleto', value: 1},
-    {label: 'Cartão', value: 2},
-    {label: 'BB1', value: 3},
-    {label: 'BB2', value: 4}
-  ];
+  gruposRecebimentos = [];
   contas = [
     {label: '54.643-7', value: 1},
     {label: '7009-2', value: 2},
     {label: '8815-3', value: 3},
     {label: '13003891-3', value: 4}
   ];
-  constructor() { }
+  constructor(private errorHandler: ErrorHandlerService,
+              private tipoRecebimentoService: TipoRecebimentoService,
+              private grupoService: GrupoService,
+              private clienteService: ClienteService) { }
 
   ngOnInit() {
+    this.listarCategorias();
+    this.listarGrupoRecebimento();
+    this.listarClientes();
 
+  }
+
+  listarCategorias() {
+    this.tipoRecebimentoService.listar().subscribe(tipos => this.categorias = tipos,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarGrupoRecebimento() {
+    this.grupoService.listar().subscribe(grupos => this.gruposRecebimentos = grupos,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarClientes() {
+    this.clienteService.listar().subscribe(clientes => this.clientes = clientes,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarContas() {
+    // TODO ver como fica a questao da conta dentro da empresa
   }
 
 }

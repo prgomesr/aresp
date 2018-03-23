@@ -1,21 +1,17 @@
 <app-header-lv1 heading="Clientes"></app-header-lv1>
 
-  <div class="col-md">
-    <a href="javascript:void(0)" class="fa fa-plus"
-       pTooltip="Novo" tooltipPosition="top" routerLink="/instancias/cliente/novo"> Novo</a>
-    <div class="btn-toolbar" role="toolbar">
-      <div class="btn-group" role="group">
-      </div>
-      <div class="input-group ml-auto">
-        <input type="text" class="form-control" placeholder="Estou procurando...">
-        <div class="input-group-prepend">
-          <div class="input-group-text" id="btnGroupAddon2"><a href="javascript:void(0)" class="fa fa-search"></a></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="col-md">
+  <div class="btn-toolbar clearfix" role="toolbar">
 
-  <div class="col-md">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-secondary fa fa-plus"
+              pTooltip="Novo" tooltipPosition="top" routerLink="/financeiro/contas-pagar/novo"></button>
+    </div>
+
+  </div>
+</div>
+
+  <div class="col-md mt-1">
     <p-table [value]="clientes" [paginator]="true" [responsive]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30, 50]">
       <ng-template pTemplate="header">
         <tr>
