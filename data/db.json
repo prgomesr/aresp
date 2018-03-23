@@ -73,23 +73,33 @@
       "id": 2
     }
   ],
-  "tiposPagamentos": [
+  "categoriasPagamentos": [
     {
-      "nome": "Dinheiro",
+      "nome": "Obras",
       "id": 1
     },
     {
-      "nome": "Cheque",
+      "nome": "Conta Fixa",
       "id": 2
     }
   ],
-  "tiposRecebimentos": [
+  "categoriasRecebimentos": [
     {
       "nome": "Mensalidade",
       "id": 1
     },
     {
       "nome": "Aluguel de quadra",
+      "id": 2
+    }
+  ],
+  "tiposRecebimentos": [
+    {
+      "nome": "Dinheiro",
+      "id": 1
+    },
+    {
+      "nome": "Cheque",
       "id": 2
     }
   ],

@@ -24,8 +24,10 @@ const routes: Routes = [
       { path: 'diversos/secretaria', loadChildren: '../pages/cadastros/diversos/secretaria/secretaria.module#SecretariaModule' },
       { path: 'diversos/status-parcela', loadChildren: '../pages/cadastros/diversos/status-parcela/status-parcela.module' +
         '#StatusParcelaModule' },
-      { path: 'diversos/tipo-pagamento', loadChildren: '../pages/cadastros/diversos/tipo-pagamento/tipo-pagamento.module' +
-        '#TipoPagamentoModule' },
+      { path: 'diversos/categoria-pagamento', loadChildren: '../pages/cadastros/diversos/categoria-pagamento/categoria-pagamento.module' +
+        '#CategoriaPagamentoModule' },
+      { path: 'diversos/categoria-recebimento', loadChildren: '../pages/cadastros/diversos/categoria-recebimento/categoria-recebimento.' +
+        'module' + '#CategoriaRecebimentoModule' },
       { path: 'diversos/tipo-recebimento', loadChildren: '../pages/cadastros/diversos/tipo-recebimento/tipo-recebimento.module' +
         '#TipoRecebimentoModule' },
       { path: 'diversos/tipo-socio', loadChildren: '../pages/cadastros/diversos/tipo-socio/tipo-socio.module#TipoSocioModule' },
