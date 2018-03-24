@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoriaPagamentoService} from '../../../cadastros/diversos/categoria-pagamento/categoria-pagamento.service';
+import {ErrorHandlerService} from '../../../../core/error-handler.service';
+import {FornecedorService} from '../../../cadastros/instancias/fornecedor/fornecedor.service';
 
 @Component({
   selector: 'app-contas-pagar-data',
@@ -7,22 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContasPagarDataComponent implements OnInit {
 
-  categorias = [
-    {label: 'Fornecedor', value: 1},
-    {label: 'Energia elétrica', value: 2},
-    {label: 'Água', value: 3},
-    {label: 'Serviços', value: 4},
-    {label: 'Obras', value: 5},
-    {label: 'Combustível', value: 6},
-    {label: 'Árbitro', value: 7},
-    {label: 'Outras', value: 8}
-    ];
-  fornecedores = [
-    {label: 'CPFL', value: 1},
-    {label: 'Rio Jardim', value: 2},
-    {label: 'Romep', value: 3},
-    {label: 'Banco do Brasil S/A', value: 4}
-    ];
+  categorias = [];
+  fornecedores = [];
   contas = [
     {label: '54.643-7', value: 1},
     {label: '7009-2', value: 2},
@@ -32,10 +21,23 @@ export class ContasPagarDataComponent implements OnInit {
   periodos = [
     {label: 'Mensalmente', value: 1}
   ];
-  constructor() { }
+  constructor(private categoriaService: CategoriaPagamentoService,
+              private fornecedorService: FornecedorService,
+              private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
+    this.listarCategorias();
+    this.listarFornecedores();
+  }
 
+  listarCategorias() {
+    this.categoriaService.listar().subscribe(dados => this.categorias = dados,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarFornecedores() {
+    this.fornecedorService.listar().subscribe(dados => this.fornecedores = dados,
+      err => this.errorHandler.handle(err));
   }
 
 }

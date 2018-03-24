@@ -1,3 +1,6 @@
-<p>
-  categoria-recebimento works!
-</p>
+<app-header-lv1 heading="Categorias de Recebimentos"></app-header-lv1>
+<app-button link="/diversos/categoria-recebimento/novo"></app-button>
+<div class="col-md">
+  <app-table [dados]="categorias" [cols]="cols"></app-table>
+</div>
+

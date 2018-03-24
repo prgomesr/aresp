@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ErrorHandlerService} from '../../../../core/error-handler.service';
-import {TipoRecebimentoService} from '../../../cadastros/diversos/tipo-recebimento/tipo-recebimento.service';
-import {GrupoService} from '../../../cadastros/diversos/grupo/grupo.service';
-import {ClienteService} from '../../../cadastros/instancias/cliente/cliente.service';
+
+import { ErrorHandlerService } from '../../../../core/error-handler.service';
+import { GrupoService } from '../../../cadastros/diversos/grupo/grupo.service';
+import { ClienteService } from '../../../cadastros/instancias/cliente/cliente.service';
+import { CategoriaRecebimentoService } from '../../../cadastros/diversos/categoria-recebimento/categoria-recebimento.service';
 
 @Component({
   selector: 'app-contas-receber-data',
@@ -24,7 +25,7 @@ export class ContasReceberDataComponent implements OnInit {
     {label: '13003891-3', value: 4}
   ];
   constructor(private errorHandler: ErrorHandlerService,
-              private tipoRecebimentoService: TipoRecebimentoService,
+              private categoriaService: CategoriaRecebimentoService,
               private grupoService: GrupoService,
               private clienteService: ClienteService) { }
 
@@ -36,7 +37,7 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarCategorias() {
-    this.tipoRecebimentoService.listar().subscribe(tipos => this.categorias = tipos,
+    this.categoriaService.listar().subscribe(tipos => this.categorias = tipos,
       err => this.errorHandler.handle(err));
   }
 
