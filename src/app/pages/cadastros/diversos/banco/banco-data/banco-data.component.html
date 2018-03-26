@@ -1,6 +1,6 @@
 <app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Banco" linkAnterior="/diversos/banco" headingAnterior="Bancos"></app-header-lv2>
   <div class="col-md">
-    <form #bancoForm="ngForm" (ngSubmit)="(bancoForm)" autocomplete="off">
+    <form #bancoForm="ngForm" (ngSubmit)="salvar(bancoForm)" autocomplete="off">
 
       <div class="form-row">
         <div class="col-md-4 mb-3">
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <button class="btn btn-primary" type="submit" [disabled]="bancoForm.invalid" (click)="salvar(bancoForm)">Salvar</button>
+      <button class="btn btn-primary" type="submit" [disabled]="bancoForm.invalid">Salvar</button>
 
     </form>
   </div>

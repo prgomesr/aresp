@@ -19,11 +19,11 @@ export class BancoService {
   }
 
   editar(banco: Banco) {
-    return this.http.put(environment.apiUrl + 'bancos', banco);
+    return this.http.put<any>(environment.apiUrl + 'bancos/' + banco.id, banco);
   }
 
-  listarPorCodigo(id: any[]) {
-    return this.http.get<any []>(environment.apiUrl + 'bancos/' + `${id}`);
+  listarPorCodigo(id: number) {
+    return this.http.get<any>(environment.apiUrl + 'bancos/' + `${id}`);
   }
 
   excluir(codigo: number) {

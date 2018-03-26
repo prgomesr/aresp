@@ -3,14 +3,20 @@
     {
       "nome": "Banco do Brasil",
       "numero": "001",
-      "telefone": "17 3302 5199",
-      "id": 1
+      "id": 1,
+      "telefone": "17 3302 5199"
     },
     {
       "nome": "Santander",
       "numero": "033",
-      "telefone": "17 3217 9477",
+      "telefone": "17 3214 7300",
       "id": 2
+    },
+    {
+      "nome": "Bradesco",
+      "numero": "237",
+      "telefone": "17 2138 9500",
+      "id": 3
     }
   ],
   "contas": [
