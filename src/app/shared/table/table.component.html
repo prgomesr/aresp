@@ -14,8 +14,10 @@
         {{rowData[col.field]}}
       </td>
       <td>
-        <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>
-        <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"><i class="fa fa-trash"></i></a>
+        <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"
+        [routerLink]="[linkEdicao, rowData.id]"><i class="fa fa-pencil"></i></a>
+        <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"
+           (click)="openModal(modalExclusao, rowData.id)"><i class="fa fa-trash"></i></a>
       </td>
     </tr>
   </ng-template>
@@ -27,3 +29,10 @@
     </tr>
   </ng-template>
 </p-table>
+<ng-template #modalExclusao>
+  <div class="modal-body text-center">
+    <p>Deseja realmente excluir o registro?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+  </div>
+</ng-template>

@@ -33,7 +33,6 @@ export class ContasReceberComponent implements OnInit {
               private errorHandler: ErrorHandlerService) { }
 
   modalRef: BsModalRef;
-  message: string;
 
   ngOnInit() {
     this.consultar();

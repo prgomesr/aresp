@@ -5,21 +5,23 @@
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="nome">Nome*</label>
-          <input type="text" class="form-control" id="nome" required ngModel name="nome" #nome="ngModel">
+          <input type="text" class="form-control" id="nome" required ngModel name="nome" #nome="ngModel"
+          [(ngModel)]="banco.nome">
           <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
         </div>
         <div class="col-md-4 mb-3">
           <label for="numero">Número*</label>
-          <input type="text" class="form-control" id="numero" required name="numero" #numero="ngModel" ngModel>
+          <input type="text" class="form-control" id="numero" required name="numero" #numero="ngModel" ngModel
+          [(ngModel)]="banco.numero">
           <app-message [control]="numero" error="required" text="Preencha este campo."></app-message>
         </div>
         <div class="col-md-4 mb-3">
           <label for="tel">Telefone</label>
-          <input type="text" class="form-control" id="tel">
+          <input type="text" class="form-control" id="tel" [(ngModel)]="banco.telefone" name="tel" #tel="ngModel" ngModel>
         </div>
       </div>
 
-      <button class="btn btn-primary" type="submit" [disabled]="bancoForm.invalid">Salvar</button>
+      <button class="btn btn-primary" type="submit" [disabled]="bancoForm.invalid" (click)="salvar(bancoForm)">Salvar</button>
 
     </form>
   </div>

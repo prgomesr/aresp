@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+
+import { ErrorHandlerService } from '../../../../../core/error-handler.service';
+import { BancoService } from '../../../diversos/banco/banco.service';
+import { OperadoraService } from '../../../diversos/operadora/operadora.service';
+import { SecretariaService } from '../../../diversos/secretaria/secretaria.service';
+import { TipoSocioService } from '../../../diversos/tipo-socio/tipo-socio.service';
 
 @Component({
   selector: 'app-cliente-data',
@@ -8,11 +13,11 @@ import {NgForm} from '@angular/forms';
 })
 export class ClienteDataComponent implements OnInit {
 
-  tiposSocios = [
-    {label: 'Sócio Contribuinte', value: 1},
-    {label: 'Funcionário Público', value: 2},
-    {label: 'Dependente Especial', value: 3}
-    ];
+  tiposSocios = [];
+  secretarias = [];
+  bancos = [];
+  operadoras = [];
+
   estCivil = [
     { label: 'Solteiro (a)', value: 1 },
     { label: 'Casado (a)', value: 2 },
@@ -20,55 +25,43 @@ export class ClienteDataComponent implements OnInit {
     { label: 'Divorcidado (a)', value: 4 },
     { label: 'Viúvo (a)', value: 5 }
   ];
-  secretarias = [
-    {label: 'Segurança Pública', value: 1},
-    {label: 'Educação', value: 2},
-    {label: 'Tribunal de Justiça', value: 3}
-    ];
-  bancos = [
-    {label: 'Banco do Brasil', value: 1},
-    {label: 'Santander', value: 2},
-    {label: 'Bradesco', value: 3}
-    ];
-  operadoras = [
-    {label: 'Visa', value: 1},
-    {label: 'Master', value: 2},
-    {label: 'Dinners', value: 3},
-    {label: 'Elo', value: 4}
-    ];
-
   sexos = [
     {label: 'Masculino', value: '1'},
     {label: 'Feminino', value: '2'}
     ];
 
-  constructor() {
+  constructor(private errorHandler: ErrorHandlerService,
+              private bancoService: BancoService,
+              private operadoraService: OperadoraService,
+              private secretariaService: SecretariaService,
+              private tipoSocioService: TipoSocioService) {
   }
-  pt: any;
-  uploadedFiles: any[] = [];
-  onUpload(event) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
-    }
 
-    /*this.msgs = [];
-    this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});*/
-  }
   ngOnInit() {
-    this.pt = {
-      firstDayOfWeek: 1,
-      dayNames: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
-      dayNamesShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
-      dayNamesMin: ["D","S","T","Q","Q","S","S"],
-      monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
-      monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-      today: 'Hoje',
-      clear: 'Limpar'
-    };
+    this.listarBancos();
+    this.listarOperadoras();
+    this.listarSecretarias();
+    this.listarTiposSocios();
   }
 
-  salvar (form: NgForm) {
-    console.log(form);
+  listarTiposSocios() {
+    this.tipoSocioService.listar().subscribe(dados => this.tiposSocios = dados,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarSecretarias() {
+    this.secretariaService.listar().subscribe(dados => this.secretarias = dados,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarBancos() {
+    this.bancoService.listar().subscribe(dados => this.bancos = dados,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarOperadoras() {
+    this.operadoraService.listar().subscribe(dados => this.operadoras = dados,
+      err => this.errorHandler.handle(err));
   }
 
 }

@@ -3,5 +3,5 @@
 <app-button link="/diversos/banco/novo"></app-button>
 
   <div class="col-md">
-      <app-table [dados]="bancos" [cols]="cols"></app-table>
+      <app-table [dados]="bancos" [cols]="cols" linkEdicao="/diversos/banco/editar/" (dadoExcluido)="excluir($event)"></app-table>
   </div>
