@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
 
@@ -18,9 +19,15 @@ export class BancoDataComponent implements OnInit {
 
   constructor(private bancoService: BancoService,
               private errorHandler: ErrorHandlerService,
-              private toasty: ToastyService) { }
+              private toasty: ToastyService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const idBanco = this.route.snapshot.params['id'];
+
+    if (idBanco) {
+      this.carregarBanco(idBanco);
+    }
   }
 
   salvar(form: FormControl) {
@@ -29,6 +36,15 @@ export class BancoDataComponent implements OnInit {
       form.reset();
       this.banco = new Banco();
     }, err => this.errorHandler.handle(err));
+  }
+
+  carregarBanco(codigo: any[]) {
+  this.bancoService.listarPorCodigo(codigo).subscribe(dado => this.banco = dado,
+    err => this.errorHandler.handle(err));
+  }
+
+  get editando(): any {
+    return Boolean (this.banco.id);
   }
 
 }

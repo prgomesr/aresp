@@ -1,4 +1,4 @@
-<app-header-lv2 heading="Cadastro de Banco" linkAnterior="/diversos/banco" headingAnterior="Bancos"></app-header-lv2>
+<app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Banco" linkAnterior="/diversos/banco" headingAnterior="Bancos"></app-header-lv2>
   <div class="col-md">
     <form #bancoForm="ngForm" (ngSubmit)="(bancoForm)" autocomplete="off">
 

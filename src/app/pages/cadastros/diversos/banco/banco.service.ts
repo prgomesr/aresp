@@ -22,8 +22,8 @@ export class BancoService {
     return this.http.put(environment.apiUrl + 'bancos', banco);
   }
 
-  listarPorCodigo(id: number) {
-    return this.http.get(environment.apiUrl + 'bancos/' + `${id}`);
+  listarPorCodigo(id: any[]) {
+    return this.http.get<any []>(environment.apiUrl + 'bancos/' + `${id}`);
   }
 
   excluir(codigo: number) {

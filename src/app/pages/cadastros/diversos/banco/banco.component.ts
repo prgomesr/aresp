@@ -29,7 +29,8 @@ export class BancoComponent implements OnInit {
   }
 
   consultar() {
-    this.bancoService.listar().subscribe(bancos => this.bancos = bancos);
+    this.bancoService.listar().subscribe(bancos => this.bancos = bancos,
+      err => this.errorHandler.handle(err));
   }
 
   excluir(codigo: number) {
