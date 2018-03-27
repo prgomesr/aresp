@@ -1,6 +1,6 @@
 <app-header-lv1 heading="Operadoras"></app-header-lv1>
 <app-button link="/diversos/operadora/novo"></app-button>
   <div class="col-md">
-      <app-table [dados]="operadoras" [cols]="cols"></app-table>
+      <app-table [dados]="operadoras" [cols]="cols" linkEdicao="/diversos/operadora/editar/" (dadoExcluido)="excluir($event)"></app-table>
   </div>
 

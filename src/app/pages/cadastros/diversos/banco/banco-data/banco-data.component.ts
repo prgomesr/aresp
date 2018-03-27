@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
 
@@ -20,7 +20,8 @@ export class BancoDataComponent implements OnInit {
   constructor(private bancoService: BancoService,
               private errorHandler: ErrorHandlerService,
               private toasty: ToastyService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     const idBanco = this.route.snapshot.params['id'];
@@ -49,6 +50,7 @@ export class BancoDataComponent implements OnInit {
   atualizarBanco(form: FormControl) {
     this.bancoService.editar(this.banco).subscribe(banco => {
       this.banco = banco;
+      this.router.navigate(['/diversos/banco']);
       this.toasty.success('Registro atualizado com sucesso!');
     },
       err => this.errorHandler.handle(err));

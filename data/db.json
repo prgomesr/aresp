@@ -87,11 +87,15 @@
     {
       "nome": "Conta Fixa",
       "id": 2
+    },
+    {
+      "nome": "Outras",
+      "id": 3
     }
   ],
   "categoriasRecebimentos": [
     {
-      "nome": "Mensalidade",
+      "nome": "Mensalidade do clube",
       "id": 1
     },
     {
@@ -124,14 +128,14 @@
       "nome": "Cielo",
       "numero": "7777777",
       "telefone": "11 3131 3131",
-      "observacao": "Enviar remessa todo dia 15",
+      "observacao": "Enviar remessa todo dia 15 antes do meio dia.",
       "id": 1
     },
     {
       "nome": "Bradesco",
       "numero": "565656",
       "telefone": "17 3131 3131",
-      "observacao": "",
+      "observacao": "Este convenio é utilizado para gerar boletos da conta 7009-2.\n",
       "id": 2
     }
   ],

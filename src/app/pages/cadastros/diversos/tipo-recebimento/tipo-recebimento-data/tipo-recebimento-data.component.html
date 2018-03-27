@@ -1,11 +1,11 @@
-<app-header-lv2 heading="Cadastro de Tipo de Recebimento" linkAnterior="/diversos/tipo-recebimento" headingAnterior="Tipos de Recebimentos"></app-header-lv2>
+<app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Tipo de Recebimento" linkAnterior="/diversos/tipo-recebimento" headingAnterior="Tipos de Recebimentos"></app-header-lv2>
   <div class="col-md">
     <form #tipoRecebimentoForm="ngForm" (ngSubmit)="salvar(tipoRecebimentoForm)" autocomplete="off">
 
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="nome">Nome*</label>
-          <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel>
+          <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel [(ngModel)]="tipo.nome">
           <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
         </div>
       </div>

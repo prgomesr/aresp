@@ -1,25 +1,26 @@
-<app-header-lv2 heading="Cadastro de Cônvenio" linkAnterior="/diversos/convenio" headingAnterior="Cônvenios"></app-header-lv2>
+<app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Cônvenio" linkAnterior="/diversos/convenio" headingAnterior="Cônvenios"></app-header-lv2>
   <div class="col-md">
-    <form #convenioForm="ngForm" (ngSubmit)="(convenioForm)" autocomplete="off">
+    <form #convenioForm="ngForm" (ngSubmit)="salvar(convenioForm)" autocomplete="off">
 
       <div class="form-row">
         <div class="col-md-4 mb-3">
           <label for="nome">Nome*</label>
-          <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel>
+          <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel [(ngModel)]="convenio.nome">
           <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
         </div>
         <div class="col-md-4 mb-3">
           <label for="numero">Número*</label>
-          <input type="text" class="form-control" id="numero" required name="numero" #numero="ngModel" ngModel>
+          <input type="text" class="form-control" id="numero" required name="numero" #numero="ngModel" ngModel [(ngModel)]="convenio.numero">
           <app-message [control]="numero" error="required" text="Preencha este campo."></app-message>
         </div>
         <div class="col-md-4 mb-3">
           <label for="tel">Telefone</label>
-          <input type="text" class="form-control" id="tel">
+          <input type="text" class="form-control" id="tel" [(ngModel)]="convenio.telefone" name="telefone" #telefone="ngModel" ngModel>
         </div>
         <div class="col-md-12 mb-3">
           <label for="obs">Observação</label>
-          <textarea id="obs" cols="30" rows="3" class="form-control"></textarea>
+          <textarea id="obs" cols="30" rows="3" class="form-control" [(ngModel)]="convenio.observacao"
+          name="observacao" #observacao="ngModel" ngModel></textarea>
         </div>
       </div>
 

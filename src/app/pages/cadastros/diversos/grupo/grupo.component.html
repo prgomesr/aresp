@@ -1,6 +1,6 @@
 <app-header-lv1 heading="Grupos de Recebimento"></app-header-lv1>
 <app-button link="/diversos/grupo/novo"></app-button>
   <div class="col-md">
-      <app-table [dados]="grupos" [cols]="cols"></app-table>
+      <app-table [dados]="grupos" [cols]="cols" linkEdicao="/diversos/grupo/editar/" (dadoExcluido)="excluir($event)"></app-table>
   </div>
 

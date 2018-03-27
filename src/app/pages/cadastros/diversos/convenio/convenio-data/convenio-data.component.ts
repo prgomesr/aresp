@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+
+import { ToastyService } from 'ng2-toasty';
+
+import { Convenio} from '../../../../../core/model';
+import { ConvenioService } from '../convenio.service';
+import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 
 @Component({
   selector: 'app-convenio-data',
@@ -7,9 +15,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConvenioDataComponent implements OnInit {
 
-  constructor() { }
+  convenio = new Convenio();
+
+  constructor(private convenioService: ConvenioService,
+              private errorHandler: ErrorHandlerService,
+              private toasty: ToastyService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.params['id'];
+
+    if (id) {
+      this.carregarDado(id);
+    }
+  }
+
+  salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizarDado(form);
+    } else {
+      this.adicionarDado(form);
+    }
+  }
+
+  adicionarDado(form: FormControl) {
+    this.convenioService.salvar(this.convenio).subscribe(() => {
+      this.toasty.success('Registro salvo com sucesso!');
+      form.reset();
+      this.convenio = new Convenio();
+    }, err => this.errorHandler.handle(err));
+  }
+
+  atualizarDado(form: FormControl) {
+    this.convenioService.editar(this.convenio).subscribe(dado => {
+        this.convenio = dado;
+        this.router.navigate(['/diversos/convenio']);
+        this.toasty.success('Registro atualizado com sucesso!');
+      },
+      err => this.errorHandler.handle(err));
+  }
+
+  carregarDado(codigo: number) {
+    this.convenioService.listarPorCodigo(codigo).subscribe(dado => this.convenio = dado,
+      err => this.errorHandler.handle(err));
+  }
+
+  get editando(): any {
+    return Boolean (this.convenio.id);
   }
 
 }

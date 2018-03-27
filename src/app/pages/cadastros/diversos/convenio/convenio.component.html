@@ -1,6 +1,6 @@
 <app-header-lv1 heading="Cônvenios"></app-header-lv1>
 <app-button link="/diversos/convenio/novo"></app-button>
   <div class="col-md">
-      <app-table [dados]="convenios" [cols]="cols"></app-table>
+      <app-table [dados]="convenios" [cols]="cols" linkEdicao="/diversos/convenio/editar/" (dadoExcluido)="excluir($event)"></app-table>
   </div>
 

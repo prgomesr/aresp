@@ -15,6 +15,35 @@ export class CategoriaRecebimento {
   nome: string;
 }
 
+export class CategoriaPagamento {
+  id: number;
+  nome: string;
+}
+
+export class Convenio {
+  id: number;
+  nome: string;
+  numero: number;
+  telefone: string;
+  observacao: string;
+}
+
+export class Grupo {
+  id: number;
+  nome: string;
+}
+
+export class Operadora {
+  id: number;
+  nome: string;
+  imagem: string;
+}
+
+export class Secretaria {
+  id: number;
+  nome: string;
+}
+
 export class Conta {
   id: number;
   agencia: string;
@@ -30,6 +59,16 @@ export class Cliente {
 export class Empresa {
   id: number;
   conta = new Conta();
+}
+
+export class TipoRecebimento {
+  id: number;
+  nome: string;
+}
+
+export class TipoSocio {
+  id: number;
+  nome: string;
 }
 
 export class StatusParcela {

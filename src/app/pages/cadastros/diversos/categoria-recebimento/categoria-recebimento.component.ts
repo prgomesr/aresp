@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ToastyService } from 'ng2-toasty';
+
 import { CategoriaRecebimentoService } from './categoria-recebimento.service';
 import { ErrorHandlerService } from '../../../../core/error-handler.service';
 
@@ -16,7 +18,8 @@ export class CategoriaRecebimentoComponent implements OnInit {
   ];
 
   constructor(private categoriaService: CategoriaRecebimentoService,
-              private errorHandler: ErrorHandlerService) { }
+              private errorHandler: ErrorHandlerService,
+              private toasty: ToastyService) { }
 
   ngOnInit() {
     this.listar();
@@ -25,6 +28,13 @@ export class CategoriaRecebimentoComponent implements OnInit {
   listar() {
     this.categoriaService.listar().subscribe(dados => this.categorias = dados,
       err => this.errorHandler.handle(err));
+  }
+
+  excluir(codigo: number) {
+    this.categoriaService.excluir(codigo).subscribe(res => {
+      this.toasty.success('Registro excluído com sucesso!');
+      this.listar();
+    }, err => this.errorHandler.handle(err));
   }
 
 }

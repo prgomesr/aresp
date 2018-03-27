@@ -1,6 +1,7 @@
 <app-header-lv1 heading="Categorias de Pagamentos"></app-header-lv1>
 <app-button link="/diversos/categoria-pagamento/novo"></app-button>
   <div class="col-md">
-      <app-table [dados]="categorias" [cols]="cols"></app-table>
+      <app-table [dados]="categorias" [cols]="cols" (dadoExcluido)="excluir($event)"
+                 linkEdicao="/diversos/categoria-pagamento/editar/"></app-table>
   </div>
 

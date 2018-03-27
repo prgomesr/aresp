@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { SecretariaService } from './secretaria.service';
+import { ErrorHandlerService } from '../../../../core/error-handler.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-secretaria',
@@ -12,14 +15,24 @@ export class SecretariaComponent implements OnInit {
   cols = [
     {field: 'nome', header: 'Nome'}
   ];
-  constructor(private secretariaService: SecretariaService) { }
+  constructor(private secretariaService: SecretariaService,
+              private errorHandler: ErrorHandlerService,
+              private toasty: ToastyService) { }
 
   ngOnInit() {
     this.consultar();
   }
 
   consultar() {
-    this.secretariaService.listar().subscribe(dados => this.secretarias = dados);
+    this.secretariaService.listar().subscribe(dados => this.secretarias = dados,
+      err => this.errorHandler.handle(err));
+  }
+
+  excluir(codigo: number) {
+    this.secretariaService.excluir(codigo).subscribe(res => {
+      this.toasty.success('Registro excluído com sucesso!');
+      this.consultar();
+    }, err => this.errorHandler.handle(err));
   }
 
 }

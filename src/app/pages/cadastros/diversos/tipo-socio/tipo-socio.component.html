@@ -1,6 +1,6 @@
 <app-header-lv1 heading="Tipos de Sócios"></app-header-lv1>
 <app-button link="/diversos/tipo-socio/novo"></app-button>
   <div class="col-md">
-      <app-table [dados]="dados" [cols]="cols"></app-table>
+      <app-table [dados]="dados" [cols]="cols" linkEdicao="/diversos/tipo-socio/editar/" (dadoExcluido)="excluir($event)"></app-table>
   </div>
 

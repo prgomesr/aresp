@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { LayoutComponent } from './layout/layout.component';
 import { ErrorHandlerService } from './error-handler.service';
+import { LoginComponent } from './login/login.component';
 
 defineLocale('pt-br', ptBrLocale);
 
@@ -23,7 +24,7 @@ defineLocale('pt-br', ptBrLocale);
     ToastyModule.forRoot(),
     CoreRoutingModule
   ],
-  declarations: [NavbarComponent, LayoutComponent],
+  declarations: [NavbarComponent, LayoutComponent, LoginComponent],
   exports: [NavbarComponent, ToastyModule],
   providers: [
     ErrorHandlerService,

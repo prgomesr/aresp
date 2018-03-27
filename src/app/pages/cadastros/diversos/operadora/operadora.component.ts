@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { OperadoraService } from './operadora.service';
+import { ErrorHandlerService } from '../../../../core/error-handler.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-operadora',
@@ -13,13 +16,23 @@ export class OperadoraComponent implements OnInit {
     {field: 'nome', header: 'Nome'},
     {field: 'imagem', header: 'Imagem'}
   ];
-  constructor(private operadoraService: OperadoraService) { }
+  constructor(private operadoraService: OperadoraService,
+              private errorHandler: ErrorHandlerService,
+              private toasty: ToastyService) { }
 
   ngOnInit() {
     this.consultar();
   }
 
   consultar() {
-    this.operadoraService.listar().subscribe(dados => this.operadoras = dados);
+    this.operadoraService.listar().subscribe(dados => this.operadoras = dados,
+      err => this.errorHandler.handle(err));
+  }
+
+  excluir(codigo: number) {
+    this.operadoraService.excluir(codigo).subscribe(res => {
+      this.toasty.success('Registro excluído com sucesso!');
+      this.consultar();
+    }, err => this.errorHandler.handle(err));
   }
 }
