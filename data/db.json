@@ -174,12 +174,19 @@
     {
       "razao": "BORGES E ALMEIDA LTDA",
       "fantasia": "ACOUGUE DOIS IRMAOS",
-      "id": 2
+      "id": 2,
+      "telefone": "17 2121 1515",
+      "contato": "RONALDO"
     },
     {
-      "razao": "CECILIA FLORES E AVIAMENTOS ME",
-      "fantasia": "FLORICULTURA VALENTINES",
-      "id": 3
+      "cadastro": "2018-03-27T11:13:35.120Z",
+      "cnpj": "11111111000111",
+      "razao": "C R SILVA ME",
+      "fantasia": "RIO JARDIM",
+      "email": "riojardim@gmail.com",
+      "telefone": "17 3215 3212",
+      "contato": "Alex",
+      "id": 4
     }
   ],
   "empresas": [

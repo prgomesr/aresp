@@ -94,3 +94,14 @@ export class Recebimento {
   nossoNumero: string;
   situacao = new StatusParcela();
 }
+
+export class Fornecedor {
+  id: number;
+  cnpj: string;
+  razao: string;
+  fantasia: string;
+  email: string;
+  telefone: string;
+  contato: string;
+  cadastro = new Date();
+}
