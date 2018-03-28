@@ -11,4 +11,8 @@ export class EmpresaService {
     return this.http.get<any []>(environment.apiUrl + 'empresas');
   }
 
+  listarPorCodigo(codigo: number) {
+    return this.http.get<any>(environment.apiUrl + 'empresas/' + codigo);
+  }
+
 }

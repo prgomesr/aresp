@@ -169,14 +169,19 @@
     {
       "razao": "PADARIA DO SEU ZE ME",
       "fantasia": "PADARIA DO SEU ZE",
-      "id": 1
+      "id": 1,
+      "cnpj": "15155155000174",
+      "email": "contato@padariadoseuze.com.br",
+      "telefone": "17 1515 5151",
+      "contato": "ANTONIO"
     },
     {
       "razao": "BORGES E ALMEIDA LTDA",
       "fantasia": "ACOUGUE DOIS IRMAOS",
       "id": 2,
       "telefone": "17 2121 1515",
-      "contato": "RONALDO"
+      "contato": "RONALDO",
+      "email": "ronaldo@acouguedoisirmaos.com.br"
     },
     {
       "cadastro": "2018-03-27T11:13:35.120Z",
@@ -185,8 +190,18 @@
       "fantasia": "RIO JARDIM",
       "email": "riojardim@gmail.com",
       "telefone": "17 3215 3212",
-      "contato": "Alex",
+      "contato": "ALEX",
       "id": 4
+    },
+    {
+      "cadastro": "2018-03-28T00:12:07.013Z",
+      "cnpj": "46929667000174",
+      "razao": "assoc reg dos servidores publicos",
+      "fantasia": "aresp",
+      "email": "FINAnceiro@arespriopreto.com.br",
+      "telefone": "17 3216 5530",
+      "contato": "PAULO",
+      "id": 5
     }
   ],
   "empresas": [

@@ -4,6 +4,7 @@ import { FornecedorService } from './fornecedor.service';
 import { ErrorHandlerService } from '../../../../core/error-handler.service';
 import {ToastyService} from 'ng2-toasty';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {Fornecedor} from '../../../../core/model';
 
 @Component({
   selector: 'app-fornecedor',
@@ -13,6 +14,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 export class FornecedorComponent implements OnInit {
 
   fornecedores = [];
+  fornecedor = new Fornecedor();
   id: number;
   modalRef: BsModalRef;
 
@@ -50,6 +52,11 @@ export class FornecedorComponent implements OnInit {
 
   decline(): void {
     this.modalRef.hide();
+  }
+
+  mostrarDetalhe(codigo: number) {
+    this.fornecedorService.listarPorCodigo(codigo).subscribe(dado => this.fornecedor = dado,
+    err => this.errorHandler.handle(err));
   }
 
 }

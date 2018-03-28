@@ -12,13 +12,14 @@
       </ng-template>
       <ng-template pTemplate="body" let-fornecedor >
         <tr>
-          <td class="text-table-left">{{fornecedor.fantasia}}</td>
+          <td class="text-table-left">{{fornecedor.fantasia | uppercase}}</td>
           <td>{{fornecedor.telefone}}</td>
-          <td>{{fornecedor.contato}}</td>
+          <td>{{fornecedor.contato | uppercase}}</td>
           <td>
             <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"
             [routerLink]="['/instancias/fornecedor/editar', fornecedor.id]"><i class="fa fa-pencil"></i></a>
-            <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"><i class="fa fa-eye"></i></a>
+            <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"
+            (click)="mostrarDetalhe(fornecedor.id); modalDetalhe.show()"><i class="fa fa-eye"></i></a>
             <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"
             (click)="openModal(modal, fornecedor.id)"><i class="fa fa-trash"></i></a>
           </td>
@@ -41,4 +42,48 @@
     <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
   </div>
 </ng-template>
+
+<div bsModal #modalDetalhe="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pull-left">{{fornecedor.fantasia | uppercase}}</h5>
+        <button type="button" class="close pull-right" (click)="modalDetalhe.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">
+            <label>Razão Social</label>
+            <p>{{fornecedor.razao | uppercase}}</p>
+          </div>
+          <div class="col-md-3">
+            <label>CNPJ</label>
+            <p>{{fornecedor.cnpj | cnpj}}</p>
+          </div>
+          <div class="col-md-5">
+            <label>E-mail</label>
+            <p>{{fornecedor.email | lowercase}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Pessoa de Contato</label>
+            <p>{{fornecedor.contato | uppercase}}</p>
+          </div>
+          <div class="col-md-3">
+            <label>Telefone</label>
+            <p>{{fornecedor.telefone}}</p>
+          </div>
+          <div class="col-md-5">
+            <label>Data de Cadastro</label>
+            <p>{{fornecedor.cadastro | date: 'dd/MM/yyyy'}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 

@@ -18,7 +18,8 @@
           <td>{{empresa.cnpj}}</td>
           <td>
             <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>
-            <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"><i class="fa fa-eye"></i></a>
+            <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"
+            (click)="modalDetalhe.show(); mostrarDetalhe(empresa.id)"><i class="fa fa-eye"></i></a>
           </td>
         </tr>
       </ng-template>
@@ -31,4 +32,36 @@
       </ng-template>
     </p-table>
   </div>
+
+<div bsModal #modalDetalhe="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pull-left">{{empresa.fantasia | uppercase}}</h5>
+        <button type="button" class="close pull-right" (click)="modalDetalhe.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Razão Social</label>
+            <p>{{empresa.razao | uppercase}}</p>
+          </div>
+          <div class="col-md-6">
+            <label>CNPJ</label>
+            <p>{{empresa.cnpj | cnpj}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Contas Bancárias</label>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

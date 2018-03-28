@@ -22,6 +22,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
 import { TableComponent } from './table/table.component';
 import { ButtonComponent } from './button/button.component';
+import { Ng2BRPipesModule } from 'ng2-brpipes';
 
 
 @NgModule({
@@ -35,13 +36,14 @@ import { ButtonComponent } from './button/button.component';
     ButtonsModule.forRoot(),
     TableModule,
     TooltipModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    Ng2BRPipesModule
   ],
   declarations: [MessageComponent, HeaderLv1Component, HeaderLv2Component, TableComponent, ButtonComponent],
   exports: [
     FormsModule, TooltipModule, CommonModule, DataTableModule, FileUploadModule, TableModule, CurrencyMaskModule, MessageComponent,
     HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, NgxMaskModule, TabsModule, ButtonsModule,
-    ModalModule, TableComponent, ButtonComponent
+    ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule
   ]
 })
 export class SharedModule { }

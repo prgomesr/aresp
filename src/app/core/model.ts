@@ -58,6 +58,9 @@ export class Cliente {
 
 export class Empresa {
   id: number;
+  razao: string;
+  fantasia: string;
+  cnpj: string;
   conta = new Conta();
 }
 

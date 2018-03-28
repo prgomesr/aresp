@@ -1,5 +1,6 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -15,6 +16,7 @@ import { ErrorHandlerService } from './error-handler.service';
 import { LoginComponent } from './login/login.component';
 
 defineLocale('pt-br', ptBrLocale);
+registerLocaleData(localePt);
 
 @NgModule({
   imports: [
