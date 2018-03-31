@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AgenciaService } from '../agencia.service';
-import { ErrorHandlerService } from '../../../../../core/error-handler.service';
-import { ToastyService } from 'ng2-toasty';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BancoService } from '../../banco/banco.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Banco} from '../../../../../core/model';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ToastyService } from 'ng2-toasty';
+
+import { ErrorHandlerService } from '../../../../../core/error-handler.service';
+import { BancoService } from '../../banco/banco.service';
+import { Banco } from '../../../../../core/model';
 
 @Component({
   selector: 'app-agencia-data',
@@ -17,7 +19,7 @@ export class AgenciaDataComponent implements OnInit {
   // agencia = new Agencia();
   formulario: FormGroup;
   default = 'Selecione:';
-  bancos: Banco [];
+  bancos = [];
   constructor(private agenciaService: AgenciaService,
               private errorHandler: ErrorHandlerService,
               private toasty: ToastyService,

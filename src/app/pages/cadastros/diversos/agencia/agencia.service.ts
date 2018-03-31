@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 
 import { Agencia } from '../../../../core/model';
 import { environment } from '../../../../../environments/environment';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AgenciaService {
