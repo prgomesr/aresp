@@ -4,6 +4,8 @@ import { ErrorHandlerService } from '../../../../core/error-handler.service';
 import { GrupoService } from '../../../cadastros/diversos/grupo/grupo.service';
 import { ClienteService } from '../../../cadastros/instancias/cliente/cliente.service';
 import { CategoriaRecebimentoService } from '../../../cadastros/diversos/categoria-recebimento/categoria-recebimento.service';
+import { EmpresaService } from '../../../cadastros/instancias/empresa/empresa.service';
+import {Empresa} from '../../../../core/model';
 
 @Component({
   selector: 'app-contas-receber-data',
@@ -18,22 +20,19 @@ export class ContasReceberDataComponent implements OnInit {
     {label: 'Mensalmente', value: 1}
   ];
   gruposRecebimentos = [];
-  contas = [
-    {label: '54.643-7', value: 1},
-    {label: '7009-2', value: 2},
-    {label: '8815-3', value: 3},
-    {label: '13003891-3', value: 4}
-  ];
+  contas = [];
+  empresa = new Empresa();
   constructor(private errorHandler: ErrorHandlerService,
               private categoriaService: CategoriaRecebimentoService,
               private grupoService: GrupoService,
-              private clienteService: ClienteService) { }
+              private clienteService: ClienteService,
+              private empresaService: EmpresaService) { }
 
   ngOnInit() {
     this.listarCategorias();
     this.listarGrupoRecebimento();
     this.listarClientes();
-
+    this.listarContas();
   }
 
   listarCategorias() {
@@ -52,7 +51,8 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarContas() {
-    // TODO ver como fica a questao da conta dentro da empresa
+    this.empresaService.listarPorCodigo(1).subscribe(empresa => this.empresa = empresa,
+        err => this.errorHandler.handle(err));
   }
 
 }

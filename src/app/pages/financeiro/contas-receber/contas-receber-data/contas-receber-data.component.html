@@ -26,7 +26,7 @@
           <label for="conta">Conta Bancária</label>
           <select id="conta" class="form-control">
             <option selected>Selecione:</option>
-            <option *ngFor="let conta of contas" required>{{ conta.label }}</option>
+            <option *ngFor="let conta of empresa.contas" required>{{ conta.conta }}</option>
           </select>
         </div>
       </div>

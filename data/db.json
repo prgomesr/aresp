@@ -21,18 +21,29 @@
   ],
   "contas": [
     {
-      "agencia": "6575-7",
+      "agencia": {
+        "id": 1
+      },
       "conta": "54.643-7",
       "tipo": "corrente",
       "descricao": "Conta principal",
+      "empresa": {
+        "id": 1
+      },
       "id": 1
-    },
+    }
+  ],
+  "agencias": [
     {
-      "agencia": "0596",
-      "conta": "7009-2",
-      "tipo": "corrente",
-      "descricao": "Conta reserva do Santander",
-      "id": 2
+      "id": 1,
+      "numero": "6575",
+      "digito": "7",
+      "telefone": "17 3232 3232",
+      "gerente": "Reinaldo",
+      "banco": {
+        "id": 1,
+        "nome": "BB"
+      }
     }
   ],
   "grupos": [

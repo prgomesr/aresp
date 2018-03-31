@@ -44,20 +44,41 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-8">
             <label>Razão Social</label>
             <p>{{empresa.razao | uppercase}}</p>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <label>CNPJ</label>
             <p>{{empresa.cnpj | cnpj}}</p>
           </div>
         </div>
         <hr>
         <div class="row">
+          <div class="col-md-12">
+            <label class="text-secondary">Contas Bancárias</label>
+          </div>
+        </div>
+        <div class="row" *ngFor="let conta of empresa.contas">
+          <div class="col-md-2">
+            <label>Agencia</label>
+            <p>{{conta.agencia}}</p>
+          </div>
+          <div class="col-md-2">
+            <label>Conta</label>
+            <p>{{conta.conta}}</p>
+          </div>
+          <div class="col-md-2">
+            <label>Tipo</label>
+            <p>{{conta.tipo}}</p>
+          </div>
+          <div class="col-md-2">
+            <label>Banco</label>
+            <p>{{conta.banco.nome}}</p>
+          </div>
           <div class="col-md-4">
-            <label>Contas Bancárias</label>
-            <p></p>
+            <label>Descrição</label>
+            <p>{{conta.descricao}}</p>
           </div>
         </div>
       </div>

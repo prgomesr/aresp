@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { MessageComponent } from './message/message.component';
@@ -37,13 +37,14 @@ import { Ng2BRPipesModule } from 'ng2-brpipes';
     TableModule,
     TooltipModule,
     ModalModule.forRoot(),
-    Ng2BRPipesModule
+    Ng2BRPipesModule,
+    ReactiveFormsModule
   ],
   declarations: [MessageComponent, HeaderLv1Component, HeaderLv2Component, TableComponent, ButtonComponent],
   exports: [
     FormsModule, TooltipModule, CommonModule, DataTableModule, FileUploadModule, TableModule, CurrencyMaskModule, MessageComponent,
     HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, NgxMaskModule, TabsModule, ButtonsModule,
-    ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule
+    ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule, ReactiveFormsModule
   ]
 })
 export class SharedModule { }

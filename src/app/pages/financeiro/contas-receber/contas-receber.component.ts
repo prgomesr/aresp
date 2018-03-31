@@ -28,7 +28,7 @@ export class ContasReceberComponent implements OnInit {
     {label: 'A vencer', value: 4}
   ];
   constructor(private recebimentoService: ContasReceberService,
-              private  toasty: ToastyService,
+              private toasty: ToastyService,
               private modalService: BsModalService,
               private errorHandler: ErrorHandlerService) { }
 

@@ -108,3 +108,25 @@ export class Fornecedor {
   contato: string;
   cadastro = new Date();
 }
+
+export class ContaCaixa {
+  id: number;
+  numero: string;
+  digito: string;
+  nome: string;
+  descricao: string;
+  tipo: string;
+  taxa_multa: number;
+  taxa_juros: number;
+  empresa = new Empresa();
+  agencia = new Agencia();
+}
+
+export class Agencia {
+  id: number;
+  numero: string;
+  digito: number;
+  telefone: string;
+  gerente: string;
+  banco = new Banco();
+}

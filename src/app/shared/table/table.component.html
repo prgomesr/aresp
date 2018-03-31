@@ -1,8 +1,8 @@
 <p-table [columns]="cols" [value]="dados" dataKey="id" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10]"
-[responsive]="true">
+[responsive]="true" [resizableColumns]="true">
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of columns">
+      <th *ngFor="let col of columns" pResizableColumn>
         {{col.header}}
       </th>
       <th style="width: 80px"></th>
@@ -10,7 +10,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <td *ngFor="let col of columns" class="text-table-left">
+      <td *ngFor="let col of columns" class="text-table-left ui-resizable-column">
         {{rowData[col.field]}}
       </td>
       <td>
