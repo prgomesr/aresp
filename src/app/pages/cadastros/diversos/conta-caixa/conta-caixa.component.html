@@ -1,1 +1,57 @@
 <app-header-lv1 heading="Conta Caixa"></app-header-lv1>
+
+<app-button link="/diversos/conta-caixa/novo"></app-button>
+
+<div class="col-md">
+  <p-table [value]="agencias" [paginator]="true" [responsive]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 100px">Número</th>
+        <th style="width: 60px">Dígito</th>
+        <th>Nome</th>
+        <th style="width: 60px">Tipo</th>
+        <th style="width: 110px">Tx de Multa</th>
+        <th style="width: 110px">Tx de Juros</th>
+        <th style="width: 90px">Agência</th>
+        <th>Banco</th>
+        <th>Empresa</th>
+        <th style="width: 80px"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-agencia >
+      <tr>
+        <td>{{ conta.numero }}</td>
+        <td>{{ conta.digito }}</td>
+        <td>{{ conta.nome }}</td>
+        <td>{{ conta.tipo }}</td>
+        <td>{{ conta.taxa_multa }}</td>
+        <td>{{ conta.taxa_juros }}</td>
+        <td>{{ conta.agencia.numero }}</td>
+        <td>{{ conta.agencia.banco.nome }}</td>
+        <td>{{ conta.empresa.fantasia }}</td>
+        <td>
+          <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"
+             [routerLink]="['/diversos/agencia/editar', conta.id]"><i class="fa fa-pencil"></i></a>
+          <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"
+             (click)="openModal(modalExclusao, conta.id)"><i class="fa fa-trash"></i></a>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [attr.colspan]="10" class="text-table-left">
+          Nenhum registro encontrado.
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<ng-template #modalExclusao>
+  <div class="modal-body text-center">
+    <p>Deseja realmente excluir o registro?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+  </div>
+</ng-template>
+

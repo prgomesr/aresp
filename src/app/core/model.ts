@@ -114,7 +114,6 @@ export class ContaCaixa {
   numero: string;
   digito: string;
   nome: string;
-  descricao: string;
   tipo: string;
   taxa_multa: number;
   taxa_juros: number;

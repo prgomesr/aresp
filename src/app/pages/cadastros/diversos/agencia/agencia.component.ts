@@ -15,7 +15,6 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 export class AgenciaComponent implements OnInit {
 
   agencias = [];
-  agencia = new Agencia();
   id: number;
   modalRef: BsModalRef;
   cols = [
@@ -23,7 +22,7 @@ export class AgenciaComponent implements OnInit {
     {field: 'digito', header: 'Dígito'},
     {field: 'telefone', header: 'Telefone'},
     {field: 'gerente', header: 'Gerente'},
-    {field: 'banco', header: 'Banco'},
+    {field: 'banco.nome', header: 'Banco'},
   ]
   constructor(private agenciaService: AgenciaService,
               private toasty: ToastyService,

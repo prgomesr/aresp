@@ -44,28 +44,6 @@
         "id": 1,
         "nome": "BB"
       }
-    },
-    {
-      "id": 2,
-      "numero": "0037",
-      "digito": null,
-      "telefone": null,
-      "gerente": null,
-      "banco": {
-        "id": 2,
-        "nome": null
-      }
-    },
-    {
-      "id": 3,
-      "numero": "777",
-      "digito": null,
-      "telefone": null,
-      "gerente": null,
-      "banco": {
-        "id": 1,
-        "nome": null
-      }
     }
   ],
   "grupos": [

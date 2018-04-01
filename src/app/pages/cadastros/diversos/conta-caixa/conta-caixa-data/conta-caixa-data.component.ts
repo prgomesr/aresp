@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-conta-caixa-data',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContaCaixaDataComponent implements OnInit {
 
-  constructor() { }
+  formulario: FormGroup;
+  tipos = [
+    {nome: 'C'}
+  ];
+  default =  'Selecione: ';
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.configurarFormulario();
+  }
+
+  configurarFormulario() {
+    this.formulario = this.formBuilder.group({
+      id: [],
+      numero: [],
+      digito: [],
+      nome: [null, Validators.required],
+      tipo: [],
+      tx_multa: [],
+      tx_juros: [],
+      empresa: this.formBuilder.group({
+        id: [],
+        nome: [null, Validators.required],
+      }),
+      agencia: this.formBuilder.group({
+        id: [],
+        nome: [null, Validators.required],
+      })
+    });
   }
 
 }
