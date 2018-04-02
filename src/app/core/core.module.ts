@@ -30,7 +30,7 @@ registerLocaleData(localePt);
   exports: [NavbarComponent, ToastyModule],
   providers: [
     ErrorHandlerService,
-    { provide: LOCALE_ID, useValue: 'pt-BR' }
+    { provide: LOCALE_ID, useValue: 'pt' }
   ]
 })
 export class CoreModule { }

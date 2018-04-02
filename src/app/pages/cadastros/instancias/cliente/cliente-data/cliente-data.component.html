@@ -93,6 +93,66 @@
             <ng-template tabHeading>
               <i class="fa fa-address-book"></i> Contato
             </ng-template>
+            <div class="form-row">
+              <div class="form-group col-md-12 mt-2">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" mask="99.999-999">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" class="form-control" id="logradouro">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="end_numero">Número</label>
+                <input type="text" class="form-control" id="end_numero">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="end_complemento">Complemento</label>
+                <input type="text" class="form-control" id="end_complemento">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="end_bairro">Bairro</label>
+                <input type="text" class="form-control" id="end_bairro">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="end_cidade">Cidade</label>
+                <input type="text" class="form-control" id="end_cidade">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="end_estado">Estado</label>
+                <input type="text" class="form-control" id="end_estado">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <a href="javascript:void(0)"><i class="fa fa-plus"></i>Novo</a>
+              </div>
+              <div class="form-group col-md-12">
+                <p-table [value]="cliente.telefones">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Vin</th>
+                      <th>Year</th>
+                      <th>Brand</th>
+                      <th>Color</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-car>
+                    <tr>
+                      <td>{{car.vin}}</td>
+                      <td>{{car.year}}</td>
+                      <td>{{car.brand}}</td>
+                      <td>{{car.color}}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
 
           </tab>
           <tab>

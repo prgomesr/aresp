@@ -52,8 +52,23 @@ export class Conta {
   descricao: string;
 }
 
+export class Dependente {
+  id: number;
+}
+
+export class Endereco {
+  id: number;
+}
+
+export class Telefone {
+  id: number;
+}
+
 export class Cliente {
   id: number;
+  endereco = new Endereco();
+  dependentes = new Array<Dependente>();
+  telefones = new Array<Telefone>();
 }
 
 export class Empresa {
