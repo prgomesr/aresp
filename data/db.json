@@ -44,6 +44,17 @@
         "id": 1,
         "nome": "BB"
       }
+    },
+    {
+      "id": 2,
+      "numero": "10",
+      "digito": null,
+      "telefone": null,
+      "gerente": null,
+      "banco": {
+        "id": 1,
+        "nome": null
+      }
     }
   ],
   "grupos": [

@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 import { BancoService } from '../../../diversos/banco/banco.service';
 import { OperadoraService } from '../../../diversos/operadora/operadora.service';
 import { SecretariaService } from '../../../diversos/secretaria/secretaria.service';
 import { TipoSocioService } from '../../../diversos/tipo-socio/tipo-socio.service';
+import { Cliente, Telefone } from '../../../../../core/model';
 
 @Component({
   selector: 'app-cliente-data',
@@ -17,7 +21,9 @@ export class ClienteDataComponent implements OnInit {
   secretarias = [];
   bancos = [];
   operadoras = [];
-
+  cliente = new Cliente();
+  telefone: Telefone;
+  modalRef: BsModalRef;
   estCivil = [
     { label: 'Solteiro (a)', value: 1 },
     { label: 'Casado (a)', value: 2 },
@@ -34,7 +40,8 @@ export class ClienteDataComponent implements OnInit {
               private bancoService: BancoService,
               private operadoraService: OperadoraService,
               private secretariaService: SecretariaService,
-              private tipoSocioService: TipoSocioService) {
+              private tipoSocioService: TipoSocioService,
+              private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -62,6 +69,22 @@ export class ClienteDataComponent implements OnInit {
   listarOperadoras() {
     this.operadoraService.listar().subscribe(dados => this.operadoras = dados,
       err => this.errorHandler.handle(err));
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+
+  }
+
+  prepararTelefone() {
+    this.telefone = new Telefone();
+    console.log('novo telefone' + this.telefone.telefone);
+  }
+
+  adicionarTelefone(frm: FormControl) {
+    this.cliente.telefones.push(this.telefone);
+    console.log(this.telefone.telefone);
+    // this.modalRef.hide();
   }
 
 }

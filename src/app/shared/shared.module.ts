@@ -15,6 +15,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { NgxMaskModule } from 'ngx-mask';
+import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
 
 import { TooltipModule } from 'primeng/tooltip';
 import { DataTableModule } from 'primeng/datatable';
@@ -44,7 +45,7 @@ import { Ng2BRPipesModule } from 'ng2-brpipes';
   exports: [
     FormsModule, TooltipModule, CommonModule, DataTableModule, FileUploadModule, TableModule, CurrencyMaskModule, MessageComponent,
     HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, NgxMaskModule, TabsModule, ButtonsModule,
-    ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule, ReactiveFormsModule
+    ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule, ReactiveFormsModule, NgxPhoneMaskBrModule
   ]
 })
 export class SharedModule { }

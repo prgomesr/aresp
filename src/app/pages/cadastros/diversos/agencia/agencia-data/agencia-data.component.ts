@@ -7,7 +7,7 @@ import { ToastyService } from 'ng2-toasty';
 
 import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 import { BancoService } from '../../banco/banco.service';
-import { Banco } from '../../../../../core/model';
+import {Agencia} from '../../../../../core/model';
 
 @Component({
   selector: 'app-agencia-data',
@@ -16,7 +16,7 @@ import { Banco } from '../../../../../core/model';
 })
 export class AgenciaDataComponent implements OnInit {
 
-  // agencia = new Agencia();
+  agencia = new Agencia();
   formulario: FormGroup;
   default = 'Selecione:';
   bancos = [];
@@ -86,8 +86,8 @@ export class AgenciaDataComponent implements OnInit {
       telefone: [],
       gerente: [],
       banco: this.formBuilder.group({
-        id: [],
-        nome: [null, Validators.required],
+        id: [null, Validators.required],
+        nome: [],
       })
     });
     // this.formulario.get('banco.nome').setValue(this.default, {onlySelf: true});

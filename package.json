@@ -30,6 +30,8 @@
     "ng2-toasty": "^4.0.3",
     "ngx-bootstrap": "^2.0.3",
     "ngx-mask": "^2.4.4",
+    "ngx-phone-mask-br": "^1.0.3",
+    "npm": "^5.8.0",
     "primeng": "^5.2.3",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"

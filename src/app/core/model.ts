@@ -62,6 +62,8 @@ export class Endereco {
 
 export class Telefone {
   id: number;
+  telefone: string;
+  tipo: string;
 }
 
 export class Cliente {
