@@ -91,40 +91,48 @@
                 <label for="email">E-mail</label>
                 <input type="email" class="form-control" id="email">
               </div>
+            </div>
+            <div class="form-row" ngModelGroup="endereco">
               <div class="form-group col-md-2">
-                <label for="cep">CEP</label>
-                <input type="text" class="form-control" id="cep" mask="99.999-999">
+                <label for="cep">CEP*</label>
+                <input type="text" class="form-control" id="cep" mask="99.999-999"
+                (blur)="consultaCep($event.target.value, clienteForm)" name="cep" #cep="ngModel" ngModel
+                       required>
               </div>
               <div class="form-group col-md-6">
-                <label for="logradouro">Logradouro</label>
-                <input type="text" class="form-control" id="logradouro">
+                <label for="logradouro">Logradouro*</label>
+                <input type="text" class="form-control" id="logradouro" name="logradouro" #logradouro="ngModel" ngModel
+                       required>
               </div>
               <div class="form-group col-md-2">
-                <label for="end_numero">Número</label>
-                <input type="text" class="form-control" id="end_numero">
+                <label for="end_numero">Número*</label>
+                <input type="text" class="form-control" id="end_numero" name="numero" #numero="ngModel" ngModel
+                       required>
               </div>
               <div class="form-group col-md-2">
                 <label for="end_complemento">Complemento</label>
-                <input type="text" class="form-control" id="end_complemento">
+                <input type="text" class="form-control" id="end_complemento" name="complemento" #complemento="ngModel" ngModel>
               </div>
               <div class="form-group col-md-5">
-                <label for="end_bairro">Bairro</label>
-                <input type="text" class="form-control" id="end_bairro">
+                <label for="end_bairro">Bairro*</label>
+                <input type="text" class="form-control" id="end_bairro" name="bairro" #bairro="ngModel" ngModel
+                       required>
               </div>
               <div class="form-group col-md-5">
-                <label for="end_cidade">Cidade</label>
-                <input type="text" class="form-control" id="end_cidade">
+                <label for="end_cidade">Cidade*</label>
+                <input type="text" class="form-control" id="end_cidade" name="cidade" #cidade="ngModel" ngModel
+                       required>
               </div>
               <div class="form-group col-md-2">
-                <label for="end_estado">Estado</label>
-                <input type="text" class="form-control" id="end_estado">
+                <label for="end_estado">Estado*</label>
+                <input type="text" class="form-control" id="end_estado" name="estado" #estado="ngModel"
+                       ngModel required>
               </div>
             </div>
-
             <div class="form-row">
               <div class="form-group col-md-6">
                 <a href="javascript:void(0)"  (click)="openModal(telefoneModal); prepararTelefone()"><i class="fa fa-plus"></i> Novo</a>
-                <p-table [value]="cliente.telefones" [responsive]="true" [scrollable]="true">
+                <p-table [value]="cliente.telefones" [responsive]="true">
                   <ng-template pTemplate="header">
                     <tr>
                       <th>Telefone</th>
@@ -132,21 +140,21 @@
                       <th style="width: 80px;"></th>
                     </tr>
                   </ng-template>
-                  <ng-template pTemplate="body" let-telefone>
+                  <ng-template pTemplate="body" let-telefone let-rowIndex="rowIndex">
                     <tr>
                       <td>{{telefone.telefone}}</td>
                       <td>{{telefone.tipo}}</td>
                       <td>
                         <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top">
-                          <i class="fa fa-pencil"></i></a>
+                          <i class="fa fa-pencil" (click)="editarTelefone(telefone, rowIndex); openModal(telefoneModal)"></i></a>
                         <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top">
-                          <i class="fa fa-trash"></i></a>
+                          <i class="fa fa-trash" (click)="removerTelefone(rowIndex)"></i></a>
                       </td>
                     </tr>
                   </ng-template>
                   <ng-template pTemplate="emptymessage">
                     <tr>
-                      <td colspan="4" class="text-table-left">
+                      <td colspan="3" class="text-table-left">
                         Nenhum telefone cadastrado.
                       </td>
                     </tr>
@@ -187,28 +195,25 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #formTelefones="ngForm" (ngSubmit)="adicionarTelefone(formTelefones)" autocomplete="off">
-      <div class="form-group">
-        <label for="telefone">Telefone*</label>
-        <input type="text" class="form-control" id="telefone" name="telefone" ngxPhoneMaskBr
-               [(ngModel)]="telefone.telefone" #telefone="ngModel" required>
-        <app-message [control]="telefone" error="required" text="Preencha este campo."></app-message>
+    <form [formGroup]="formTelefone" (ngSubmit)="adicionarTelefone()">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="form-control" id="telefone" formControlName="telefone" ngxPhoneMaskBr>
+        </div>
+        <div class="form-group col-md-12" >
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tipo" id="principal" value="PRINCIPAL" formControlName="tipo">
+            <label class="form-check-label" for="principal">Principal</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tipo" id="contato" value="CONTATO" formControlName="tipo">
+            <label class="form-check-label" for="contato">Contato</label>
+          </div>
+        </div>
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="tipo" id="tel_principal"
-               value="PRINCIPAL" [(ngModel)]="telefone.tipo" >
-        <label class="form-check-label" for="tel_principal">Principal</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="tipo" id="tel_contato"
-               value="CONTATO" [(ngModel)]="telefone.tipo" >
-        <label class="form-check-label" for="tel_contato">Contato</label>
-      </div>
-    <hr>
-  <div class="form-group mt-2">
-    <button class="btn btn-primary" type="submit" [disabled]="formTelefones.invalid || formTelefones.pristine">Salvar</button>
-    {{telefone.telefone | json}}
-  </div>
+      {{formTelefone.value | json}}
+      <button type="submit" class="btn btn-primary" [disabled]="formTelefone.invalid || formTelefone.pristine">Confirmar</button>
     </form>
   </div>
 </ng-template>

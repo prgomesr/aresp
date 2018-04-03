@@ -11,4 +11,8 @@ export class ClienteService {
     return this.http.get<any[]>(environment.apiUrl + 'clientes');
   }
 
+  getCep(cep) {
+    return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json`);
+  }
+
 }

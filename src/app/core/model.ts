@@ -64,6 +64,14 @@ export class Telefone {
   id: number;
   telefone: string;
   tipo: string;
+
+  constructor(id?: number,
+              telefone?: string,
+              tipo?: string) {
+    this.id = id;
+    this.telefone = telefone;
+    this.tipo = tipo;
+  }
 }
 
 export class Cliente {
