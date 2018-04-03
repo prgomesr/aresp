@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl } from '@angular/forms';
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
@@ -9,7 +9,7 @@ import { OperadoraService } from '../../../diversos/operadora/operadora.service'
 import { SecretariaService } from '../../../diversos/secretaria/secretaria.service';
 import { TipoSocioService } from '../../../diversos/tipo-socio/tipo-socio.service';
 import { Cliente, Telefone } from '../../../../../core/model';
-import {ClienteService} from '../cliente.service';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-cliente-data',
@@ -25,7 +25,6 @@ export class ClienteDataComponent implements OnInit {
   cliente = new Cliente();
   telefone: Telefone;
   modalRef: BsModalRef;
-  formTelefone: FormGroup;
   telefoneIndex: number;
   estCivil = [
     { label: 'Solteiro (a)', value: 1 },
@@ -54,7 +53,6 @@ export class ClienteDataComponent implements OnInit {
     this.listarOperadoras();
     this.listarSecretarias();
     this.listarTiposSocios();
-    this.formularioTelefone();
   }
 
   listarTiposSocios() {
@@ -84,13 +82,11 @@ export class ClienteDataComponent implements OnInit {
 
   prepararTelefone() {
     this.telefone = new Telefone();
-    this.telefoneIndex = this.cliente.telefones.length;
-    this.formTelefone.reset();
   }
 
-  adicionarTelefone() {
-    this.cliente.telefones[this.telefoneIndex] = this.formTelefone.value;
-    // this.cliente.telefones.push(this.clonarTelefone(this.formTelefone.value));
+  adicionarTelefone(f: FormControl) {
+    this.telefone = f.value;
+    this.cliente.telefones.push(this.clonarTelefone(this.telefone));
     this.modalRef.hide();
   }
 
@@ -98,36 +94,24 @@ export class ClienteDataComponent implements OnInit {
     this.cliente.telefones.splice(index);
   }
 
-  editarTelefone(index: number) {
-    this.telefoneIndex = index;
-    this.cliente.telefones[this.telefoneIndex] = this.clonarTelefone(this.formTelefone.value);
-    console.log(index);
+  editarTelefone(telefone: Telefone) {
+    this.telefone = telefone;
   }
 
   clonarTelefone(telefone: Telefone): Telefone {
     return new Telefone(telefone.id, telefone.telefone, telefone.tipo);
   }
 
-  formularioTelefone() {
-    this.formTelefone = this.formBuilder.group({
-      id: [null],
-      telefone: [null, [Validators.minLength(10), Validators.required]],
-      tipo: [null, Validators.required]
-    });
-  }
-
   consultaCep(cep, form) {
     cep = cep.replace(/\D/g, '');
-
     // Verifica se campo cep possui valor informado.
     if (cep !== '') {
       // Expressão regular para validar o CEP.
       const validacep = /^[0-9]{8}$/;
-
       // Valida o formato do CEP.
       if (validacep.test(cep)) {
-        this.clienteService.getCep(cep).subscribe(dados => this.popularEndereco(dados, form));
-        console.log(cep);
+        this.clienteService.getCep(cep).subscribe(dados => this.popularEndereco(dados, form),
+          err => this.errorHandler.handle(err));
       }
     }
   }
@@ -135,7 +119,6 @@ export class ClienteDataComponent implements OnInit {
   popularEndereco(dados, formulario) {
     formulario.form.patchValue({
       endereco: {
-          // cep: dados.cep,
           logradouro: dados.logradouro,
           numero: '',
           complemento: dados.complemento,
