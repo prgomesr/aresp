@@ -24,9 +24,9 @@ linkAnterior="/diversos/agencia" headingAnterior="Agências"></app-header-lv2>
       </div>
       <div class="col-md-3 form-group" formGroupName="banco">
         <label for="banco">Banco*</label>
-        <select class="custom-select" id="banco" formControlName="id" [ngModel]="default">
-          <option>{{default}}</option>
-          <option [ngValue]="banco.id" *ngFor="let banco of bancos">{{banco.nome}}</option>
+        <select class="custom-select" id="banco" formControlName="id" name="banco">
+          <option value="" disabled>Choose...</option>
+          <option [ngValue]="agencia.banco" *ngFor="let banco of bancos">{{banco.nome}}</option>
         </select>
       </div>
     </div>

@@ -55,6 +55,17 @@
         "id": 1,
         "nome": null
       }
+    },
+    {
+      "id": 3,
+      "numero": "1111",
+      "digito": "1",
+      "telefone": "111111",
+      "gerente": "111111",
+      "banco": {
+        "id": 1,
+        "nome": null
+      }
     }
   ],
   "grupos": [

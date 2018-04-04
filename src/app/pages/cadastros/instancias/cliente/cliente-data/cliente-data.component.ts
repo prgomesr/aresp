@@ -23,9 +23,7 @@ export class ClienteDataComponent implements OnInit {
   bancos = [];
   operadoras = [];
   cliente = new Cliente();
-  telefone: Telefone;
-  modalRef: BsModalRef;
-  telefoneIndex: number;
+
   estCivil = [
     { label: 'Solteiro (a)', value: 1 },
     { label: 'Casado (a)', value: 2 },
@@ -43,9 +41,7 @@ export class ClienteDataComponent implements OnInit {
               private bancoService: BancoService,
               private operadoraService: OperadoraService,
               private secretariaService: SecretariaService,
-              private tipoSocioService: TipoSocioService,
-              private modalService: BsModalService,
-              private formBuilder: FormBuilder) {
+              private tipoSocioService: TipoSocioService) {
   }
 
   ngOnInit() {
@@ -73,33 +69,6 @@ export class ClienteDataComponent implements OnInit {
   listarOperadoras() {
     this.operadoraService.listar().subscribe(dados => this.operadoras = dados,
       err => this.errorHandler.handle(err));
-  }
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
-
-  }
-
-  prepararTelefone() {
-    this.telefone = new Telefone();
-  }
-
-  adicionarTelefone(f: FormControl) {
-    this.telefone = f.value;
-    this.cliente.telefones.push(this.clonarTelefone(this.telefone));
-    this.modalRef.hide();
-  }
-
-  removerTelefone(index: number) {
-    this.cliente.telefones.splice(index);
-  }
-
-  editarTelefone(telefone: Telefone) {
-    this.telefone = telefone;
-  }
-
-  clonarTelefone(telefone: Telefone): Telefone {
-    return new Telefone(telefone.id, telefone.telefone, telefone.tipo);
   }
 
   consultaCep(cep, form) {

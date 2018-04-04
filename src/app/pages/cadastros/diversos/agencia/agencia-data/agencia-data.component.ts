@@ -87,8 +87,7 @@ export class AgenciaDataComponent implements OnInit {
       gerente: [],
       banco: this.formBuilder.group({
         id: [null, Validators.required],
-        nome: [],
-      })
+      }),
     });
     // this.formulario.get('banco.nome').setValue(this.default, {onlySelf: true});
   }

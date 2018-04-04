@@ -10,6 +10,7 @@ import { BancoService } from '../../diversos/banco/banco.service';
 import { OperadoraService } from '../../diversos/operadora/operadora.service';
 import { TipoSocioService } from '../../diversos/tipo-socio/tipo-socio.service';
 import { SecretariaService } from '../../diversos/secretaria/secretaria.service';
+import { ClienteDataTelefoneComponent } from './cliente-data/cliente-data-telefone/cliente-data-telefone.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { SecretariaService } from '../../diversos/secretaria/secretaria.service'
     SharedModule,
     ClienteRoutingModule
   ],
-  declarations: [ClienteComponent, ClienteDataComponent],
+  declarations: [ClienteComponent, ClienteDataComponent, ClienteDataTelefoneComponent],
   providers: [ClienteService, BancoService, OperadoraService, TipoSocioService, SecretariaService]
 })
 export class ClienteModule { }

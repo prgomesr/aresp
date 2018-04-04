@@ -62,14 +62,14 @@ export class Endereco {
 
 export class Telefone {
   id: number;
-  telefone: string;
+  numero: string;
   tipo: string;
 
   constructor(id?: number,
-              telefone?: string,
+              numero?: string,
               tipo?: string) {
     this.id = id;
-    this.telefone = telefone;
+    this.numero = numero;
     this.tipo = tipo;
   }
 }
@@ -152,5 +152,5 @@ export class Agencia {
   digito: number;
   telefone: string;
   gerente: string;
-  banco = new Banco();
+  banco: Banco;
 }
