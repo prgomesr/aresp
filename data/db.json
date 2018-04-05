@@ -21,16 +21,19 @@
   ],
   "contas": [
     {
-      "agencia": {
-        "id": 1
-      },
-      "conta": "54.643-7",
-      "tipo": "corrente",
-      "descricao": "Conta principal",
+      "id": 1,
+      "numero": "6575",
+      "digito": 7,
+      "nome": "Conta principal",
+      "tipo": "C",
+      "taxa_multa": 0.5,
+      "taxa_juros": 0.3,
       "empresa": {
         "id": 1
       },
-      "id": 1
+      "agencia": {
+       "id": 1
+      }
     }
   ],
   "agencias": [

@@ -14,6 +14,7 @@ import { GrupoService } from '../../cadastros/diversos/grupo/grupo.service';
 import { ClienteService } from '../../cadastros/instancias/cliente/cliente.service';
 import { CategoriaRecebimentoService } from '../../cadastros/diversos/categoria-recebimento/categoria-recebimento.service';
 import { EmpresaService } from '../../cadastros/instancias/empresa/empresa.service';
+import {ContaCaixaService} from '../../cadastros/diversos/conta-caixa/conta-caixa.service';
 
 @NgModule({
   imports: [
@@ -23,6 +24,6 @@ import { EmpresaService } from '../../cadastros/instancias/empresa/empresa.servi
     ContasReceberRoutingModule
   ],
   declarations: [ContasReceberComponent, ContasReceberDataComponent, ContasReceberLoteComponent, ContasReceberBaseAnteriorComponent],
-  providers: [ContasReceberService, CategoriaRecebimentoService, GrupoService, ClienteService, EmpresaService]
+  providers: [ContasReceberService, CategoriaRecebimentoService, GrupoService, ClienteService, ContaCaixaService]
 })
 export class ContasReceberModule { }

@@ -44,14 +44,6 @@ export class Secretaria {
   nome: string;
 }
 
-export class Conta {
-  id: number;
-  agencia: string;
-  conta: string;
-  tipo: string;
-  descricao: string;
-}
-
 export class Dependente {
   id: number;
 }
@@ -86,7 +78,6 @@ export class Empresa {
   razao: string;
   fantasia: string;
   cnpj: string;
-  conta = new Conta();
 }
 
 export class TipoRecebimento {
@@ -107,19 +98,19 @@ export class StatusParcela {
 
 export class Recebimento {
   descricao: string;
-  grupo = new GrupoRecebimento();
-  categoria = new CategoriaRecebimento();
-  conta = new Conta();
   emissao: Date;
   competencia: Date;
   vencimento: Date;
   recebimento: Date;
   recebido: Date;
-  cliente = new Cliente();
   valor: string;
   referecia: string;
   numDocumento: string;
   nossoNumero: string;
+  grupo = new GrupoRecebimento();
+  categoria = new CategoriaRecebimento();
+  conta = new ContaCaixa();
+  cliente = new Cliente();
   situacao = new StatusParcela();
 }
 
@@ -137,7 +128,7 @@ export class Fornecedor {
 export class ContaCaixa {
   id: number;
   numero: string;
-  digito: string;
+  digito: number;
   nome: string;
   tipo: string;
   taxa_multa: number;

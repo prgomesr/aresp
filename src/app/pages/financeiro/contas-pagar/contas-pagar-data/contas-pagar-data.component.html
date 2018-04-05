@@ -2,7 +2,7 @@
                   headingAnterior="Contas a Pagar"></app-header-lv2>
 
 <div class="col-md">
-  <form #contasPagarForm="ngForm" (ngSubmit)="(contasPagarForm)" autocomplete="off">
+  <form #contasPagarForm="ngForm" autocomplete="off" (ngSubmit)="salvar(contasPagarForm)">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="descricao">Descrição</label>
@@ -30,7 +30,7 @@
           <input type="text" class="form-control" id="competencia" required name="competencia" #competencia="ngModel" ngModel
                  bsDatepicker #dpCompetencia="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="right">
           <div class="input-group-append">
-            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpCompetencia.toggle()"></button>
+            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpCompetencia.toggle()" type="button"></button>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
           <input type="text" class="form-control" id="vencimento" required name="vencimento" #vencimento="ngModel" ngModel
                  bsDatepicker #dpVencimento="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }">
           <div class="input-group-append">
-            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpVencimento.toggle()"></button>
+            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpVencimento.toggle()" type="button"></button>
           </div>
         </div>
       </div>
@@ -78,5 +78,6 @@
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="contasPagarForm.invalid">Salvar</button>
+    {{contasPagarForm.value | json}}
   </form>
 </div>

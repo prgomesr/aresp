@@ -38,7 +38,7 @@
     <div class="form-group">
       <label for="numero">Telefone</label>
       <input type="text" class="form-control" id="numero" name="numero" required minlength="10"
-             [(ngModel)]="telefone.numero" #numero="ngModel" mask="(00) 000090000">
+             [(ngModel)]="telefone.numero" #numero="ngModel">
       <app-message [control]="numero" error="required" text="Preencha este campo."></app-message>
     </div>
     <div class="form-group col-md-12" >

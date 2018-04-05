@@ -2,31 +2,30 @@
       headingAnterior="Contas a Receber"></app-header-lv2>
 
 <div class="col-md">
-  <form #contasReceberForm="ngForm" (ngSubmit)="(contasReceberForm)" autocomplete="off">
+  <form [formGroup]="f" (ngSubmit)="salvar()" autocomplete="off">
       <div class="form-row">
         <div class="form-group col-md-5">
           <label for="descricao">Descrição</label>
-          <input type="text" class="form-control" id="descricao"
-                 required ngModel name="descricao" #descricao="ngModel">
-          <app-message [control]="descricao" error="required" text="Preencha este campo."></app-message>
+          <input type="text" class="form-control" id="descricao" name="descricao" formControlName="descricao">
+          <app-message [control]="f.get('descricao')" error="required" text="Preencha este campo."></app-message>
         </div>
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-2" formGroupName="grupoRecebimento">
           <label for="grupo">Grupo de Recebimento</label>
-          <select id="grupo" class="form-control">
+          <select id="grupo" class="form-control" formControlName="id">
             <option selected>Selecione:</option>
-            <option *ngFor="let grupo of gruposRecebimentos" required>{{grupo.nome}}</option>
+            <option *ngFor="let grupo of gruposRecebimentos" [value]="grupo">{{grupo.nome}}</option>
           </select>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3" formGroupName="categoria">
           <label for="categoria">Categoria</label>
-          <input type="text" class="form-control" id="categoria" [typeahead]="categorias" typeaheadOptionField="nome"
-                 name="categoria" ngModel #categoria required>
+          <input id="categoria" formControlName="id" [typeahead]="categorias" [typeaheadOptionsLimit]="7" [typeaheadMinLength]="0"
+                 typeaheadOptionField="nome" class="form-control">
         </div>
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-2" formGroupName="conta">
           <label for="conta">Conta Bancária</label>
-          <select id="conta" class="form-control">
+          <select id="conta" class="form-control" formControlName="id">
             <option selected>Selecione:</option>
-            <option *ngFor="let conta of empresa.contas" required>{{ conta.conta }}</option>
+            <option *ngFor="let conta of contas" [ngValue]="conta.id"> {{ conta.numero }}</option>
           </select>
         </div>
       </div>
@@ -34,31 +33,31 @@
         <div class="form-group col-md-2">
           <label for="competencia">Data de Competência</label>
           <div class="input-group mb-2">
-            <input type="text" class="form-control" id="competencia" required name="competencia" #competencia="ngModel" ngModel
+            <input type="text" class="form-control" id="competencia" formControlName="competencia"
                    bsDatepicker #dpCompetencia="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="right">
             <div class="input-group-append">
-              <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpCompetencia.toggle()"></button>
+              <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpCompetencia.toggle()" type="button"></button>
             </div>
           </div>
         </div>
         <div class="form-group col-md-2">
           <label for="vencimento">Data de Vencimento</label>
           <div class="input-group mb-2">
-            <input type="text" class="form-control" id="vencimento" required name="vencimento" #vencimento="ngModel" ngModel
+            <input type="text" class="form-control" id="vencimento" formControlName="vencimento"
                    bsDatepicker #dpVencimento="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }">
             <div class="input-group-append">
-              <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpVencimento.toggle()"></button>
+              <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpVencimento.toggle()" type="button"></button>
             </div>
           </div>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6" formGroupName="cliente">
           <label for="cliente">Cliente</label>
           <input type="text" class="form-control" id="cliente" [typeahead]="clientes" typeaheadOptionField="nome"
-                 name="cliente" ngModel #cliente required>
+                 name="cliente" formControlName="id">
         </div>
         <div class="form-group col-md-2">
           <label for="valor">Valor</label>
-          <input type="text" class="form-control" id="valor" name="valor" ngModel #valor required
+          <input type="text" class="form-control" id="valor" name="valor" formControlName="valor"
                  currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
         </div>
       </div>
@@ -73,18 +72,19 @@
       <div class="form-row">
         <div class="form-group col-md-2">
           <label for="periodo">Período</label>
-          <select id="periodo" class="form-control" [disabled]="!repetir.checked">
+          <select id="periodo" class="form-control" [disabled]="!repetir.checked" formControlName="periodo">
             <option selected>Selecione:</option>
             <option *ngFor="let periodo of periodos">{{ periodo.label }}</option>
           </select>
         </div>
         <div class="form-group col-md-2">
           <label for="ocorrencia">Ocorrências</label>
-          <input type="text" class="form-control" id="ocorrencia"
-                 ngModel name="ocorrencia" #ocorrencia="ngModel" [disabled]="!repetir.checked">
+          <input type="text" class="form-control" id="ocorrencia" formControlName="ocorrencia"
+                 name="ocorrencia" [disabled]="!repetir.checked">
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="contasReceberForm.invalid">Salvar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Salvar</button>
   </form>
 </div>
+<pre class="card card-block card-header">Model: {{f.value | json}}</pre>
 
