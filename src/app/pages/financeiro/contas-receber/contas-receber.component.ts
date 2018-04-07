@@ -14,7 +14,7 @@ import { ErrorHandlerService } from '../../../core/error-handler.service';
 })
 export class ContasReceberComponent implements OnInit {
 
-  contas = [];
+  recebimentos = [];
   periodos = [
     {label: 'Mês atual', value: 1},
     {label: 'Últimos 7 dias', value: 2},
@@ -39,7 +39,7 @@ export class ContasReceberComponent implements OnInit {
   }
 
   consultar() {
-    this.recebimentoService.listar().subscribe(recebimentos => this.contas = recebimentos,
+    this.recebimentoService.listar().subscribe(recebimentos => this.recebimentos = recebimentos,
       erro => this.errorHandler.handle(erro));
   }
 

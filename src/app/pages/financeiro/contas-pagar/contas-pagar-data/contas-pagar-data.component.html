@@ -2,82 +2,82 @@
                   headingAnterior="Contas a Pagar"></app-header-lv2>
 
 <div class="col-md">
-  <form #contasPagarForm="ngForm" autocomplete="off" (ngSubmit)="salvar(contasPagarForm)">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="descricao">Descrição</label>
-        <input type="text" class="form-control" id="descricao"
-               required ngModel name="descricao" #descricao="ngModel">
-        <app-message [control]="descricao" error="required" text="Preencha este campo."></app-message>
-      </div>
-      <div class="form-group col-md-3">
-        <label for="categoria">Categoria</label>
-        <input type="text" class="form-control" id="categoria" [typeahead]="categorias" typeaheadOptionField="nome"
-               name="categoria" ngModel #categoria required>
-      </div>
-      <div class="form-group col-md-3">
-        <label for="conta">Conta Bancária</label>
-        <select id="conta" class="form-control">
-          <option selected>Selecione:</option>
-          <option *ngFor="let conta of contas" required>{{ conta.label }}</option>
-        </select>
-      </div>
+  <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
+
+    <div class="ui-g-6 ui-md-6 ui-fluid">
+      <label>Descrição</label>
+      <input type="text" pInputText name="descricao" #descricao="ngModel" required [(ngModel)]="pagamento.descricao">
+
+      <app-message [control]="descricao" error="required" text="Preencha este campo."></app-message>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-2">
-        <label for="competencia">Data de Competência</label>
-        <div class="input-group mb-2">
-          <input type="text" class="form-control" id="competencia" required name="competencia" #competencia="ngModel" ngModel
-                 bsDatepicker #dpCompetencia="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="right">
-          <div class="input-group-append">
-            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpCompetencia.toggle()" type="button"></button>
-          </div>
-        </div>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="vencimento">Data de Vencimento</label>
-        <div class="input-group mb-2">
-          <input type="text" class="form-control" id="vencimento" required name="vencimento" #vencimento="ngModel" ngModel
-                 bsDatepicker #dpVencimento="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }">
-          <div class="input-group-append">
-            <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dpVencimento.toggle()" type="button"></button>
-          </div>
-        </div>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="fornecedor">Fornecedor</label>
-        <input type="text" class="form-control" id="fornecedor" [typeahead]="fornecedores" typeaheadOptionField="fantasia"
-               name="fornecedor" ngModel #fornecedor required>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="valor">Valor</label>
-        <input type="text" class="form-control" id="valor" name="valor" ngModel #valor required
-               currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
-      </div>
+
+    <div class="ui-g-3 ui-md-3 ui-fluid">
+      <label>Categoria</label>
+      <p-dropdown [options]="categorias" name="categoria" [(ngModel)]="pagamento.categoria.id"
+                  [autoWidth]="false" placeholder="Selecione:" [filter]="true"></p-dropdown>
     </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="repetir" #repetir>
-        <label class="form-check-label" for="repetir">
-          Repetir?
-        </label>
-      </div>
+
+    <div class="ui-g-3 ui-md-3 ui-fluid">
+      <label>Conta Bancária</label>
+      <p-dropdown [options]="contas" name="conta" [(ngModel)]="pagamento.conta.id"
+                  [autoWidth]="false" placeholder="Selecione:"></p-dropdown>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-2">
-        <label for="periodo">Período</label>
-        <select id="periodo" class="form-control" [disabled]="!repetir.checked">
-          <option selected>Selecione:</option>
-          <option *ngFor="let periodo of periodos">{{ periodo.label }}</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="ocorrencia">Ocorrências</label>
-        <input type="text" class="form-control" id="ocorrencia"
-               ngModel name="ocorrencia" #ocorrencia="ngModel" [disabled]="!repetir.checked">
-      </div>
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Competência</label>
+      <p-calendar name="competencia" dateFormat="dd/mm/yy"
+                  [inline]="false" [readonlyInput]="false" [showIcon]="true"
+                  [(ngModel)]="pagamento.dtCompetencia" [locale]="pt"
+                  #competencia="ngModel" required showButtonBar="true"></p-calendar>
+
+      <app-message [control]="competencia" error="required"
+                   text="Informe uma data de competência"></app-message>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="contasPagarForm.invalid">Salvar</button>
-    {{contasPagarForm.value | json}}
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Vencimento</label>
+      <p-calendar name="vencimento" dateFormat="dd/mm/yy"
+                  [inline]="false" [readonlyInput]="false" [showIcon]="true"
+                  [(ngModel)]="pagamento.dtVencimento" [locale]="pt"
+                  #vencimento="ngModel" required></p-calendar>
+
+      <app-message [control]="vencimento" error="required"
+                   text="Informe uma data de vencimento"></app-message>
+    </div>
+
+    <div class="ui-g-6 ui-md-6 ui-fluid">
+      <label>Fornecedor</label>
+      <p-dropdown [options]="fornecedores" name="cliente" [(ngModel)]="pagamento.fornecedor.id"
+                  [autoWidth]="false" placeholder="Selecione:" [filter]="true"></p-dropdown>
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Valor</label>
+      <input type="text" pInputText name="valor" #valor="ngModel" required [(ngModel)]="pagamento.valor"
+             currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
+
+      <app-message [control]="valor" error="required" text="Preencha este campo."></app-message>
+    </div>
+
+    <div class="ui-g-12 ui-md-12">
+      <p-checkbox name="repetir" value="repetir" label="Repetir?" #repetir></p-checkbox>
+    </div>
+
+    <div class="ui-g-2 ui-fluid">
+      <label>Período</label>
+      <p-dropdown [options]="periodos" name="periodo" [autoWidth]="false"
+                  [disabled]="!repetir.checked" required></p-dropdown>
+    </div>
+
+    <div class="ui-g-2 ui-fluid">
+      <label>Ocorrências</label>
+      <input type="text" pInputText name="ocorrencia" [(ngModel)]="pagamento.referecia"
+             [disabled]="!repetir.checked" required>
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+    </div>
+
   </form>
 </div>

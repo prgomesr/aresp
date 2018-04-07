@@ -13,6 +13,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+import { ButtonComponent } from './button/button.component';
+import { TableComponent } from './table/table.component';
+
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -20,11 +23,13 @@ import { TooltipModule } from 'primeng/tooltip';
 import { DataTableModule } from 'primeng/datatable';
 import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
-import { TableComponent } from './table/table.component';
-import { ButtonComponent } from './button/button.component';
 import { Ng2BRPipesModule } from 'ng2-brpipes';
-import {DropdownModule} from 'primeng/dropdown';
-import {DialogModule} from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 @NgModule({
@@ -46,7 +51,8 @@ import {DialogModule} from 'primeng/dialog';
   exports: [
     FormsModule, TooltipModule, CommonModule, DataTableModule, FileUploadModule, TableModule, CurrencyMaskModule, MessageComponent,
     HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, NgxMaskModule, TabsModule, ButtonsModule,
-    ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule, ReactiveFormsModule, DropdownModule, DialogModule
+    ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule, ReactiveFormsModule, DropdownModule, DialogModule,
+    InputTextModule, SelectButtonModule, CalendarModule, CheckboxModule
   ]
 })
 export class SharedModule { }

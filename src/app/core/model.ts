@@ -97,11 +97,12 @@ export class StatusParcela {
 }
 
 export class Recebimento {
+  id: number;
   descricao: string;
-  emissao: Date;
-  competencia: Date;
-  vencimento: Date;
-  recebimento: Date;
+  dtEmissao = new Date();
+  dtCompetencia: Date;
+  dtVencimento: Date;
+  dtRecebimento: Date;
   recebido: Date;
   valor: string;
   referecia: string;
@@ -111,6 +112,24 @@ export class Recebimento {
   categoria = new CategoriaRecebimento();
   conta = new ContaCaixa();
   cliente = new Cliente();
+  situacao = new StatusParcela();
+}
+
+export class Pagamento {
+  id: number;
+  descricao: string;
+  dtEmissao = new Date();
+  dtCompetencia: Date;
+  dtVencimento: Date;
+  dtRecebimento: Date;
+  recebido: Date;
+  valor: string;
+  referecia: string;
+  numDocumento: string;
+  nossoNumero: string;
+  categoria = new CategoriaRecebimento();
+  conta = new ContaCaixa();
+  fornecedor = new Fornecedor();
   situacao = new StatusParcela();
 }
 

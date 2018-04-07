@@ -22,7 +22,7 @@
   "contas": [
     {
       "id": 1,
-      "numero": "6575",
+      "numero": "54643",
       "digito": 7,
       "nome": "Conta principal",
       "tipo": "C",
@@ -32,7 +32,7 @@
         "id": 1
       },
       "agencia": {
-       "id": 1
+        "id": 1
       }
     }
   ],
@@ -250,40 +250,56 @@
   ],
   "recebimentos": [
     {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "CLAUDIO DANIEL GONCALVES",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "A VENCER",
+      "dtEmissao": "2018-04-06T02:03:16.889Z",
+      "grupo": {
+        "id": 1
+      },
+      "categoria": {
+        "id": 2
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {},
+        "id": 1
+      },
+      "cliente": {
+        "endereco": {},
+        "dependentes": [],
+        "telefones": [],
+        "id": 2
+      },
+      "situacao": {},
+      "descricao": "teste",
+      "dtCompetencia": "2018-04-05T03:00:00.000Z",
+      "dtVencimento": "2018-05-10T03:00:00.000Z",
+      "valor": 300,
       "id": 1
     },
     {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "EM ABERTO",
-      "id": 8
-    },
-    {
-      "emissao": "10/02/2018",
-      "vencimento": "15/04/2018",
-      "referencia": "ABR",
-      "recebimento": "",
-      "cliente": "GABRIEL",
-      "descricao": "MENS. DO CLUBE",
-      "valor": "70,00",
-      "recebido": "",
-      "status": "PAGA",
-      "id": 9
+      "dtEmissao": "2018-04-06T18:17:09.701Z",
+      "grupo": {
+        "id": 1
+      },
+      "categoria": {
+        "id": 1
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {},
+        "id": 1
+      },
+      "cliente": {
+        "endereco": {},
+        "dependentes": [],
+        "telefones": [],
+        "id": 2
+      },
+      "situacao": {},
+      "descricao": "MENSALIDADE",
+      "dtCompetencia": "2018-04-06T03:00:00.000Z",
+      "dtVencimento": "2018-05-10T03:00:00.000Z",
+      "valor": 75,
+      "id": 2
     }
   ],
   "pagamentos": [
