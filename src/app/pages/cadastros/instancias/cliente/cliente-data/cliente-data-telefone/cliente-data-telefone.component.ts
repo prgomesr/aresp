@@ -13,6 +13,10 @@ export class ClienteDataTelefoneComponent implements OnInit {
   telefone: Telefone;
   exibindoFormularioContato = false;
   telefoneIndex: number;
+  tipos = [
+    {label: 'PRINCIPAL', value: 'PRINCIPAL'},
+    {label: 'CONTATO', value: 'CONTATO'}
+  ]
   constructor() { }
 
   ngOnInit() {
