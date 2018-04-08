@@ -17,7 +17,6 @@ import { ButtonComponent } from './button/button.component';
 import { TableComponent } from './table/table.component';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { NgxMaskModule } from 'ngx-mask';
 
 import { TooltipModule } from 'primeng/tooltip';
 import { DataTableModule } from 'primeng/datatable';
@@ -30,6 +29,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PanelModule } from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -38,7 +41,6 @@ import { CheckboxModule } from 'primeng/checkbox';
     RouterModule,
     BsDatepickerModule.forRoot(),
     TypeaheadModule.forRoot(),
-    NgxMaskModule.forRoot(),
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
     TableModule,
@@ -50,9 +52,10 @@ import { CheckboxModule } from 'primeng/checkbox';
   declarations: [MessageComponent, HeaderLv1Component, HeaderLv2Component, TableComponent, ButtonComponent],
   exports: [
     FormsModule, TooltipModule, CommonModule, DataTableModule, FileUploadModule, TableModule, CurrencyMaskModule, MessageComponent,
-    HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, NgxMaskModule, TabsModule, ButtonsModule,
+    HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, TabsModule, ButtonsModule,
     ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule, ReactiveFormsModule, DropdownModule, DialogModule,
-    InputTextModule, SelectButtonModule, CalendarModule, CheckboxModule
+    InputTextModule, SelectButtonModule, CalendarModule, CheckboxModule, InputMaskModule, InputTextareaModule, PanelModule,
+    ButtonModule
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,80 @@
+<div class="ui-g-12">
+  <p-panel header="Dependentes">
+    <div class="ui-g">
+      <div class="ui-g-10 col-md-10">
+        <a href="javascript:void(0)" (click)="prepararNovoDependente()"><i class="fa fa-plus"></i> Novo</a>
+        <p-table [value]="dependentes" [responsive]="true">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Nome</th>
+              <th style="width: 180px">RG</th>
+              <th style="width: 150px">Nascimento</th>
+              <th style="width: 200px">Parentesco</th>
+              <th style="width: 80px;"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-dependente let-rowIndex="rowIndex">
+            <tr>
+              <td>{{dependente.nome | uppercase}}</td>
+              <td>{{dependente.rg}}</td>
+              <td>{{dependente.nascimento | date: 'dd/MM/yyyy'}}</td>
+              <td>{{dependente.parentesco | uppercase}}</td>
+              <td>
+                <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top">
+                  <i class="fa fa-pencil" (click)="pepararEdicaoDependente(dependente, rowIndex)"></i></a>
+                <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top">
+                  <i class="fa fa-trash" (click)="removerDependente(rowIndex)"></i></a>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="5" class="text-table-left">
+                Nenhum dependente adicionado.
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+    <p-dialog [header]="editando ? 'Edição de Dependente' : 'Novo Dependente'" [(visible)]="exibindoFormularioContato"
+              modal="modal" *ngIf="dependente">
+      <form #f="ngForm" (ngSubmit)="adicionarDependente(f)" autocomplete="off">
+
+        <div class="ui-g">
+
+          <div class="ui-g-5 ui-fluid">
+            <label>Nome</label>
+            <input type="text" pInputText name="nome" [(ngModel)]="dependente.nome">
+          </div>
+
+          <div class="ui-g-2 ui-fluid">
+            <label>RG</label>
+            <input type="text" pInputText name="rg" [(ngModel)]="dependente.rg">
+          </div>
+
+          <div class="ui-g-3 ui-fluid">
+            <label>Data de Nascimento</label>
+            <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true"
+                        [(ngModel)]="dependente.nascimento" name="nascimento" #nascimento="ngModel" required
+                        [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030"></p-calendar>
+          </div>
+
+          <div class="ui-g-2 ui-fluid">
+            <label>Parentesco</label>
+            <p-dropdown [options]="parentesco" placeholder="Selecione: " [autoWidth]="false"
+                        name="parentesco" [(ngModel)]="dependente.parentesco"></p-dropdown>
+          </div>
+
+          <div class="ui-g-12">
+            <button pButton type="submit" label="Confirmar" [disabled]="f.invalid"></button>
+          </div>
+
+        </div>
+
+      </form>
+
+    </p-dialog>
+  </p-panel>
+</div>

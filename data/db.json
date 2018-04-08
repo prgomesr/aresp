@@ -36,41 +36,7 @@
       }
     }
   ],
-  "agencias": [
-    {
-      "id": 1,
-      "numero": "6575",
-      "digito": "7",
-      "telefone": "17 3232 3232",
-      "gerente": "Reinaldo",
-      "banco": {
-        "id": 1,
-        "nome": "BB"
-      }
-    },
-    {
-      "id": 2,
-      "numero": "10",
-      "digito": null,
-      "telefone": null,
-      "gerente": null,
-      "banco": {
-        "id": 1,
-        "nome": null
-      }
-    },
-    {
-      "id": 3,
-      "numero": "1111",
-      "digito": "1",
-      "telefone": "111111",
-      "gerente": "111111",
-      "banco": {
-        "id": 1,
-        "nome": null
-      }
-    }
-  ],
+  "agencias": [],
   "grupos": [
     {
       "nome": "BB1",
@@ -105,14 +71,19 @@
   ],
   "statusParcelas": [
     {
-      "situacao": "Em dia",
+      "nome": "PAGA",
       "descricao": "Pagamentos em dia",
       "id": 1
     },
     {
-      "situacao": "Em atraso",
+      "nome": "VENCIDA",
       "descricao": "Em atraso por 30 dias ou mais",
       "id": 2
+    },
+    {
+      "nome": "A VENCER",
+      "id": 3,
+      "descricao": "Pagamentos em aberto"
     }
   ],
   "categoriasPagamentos": [
@@ -248,60 +219,7 @@
       "id": 1
     }
   ],
-  "recebimentos": [
-    {
-      "dtEmissao": "2018-04-06T02:03:16.889Z",
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 2
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {},
-        "id": 1
-      },
-      "cliente": {
-        "endereco": {},
-        "dependentes": [],
-        "telefones": [],
-        "id": 2
-      },
-      "situacao": {},
-      "descricao": "teste",
-      "dtCompetencia": "2018-04-05T03:00:00.000Z",
-      "dtVencimento": "2018-05-10T03:00:00.000Z",
-      "valor": 300,
-      "id": 1
-    },
-    {
-      "dtEmissao": "2018-04-06T18:17:09.701Z",
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {},
-        "id": 1
-      },
-      "cliente": {
-        "endereco": {},
-        "dependentes": [],
-        "telefones": [],
-        "id": 2
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-04-06T03:00:00.000Z",
-      "dtVencimento": "2018-05-10T03:00:00.000Z",
-      "valor": 75,
-      "id": 2
-    }
-  ],
+  "recebimentos": [],
   "pagamentos": [
     {
       "descricao": "REBOCO",

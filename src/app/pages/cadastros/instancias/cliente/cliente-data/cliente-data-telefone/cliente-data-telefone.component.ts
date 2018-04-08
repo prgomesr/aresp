@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Telefone} from '../../../../../../core/model';
-import {BsModalRef} from 'ngx-bootstrap';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -13,9 +12,7 @@ export class ClienteDataTelefoneComponent implements OnInit {
   @Input() telefones: Telefone[];
   telefone: Telefone;
   exibindoFormularioContato = false;
-  modalRef: BsModalRef;
   telefoneIndex: number;
-
   constructor() { }
 
   ngOnInit() {

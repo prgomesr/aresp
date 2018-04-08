@@ -8,7 +8,7 @@ import { BancoService } from '../../../diversos/banco/banco.service';
 import { OperadoraService } from '../../../diversos/operadora/operadora.service';
 import { SecretariaService } from '../../../diversos/secretaria/secretaria.service';
 import { TipoSocioService } from '../../../diversos/tipo-socio/tipo-socio.service';
-import { Cliente, Telefone } from '../../../../../core/model';
+import { Cliente } from '../../../../../core/model';
 import { ClienteService } from '../cliente.service';
 
 @Component({
@@ -25,16 +25,26 @@ export class ClienteDataComponent implements OnInit {
   cliente = new Cliente();
 
   estCivil = [
-    { label: 'Solteiro (a)', value: 1 },
-    { label: 'Casado (a)', value: 2 },
-    { label: 'União Estável', value: 3 },
-    { label: 'Divorcidado (a)', value: 4 },
-    { label: 'Viúvo (a)', value: 5 }
+    { label: 'Solteiro (a)', value: 'S' },
+    { label: 'Casado (a)', value: 'C' },
+    { label: 'União Estável', value: 'U' },
+    { label: 'Divorcidado (a)', value: 'D' },
+    { label: 'Viúvo (a)', value: 'V' }
   ];
   sexos = [
-    {label: 'Masculino', value: '1'},
-    {label: 'Feminino', value: '2'}
+    {label: 'Masculino', value: 'M'},
+    {label: 'Feminino', value: 'F'}
     ];
+  pt = {
+    firstDayOfWeek: 0,
+    dayNames: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+    dayNamesShort: ["D", "S", "T", "Q", "Q", "S", "S"],
+    dayNamesMin: ["D", "S", "T", "Q", "Q", "S", "S"],
+    monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
+    monthNamesShort: [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun","Jul", "Ago", "Set", "Out", "Nov", "Dez" ],
+    today: 'Hoje',
+    clear: 'Limpar'
+  };
 
   constructor(private errorHandler: ErrorHandlerService,
               private clienteService: ClienteService,
@@ -52,12 +62,14 @@ export class ClienteDataComponent implements OnInit {
   }
 
   listarTiposSocios() {
-    this.tipoSocioService.listar().subscribe(dados => this.tiposSocios = dados,
+    this.tipoSocioService.listar().subscribe(dados => this.tiposSocios = dados
+        .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   listarSecretarias() {
-    this.secretariaService.listar().subscribe(dados => this.secretarias = dados,
+    this.secretariaService.listar().subscribe(dados => this.secretarias = dados
+        .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 

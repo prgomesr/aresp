@@ -29,4 +29,14 @@ export class ContasPagarComponent implements OnInit {
       err => this.errorHandler.handle(err));
   }
 
+  carregarContasPagas(valor: number) {
+    // TODO API BACK-END DEVERA RETORNAR ESTE VALOR
+  }
+  carregarContasAPagar(valor: number) {
+    // TODO API BACK-END DEVERA RETORNAR ESTE VALOR
+  }
+  carregarContasVencidas(valor: number) {
+    // TODO API BACK-END DEVERA RETORNAR ESTE VALOR
+  }
+
 }

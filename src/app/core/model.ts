@@ -28,11 +28,6 @@ export class Convenio {
   observacao: string;
 }
 
-export class Grupo {
-  id: number;
-  nome: string;
-}
-
 export class Operadora {
   id: number;
   nome: string;
@@ -46,10 +41,33 @@ export class Secretaria {
 
 export class Dependente {
   id: number;
+  nome: string;
+  rg: string;
+  parentesco: string;
+  nascimento: Date;
+
+  constructor(id?: number,
+              nome?: string,
+              rg?: string,
+              parentesco?: string,
+              nascimento?: Date) {
+    this.id = id;
+    this.nome = nome;
+    this.parentesco = parentesco;
+    this.rg = rg;
+    this.nascimento = nascimento;
+  }
 }
 
 export class Endereco {
   id: number;
+  cep: string;
+  logradouro: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
+  cidade: string;
+  estado: string;
 }
 
 export class Telefone {
@@ -68,9 +86,21 @@ export class Telefone {
 
 export class Cliente {
   id: number;
+  cpf: string;
+  rg: string;
+  nome: string;
+  sexo: string;
+  pai: string;
+  mae: string;
+  estadoCivil: string;
+  obs: string;
+  email: string;
+  nascimento: Date;
   endereco = new Endereco();
   dependentes = new Array<Dependente>();
   telefones = new Array<Telefone>();
+  tipo = new TipoSocio();
+  secretaria = new Secretaria();
 }
 
 export class Empresa {
@@ -92,7 +122,7 @@ export class TipoSocio {
 
 export class StatusParcela {
   id: number;
-  situacao: string;
+  nome: string;
   descricao: string;
 }
 

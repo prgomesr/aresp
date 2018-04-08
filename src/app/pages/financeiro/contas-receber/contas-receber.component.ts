@@ -27,12 +27,12 @@ export class ContasReceberComponent implements OnInit {
     {label: 'Em aberto', value: 3},
     {label: 'A vencer', value: 4}
   ];
+  modalRef: BsModalRef;
+  id: number;
   constructor(private recebimentoService: ContasReceberService,
               private toasty: ToastyService,
               private modalService: BsModalService,
               private errorHandler: ErrorHandlerService) { }
-
-  modalRef: BsModalRef;
 
   ngOnInit() {
     this.consultar();
@@ -43,25 +43,37 @@ export class ContasReceberComponent implements OnInit {
       erro => this.errorHandler.handle(erro));
   }
 
-  excluir(codigo: any) {
-    this.recebimentoService.excluir(codigo.id).subscribe(res => {
+  excluir(codigo: number) {
+    this.recebimentoService.excluir(codigo).subscribe(res => {
       this.consultar();
       this.toasty.success('Registro excluído com sucesso.');
     },
       erro => this.errorHandler.handle(erro));
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>, codigo: number) {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.id = codigo;
   }
 
-  confirm(codigo: any) {
-    this.modalRef.hide();
+  confirm(codigo: number) {
+    codigo = this.id;
     this.excluir(codigo);
+    this.modalRef.hide();
   }
 
   decline(): void {
     this.modalRef.hide();
+  }
+
+  carregarContasPagas(valor: number) {
+    // TODO API BACK-END DEVERA RETORNAR ESTE VALOR
+  }
+  carregarContasAPagar(valor: number) {
+    // TODO API BACK-END DEVERA RETORNAR ESTE VALOR
+  }
+  carregarContasVencidas(valor: number) {
+    // TODO API BACK-END DEVERA RETORNAR ESTE VALOR
   }
 
 

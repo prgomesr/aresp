@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../../environments/environment';
-import {Grupo} from '../../../../core/model';
+import {GrupoRecebimento} from '../../../../core/model';
 
 @Injectable()
 export class GrupoService {
 
-  grupo = new Grupo();
+  grupo = new GrupoRecebimento();
 
   constructor(private http: HttpClient) { }
 
@@ -15,11 +15,11 @@ export class GrupoService {
     return this.http.get<any []>(environment.apiUrl + 'grupos');
   }
 
-  salvar(dado: Grupo) {
+  salvar(dado: GrupoRecebimento) {
     return this.http.post(environment.apiUrl + 'grupos', dado);
   }
 
-  editar(dado: Grupo) {
+  editar(dado: GrupoRecebimento) {
     return this.http.put<any>(environment.apiUrl + 'grupos/' + dado.id, dado);
   }
 

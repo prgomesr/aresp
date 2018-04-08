@@ -2,135 +2,143 @@
                 headingAnterior="Clientes"></app-header-lv2>
 
 <div class="col-md">
-  <form #clienteForm="ngForm" (ngSubmit)="salvar(clienteForm)" autocomplete="off">
-    <div class="form-row">
-      <div class="form-group col-md-2">
-        <label for="cpf">CPF</label>
-        <input type="text" class="form-control" id="cpf"
-               required ngModel name="cpf" #cpf="ngModel" mask="999.999.999-99">
-        <app-message [control]="cpf" error="required" text="Preencha este campo."></app-message>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="rg">RG</label>
-        <input type="text" class="form-control" id="rg" #rg="ngModel" name="rg" ngModel>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome"
-               required ngModel name="nome" #nome="ngModel">
-        <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
-      </div>
-      <div class="col-md-2">
-        <label for="nascimento">Data de Nascimento</label>
-        <div class="input-group mb-2">
-          <input type="text" class="form-control" id="nascimento" name="nascimento" #nascimento="ngModel" ngModel
-                 bsDatepicker #dp="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', locale: 'pt-br' }" placement="bottom">
-            <div class="input-group-append">
-              <button class="input-group-append btn btn-primary fa fa-calendar" (click)="dp.toggle()"></button>
-          </div>
+  <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
+
+      <div class="ui-g">
+
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label>CPF*</label>
+          <p-inputMask mask="999.999.999-99" name="cpf" [(ngModel)]="cliente.cpf"></p-inputMask>
         </div>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="sexo">Sexo</label>
-        <select id="sexo" class="form-control">
-          <option selected>Selecione:</option>
-          <option *ngFor="let sex of sexos">{{ sex.label }}</option>
-        </select>
+
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label for="rg">RG</label>
+          <input type="text" pInputText id="rg" name="rg" [(ngModel)]="cliente.rg">
+        </div>
+
+        <div class="ui-g-4 ui-md-4 ui-fluid">
+          <label for="nome">Nome*</label>
+          <input type="text" pInputText id="nome"
+                 required name="nome" #nome="ngModel" [(ngModel)]="cliente.nome">
+          <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
+        </div>
+
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label>Data de Nascimento</label>
+          <p-calendar name="nascimento" dateFormat="dd/mm/yy"
+                      [inline]="false" [readonlyInput]="false" [showIcon]="true"
+                      [(ngModel)]="cliente.nascimento" [locale]="pt"
+                      #nascimento="ngModel" required></p-calendar>
+
+          <app-message [control]="nascimento" error="required"
+                       text="Informe uma data de nascimento"></app-message>
+        </div>
+
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label>Sexo</label>
+          <p-dropdown [options]="sexos" placeholder="Selecione: " name="sexo" required [(ngModel)]="cliente.sexo"
+          [autoWidth]="false"></p-dropdown>
+        </div>
+
       </div>
 
-    </div>
+      <div class="ui-g">
 
-    <div class="form-row">
-      <div class="form-group col-md-3">
-        <label for="pai">Nome do Pai</label>
-        <input type="text" class="form-control" id="pai" #pai="ngModel" name="pai" ngModel>
-      </div>
-      <div class="form-group col-md-3">
-        <label for="mae">Nome da Mãe</label>
-        <input type="text" class="form-control" id="mae" #mae="ngModel" name="mae" ngModel>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="civil">Estado Civil</label>
-        <select id="civil" class="form-control">
-          <option selected>Selecione:</option>
-          <option *ngFor="let c of estCivil">{{ c.label }}</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="tpSocio">Tipo de Sócio</label>
-        <select id="tpSocio" class="form-control">
-          <option selected>Selecione:</option>
-          <option *ngFor="let tp of tiposSocios">{{ tp.nome }}</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <label for="sec">Secretaria</label>
-        <select id="sec" class="form-control">
-          <option selected>Selecione:</option>
-          <option *ngFor="let sec of secretarias">{{ sec.nome }}</option>
-        </select>
-      </div>
-    </div>
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Nome do Pai</label>
+          <input type="text" pInputText #pai="ngModel" name="pai" [(ngModel)]="cliente.pai">
+        </div>
 
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <label for="obs">Observação</label>
-        <textarea class="form-control" id="obs" rows="2" name="obs" #obs="ngModel" ngModel></textarea>
-      </div>
-    </div>
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Nome da Mãe</label>
+          <input type="text" pInputText #mae="ngModel" name="mae" [(ngModel)]="cliente.mae">
+        </div>
 
-    <div class="form-row">
-      <div class="form-group col-md-12">
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label>Estado Civil</label>
+          <p-dropdown [options]="estCivil" placeholder="Selecione: " [autoWidth]="false" name="estadoCivil"
+                      [(ngModel)]="cliente.estadoCivil"></p-dropdown>
+        </div>
+
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label>Tipo de Sócio</label>
+          <p-dropdown [options]="tiposSocios" placeholder="Selecione: " [autoWidth]="false" name="tipo"
+                      [(ngModel)]="cliente.tipo"></p-dropdown>
+        </div>
+
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label>Secretaria</label>
+          <p-dropdown [options]="secretarias" placeholder="Selecione: " [autoWidth]="false" name="secretaria"
+                      [(ngModel)]="cliente.secretaria"></p-dropdown>
+        </div>
+
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+          <label>Observação</label>
+          <textarea pInputTextarea name="obs" [(ngModel)]="cliente.obs"></textarea>
+        </div>
+
+      </div>
+
+      <div class="ui-g-12 ui-md-12">
         <tabset>
           <tab id="tab1">
             <ng-template tabHeading>
               <i class="fa fa-address-book"></i> Contato
             </ng-template>
-            <div class="form-row">
-              <div class="form-group col-md-12 mt-2">
-                <label for="email">E-mail</label>
-                <input type="email" class="form-control" id="email">
+            <div class="ui-g">
+
+              <div class="ui-g-12 col-md-12 ui-fluid">
+                <label>E-mail</label>
+                <input pInputText type="email" name="email" [(ngModel)]="cliente.email">
               </div>
+
             </div>
-            <div class="form-row" ngModelGroup="endereco">
-              <div class="form-group col-md-2">
-                <label for="cep">CEP*</label>
-                <input type="text" class="form-control" id="cep" mask="99.999-999"
-                (blur)="consultaCep($event.target.value, clienteForm)" name="cep" #cep="ngModel" ngModel
+
+            <div class="ui-g" ngModelGroup="endereco">
+
+              <div class="ui-g-2 col-md-2 ui-fluid">
+                <label>CEP*</label>
+                <p-inputMask id="cep" mask="99.999-999"
+                (blur)="consultaCep($event.target.value, f)" name="cep" #cep="ngModel"
+                             required [(ngModel)]="cliente.endereco.cep"></p-inputMask>
+              </div>
+
+              <div class="ui-g-6 col-md-6 ui-fluid">
+                <label>Logradouro*</label>
+                <input type="text" pInputText name="logradouro" #logradouro="ngModel" [(ngModel)]="cliente.endereco.logradouro"
                        required>
               </div>
-              <div class="form-group col-md-6">
-                <label for="logradouro">Logradouro*</label>
-                <input type="text" class="form-control" id="logradouro" name="logradouro" #logradouro="ngModel" ngModel
+
+              <div class="ui-g-2 col-md-2 ui-fluid">
+                <label>Número*</label>
+                <input type="text" pInputText name="numero" #numero="ngModel" [(ngModel)]="cliente.endereco.numero"
                        required>
               </div>
-              <div class="form-group col-md-2">
-                <label for="end_numero">Número*</label>
-                <input type="text" class="form-control" id="end_numero" name="numero" #numero="ngModel" ngModel
+
+              <div class="ui-g-2 col-md-2 ui-fluid">
+                <label>Complemento</label>
+                <input type="text" pInputText name="complemento" #complemento="ngModel" [(ngModel)]="cliente.endereco.complemento">
+              </div>
+
+              <div class="ui-g-5 col-md-5 ui-fluid">
+                <label>Bairro*</label>
+                <input type="text" pInputText name="bairro" #bairro="ngModel" [(ngModel)]="cliente.endereco.bairro"
                        required>
               </div>
-              <div class="form-group col-md-2">
-                <label for="end_complemento">Complemento</label>
-                <input type="text" class="form-control" id="end_complemento" name="complemento" #complemento="ngModel" ngModel>
-              </div>
-              <div class="form-group col-md-5">
-                <label for="end_bairro">Bairro*</label>
-                <input type="text" class="form-control" id="end_bairro" name="bairro" #bairro="ngModel" ngModel
+
+              <div class="ui-g-5 col-md-5 ui-fluid">
+                <label>Cidade*</label>
+                <input type="text" pInputText name="cidade" #cidade="ngModel" [(ngModel)]="cliente.endereco.cidade"
                        required>
               </div>
-              <div class="form-group col-md-5">
-                <label for="end_cidade">Cidade*</label>
-                <input type="text" class="form-control" id="end_cidade" name="cidade" #cidade="ngModel" ngModel
-                       required>
+
+              <div class="ui-g-2 col-md-2 ui-fluid">
+                <label>Estado*</label>
+                <input type="text" pInputText name="estado" #estado="ngModel"
+                       [(ngModel)]="cliente.endereco.estado" required>
               </div>
-              <div class="form-group col-md-2">
-                <label for="end_estado">Estado*</label>
-                <input type="text" class="form-control" id="end_estado" name="estado" #estado="ngModel"
-                       ngModel required>
-              </div>
+
             </div>
-            <hr>
-            <label>Telefones</label>
             <app-cliente-data-telefone [telefones]="cliente.telefones"></app-cliente-data-telefone>
 
           </tab>
@@ -144,15 +152,16 @@
             <ng-template tabHeading>
               <i class="fa fa-users"></i> Dependentes
             </ng-template>
+            <app-cliente-data-dependente [dependentes]="cliente.dependentes"></app-cliente-data-dependente>
 
           </tab>
         </tabset>
-      </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md">
-        <button type="submit" class="btn btn-primary" [disabled]="clienteForm.invalid">Salvar</button>
-      </div>
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
     </div>
   </form>
+</div>
+<div class="ui-g-12">
+  <pre>{{f.value | json}}</pre>
 </div>

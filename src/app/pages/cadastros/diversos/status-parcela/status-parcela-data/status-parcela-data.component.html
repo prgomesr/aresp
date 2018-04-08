@@ -4,15 +4,14 @@
 
       <div class="form-row">
         <div class="col-md-4 mb-3">
-          <label for="nome">Situação*</label>
+          <label for="nome">Nome*</label>
           <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel
-                 [(ngModel)]="statusParcela.situacao">
+                 [(ngModel)]="statusParcela.nome">
           <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
         </div>
         <div class="col-md-4 mb-3">
           <label for="desc">Descrição</label>
-          <input type="text" class="form-control" id="desc" name="descricao" #descricao="ngModel" ngModel
-                 [(ngModel)]="statusParcela.descricao">
+          <input type="text" class="form-control" id="desc" name="descricao" [(ngModel)]="statusParcela.descricao">
         </div>
       </div>
 

@@ -1,4 +1,89 @@
+<app-header-lv2 heading="Cadastro de Contas a Receber em Lote" linkAnterior="/financeiro/contas-receber"
+                headingAnterior="Contas a Receber"></app-header-lv2>
+
 <div class="col-md">
-  <app-header-lv2 heading="Cadastro de Contas a Receber em Lote" linkAnterior="/financeiro/contas-receber"
-                  headingAnterior="Contas a Receber"></app-header-lv2>
+  <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
+
+    <div class="ui-g-5 ui-md-5 ui-fluid">
+      <label>Descrição</label>
+      <input type="text" pInputText name="descricao" #descricao="ngModel" required [(ngModel)]="recebimento.descricao">
+
+      <app-message [control]="descricao" error="required" text="Preencha este campo."></app-message>
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Grupo de Recebimento</label>
+      <p-dropdown [options]="gruposRecebimentos" name="grupo" [(ngModel)]="recebimento.grupo.id"
+                  [autoWidth]="false" placeholder="Selecione:"></p-dropdown>
+    </div>
+
+    <div class="ui-g-3 ui-md-3 ui-fluid">
+      <label>Categoria</label>
+      <p-dropdown [options]="categorias" name="categoria" [(ngModel)]="recebimento.categoria.id"
+                  [autoWidth]="false" placeholder="Selecione:" [filter]="true"></p-dropdown>
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Conta Bancária</label>
+      <p-dropdown [options]="contas" name="conta" [(ngModel)]="recebimento.conta.id"
+                  [autoWidth]="false" placeholder="Selecione:"></p-dropdown>
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Competência</label>
+      <p-calendar name="competencia" dateFormat="dd/mm/yy"
+                  [inline]="false" [readonlyInput]="false" [showIcon]="true"
+                  [(ngModel)]="recebimento.dtCompetencia" [locale]="pt"
+                  #competencia="ngModel" required showButtonBar="true"></p-calendar>
+
+      <app-message [control]="competencia" error="required"
+                   text="Informe uma data de competência"></app-message>
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Vencimento</label>
+      <p-calendar name="vencimento" dateFormat="dd/mm/yy"
+                  [inline]="false" [readonlyInput]="false" [showIcon]="true"
+                  [(ngModel)]="recebimento.dtVencimento" [locale]="pt"
+                  #vencimento="ngModel" required></p-calendar>
+
+      <app-message [control]="vencimento" error="required"
+                   text="Informe uma data de vencimento"></app-message>
+    </div>
+
+    <div class="ui-g-6 ui-md-6 ui-fluid">
+      <label>Grupo de Clientes</label>
+      <p-dropdown [options]="clientes" name="cliente" [(ngModel)]="recebimento.cliente.id"
+                  [autoWidth]="false" placeholder="Selecione:" [filter]="true"></p-dropdown>
+    </div>
+
+    <div class="ui-g-2 ui-md-2 ui-fluid">
+      <label>Valor</label>
+      <input type="text" pInputText name="valor" #valor="ngModel" required [(ngModel)]="recebimento.valor"
+             currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
+
+      <app-message [control]="valor" error="required" text="Preencha este campo."></app-message>
+    </div>
+
+    <div class="ui-g-12 ui-md-12">
+      <p-checkbox name="repetir" value="repetir" label="Repetir?" #repetir></p-checkbox>
+    </div>
+
+    <div class="ui-g-2 ui-fluid">
+      <label>Período</label>
+      <p-dropdown [options]="periodos" name="periodo" [autoWidth]="false"
+                  [disabled]="!repetir.checked" required></p-dropdown>
+    </div>
+
+    <div class="ui-g-2 ui-fluid">
+      <label>Ocorrências</label>
+      <input type="text" pInputText name="ocorrencia" [(ngModel)]="recebimento.referecia"
+             [disabled]="!repetir.checked" required>
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+    </div>
+
+  </form>
 </div>

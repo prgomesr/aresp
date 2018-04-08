@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Grupo } from '../../../../../core/model';
+import { GrupoRecebimento } from '../../../../../core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
@@ -15,7 +15,7 @@ import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 })
 export class GrupoDataComponent implements OnInit {
 
-  grupo = new Grupo();
+  grupo = new GrupoRecebimento();
 
   constructor(private grupoService: GrupoService,
               private errorHandler: ErrorHandlerService,
@@ -43,7 +43,7 @@ export class GrupoDataComponent implements OnInit {
     this.grupoService.salvar(this.grupo).subscribe(() => {
       this.toasty.success('Registro salvo com sucesso!');
       form.reset();
-      this.grupo = new Grupo();
+      this.grupo = new GrupoRecebimento();
     }, err => this.errorHandler.handle(err));
   }
 

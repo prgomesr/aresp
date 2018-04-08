@@ -53,7 +53,7 @@
         pTooltip="Gerar remessa" tooltipPosition="top"></button>
       </div>
 
-      <div class="input-group ml-2 col-md-4">
+      <div class="input-group ml-2 col-md-3">
         <select class="form-control" id="periodo">
           <option *ngFor="let p of periodos">{{p.label}}</option>
         </select>
@@ -62,6 +62,10 @@
         <select class="form-control" id="filtroStatus">
           <option *ngFor="let f of filtroStatus">{{f.label}}</option>
         </select>
+      </div>
+
+      <div class="input-group col-md-5">
+        <input type="text" class="form-control" placeholder="Descrição">
       </div>
 
     </div>
@@ -96,14 +100,15 @@
                   <td>{{recebimento.recebido}}</td>
                   <td>
                       <span class="badge status-span"
-                            [ngClass]="{'badge-info': recebimento.situacao === 'A VENCER', 'badge-success': recebimento.situacao === 'PAGA',
-                'badge-danger': recebimento.situacao === 'EM ABERTO'}">{{recebimento.situacao}}</span>
+                            [ngClass]="{'badge-info': recebimento.situacao.nome === 'A VENCER', 'badge-success': recebimento.situacao.nome === 'PAGA',
+                'badge-danger': recebimento.situacao.nome === 'VENCIDA'}">{{recebimento.situacao.nome}}</span>
                   </td>
                   <td>
                     <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/financeiro/contas-receber/editar', recebimento.id]"><i class="fa fa-pencil"></i></a>
                     <a href="javascript:void(0)" pTooltip="Emitir boleto" tooltipPosition="top"><i class="fa fa-barcode"></i></a>
                     <a href="javascript:void(0)" pTooltip="Enviar boleto por e-mail" tooltipPosition="left"><i class="fa fa-share-square"></i></a>
-                    <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"><i class="fa fa-trash"></i></a>
+                    <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"
+                       (click)="openModal(modalExclusao, recebimento.id)"><i class="fa fa-trash"></i></a>
                   </td>
               </tr>
           </ng-template>
@@ -119,7 +124,7 @@
 <ng-template #modalExclusao>
   <div class="modal-body text-center">
     <p>Deseja realmente excluir o registro?</p>
-    <button type="button" class="btn btn-default" (click)="confirm(rowSelecionada)" >Sim</button>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
     <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
   </div>
 </ng-template>
