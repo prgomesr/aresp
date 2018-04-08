@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+
+import {ToastyService} from 'ng2-toasty';
 
 import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 import { BancoService } from '../../../diversos/banco/banco.service';
@@ -77,14 +81,47 @@ export class ClienteDataComponent implements OnInit {
               private bancoService: BancoService,
               private operadoraService: OperadoraService,
               private secretariaService: SecretariaService,
-              private tipoSocioService: TipoSocioService) {
+              private tipoSocioService: TipoSocioService,
+              private toasty: ToastyService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
+    const id = this.route.snapshot.params['id'];
+
+    if (id) {
+      this.carregarCliente(id);
+    }
     this.listarBancos();
     this.listarOperadoras();
     this.listarSecretarias();
     this.listarTiposSocios();
+  }
+
+  salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizarCliente(form);
+    } else {
+      this.adicionarCliente(form);
+    }
+  }
+
+  adicionarCliente(form: FormControl) {
+    this.clienteService.salvar(this.cliente).subscribe(() => {
+      this.toasty.success('Registro salvo com sucesso!');
+      form.reset();
+      this.cliente = new Cliente();
+    }, err => this.errorHandler.handle(err));
+  }
+
+  atualizarCliente(form: FormControl) {
+    this.clienteService.editar(this.cliente).subscribe(dado => {
+        this.cliente = dado;
+        this.router.navigate(['/instancias/cliente']);
+        this.toasty.success('Registro atualizado com sucesso!');
+      },
+      err => this.errorHandler.handle(err));
   }
 
   listarTiposSocios() {
@@ -108,6 +145,11 @@ export class ClienteDataComponent implements OnInit {
   listarOperadoras() {
     this.operadoraService.listar().subscribe(dados => this.operadoras = dados
         .map(d => ({label: d.nome, value: d.id})),
+      err => this.errorHandler.handle(err));
+  }
+
+  carregarCliente(codigo: number) {
+    this.clienteService.listarPorCodigo(codigo).subscribe(dado => this.cliente = dado,
       err => this.errorHandler.handle(err));
   }
 
@@ -136,6 +178,10 @@ export class ClienteDataComponent implements OnInit {
           estado: dados.uf
         }
     });
+  }
+
+  get editando(): any {
+    return Boolean (this.cliente.id);
   }
 
 }

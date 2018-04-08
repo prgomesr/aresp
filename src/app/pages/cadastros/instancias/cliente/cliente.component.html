@@ -37,7 +37,8 @@
           <td>
             <a href="javascript:void(0)" pTooltip="Ativar" tooltipPosition="top"><i class="fa fa-check"
               *ngIf="cliente.status === 'CANCELADO'"></i></a>
-            <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>
+            <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"
+            [routerLink]="['/instancias/cliente/editar', cliente.id]"><i class="fa fa-pencil"></i></a>
             <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"><i class="fa fa-eye"></i></a>
             <a href="javascript:void(0)" pTooltip="Cancelar" tooltipPosition="top"><i class="fa fa-ban"
               *ngIf="cliente.status === 'EM DIA' || cliente.status === 'INADIMPLENTE'"></i></a>
