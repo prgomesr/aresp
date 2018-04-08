@@ -33,6 +33,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import { ButtonModule } from 'primeng/button';
     HeaderLv1Component, HeaderLv2Component, BsDatepickerModule, TypeaheadModule, TabsModule, ButtonsModule,
     ModalModule, TableComponent, ButtonComponent, Ng2BRPipesModule, ReactiveFormsModule, DropdownModule, DialogModule,
     InputTextModule, SelectButtonModule, CalendarModule, CheckboxModule, InputMaskModule, InputTextareaModule, PanelModule,
-    ButtonModule
+    ButtonModule, RadioButtonModule
   ]
 })
 export class SharedModule { }

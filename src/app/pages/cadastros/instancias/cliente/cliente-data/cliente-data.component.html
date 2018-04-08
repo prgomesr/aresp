@@ -8,7 +8,8 @@
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>CPF*</label>
-          <p-inputMask mask="999.999.999-99" name="cpf" [(ngModel)]="cliente.cpf"></p-inputMask>
+          <p-inputMask mask="999.999.999-99" name="cpf" [(ngModel)]="cliente.cpf" required #cpf="ngModel"></p-inputMask>
+          <app-message [control]="cpf" error="required" text="Preencha o CPF"></app-message>
         </div>
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
@@ -28,7 +29,8 @@
           <p-calendar name="nascimento" dateFormat="dd/mm/yy"
                       [inline]="false" [readonlyInput]="false" [showIcon]="true"
                       [(ngModel)]="cliente.nascimento" [locale]="pt"
-                      #nascimento="ngModel" required></p-calendar>
+                      #nascimento="ngModel" required
+                      [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030"></p-calendar>
 
           <app-message [control]="nascimento" error="required"
                        text="Informe uma data de nascimento"></app-message>
@@ -46,24 +48,24 @@
 
         <div class="ui-g-3 ui-md-3 ui-fluid">
           <label>Nome do Pai</label>
-          <input type="text" pInputText #pai="ngModel" name="pai" [(ngModel)]="cliente.pai">
+          <input type="text" pInputText name="pai" [(ngModel)]="cliente.pai">
         </div>
 
         <div class="ui-g-3 ui-md-3 ui-fluid">
           <label>Nome da Mãe</label>
-          <input type="text" pInputText #mae="ngModel" name="mae" [(ngModel)]="cliente.mae">
+          <input type="text" pInputText name="mae" [(ngModel)]="cliente.mae">
         </div>
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Estado Civil</label>
           <p-dropdown [options]="estCivil" placeholder="Selecione: " [autoWidth]="false" name="estadoCivil"
-                      [(ngModel)]="cliente.estadoCivil"></p-dropdown>
+                      [(ngModel)]="cliente.estadoCivil" required></p-dropdown>
         </div>
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Tipo de Sócio</label>
           <p-dropdown [options]="tiposSocios" placeholder="Selecione: " [autoWidth]="false" name="tipo"
-                      [(ngModel)]="cliente.tipo"></p-dropdown>
+                      [(ngModel)]="cliente.tipo" required></p-dropdown>
         </div>
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
@@ -146,6 +148,77 @@
             <ng-template tabHeading>
               <i class="fa fa-credit-card"></i> Dados Bancários
             </ng-template>
+
+            <div class="ui-g">
+              <div class="ui-g-12 ui-md-12 ui-fluid">
+                <p-radioButton name="debito" value="conta" label="Débito Automático" #conta></p-radioButton>
+                <p-radioButton name="debito" value="cartao" label="Cartão de Crédito" #cartao></p-radioButton>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-2 ui-md-2 ui-fluid">
+                <label>Agência</label>
+                <input type="text" pInputText name="agencia" [(ngModel)]="cliente.dadosBancarios.agencia" required
+                [disabled]="!conta.checked">
+              </div>
+
+              <div class="ui-g-1 ui-md-1 ui-fluid">
+                <label>Dígito</label>
+                <input type="text" pInputText name="agenciaDigito" [(ngModel)]="cliente.dadosBancarios.agenciaDigito" required
+                       [disabled]="!conta.checked">
+              </div>
+
+              <div class="ui-g-2 ui-md-2 ui-fluid">
+                <label>Conta</label>
+                <input type="text" pInputText name="conta" [(ngModel)]="cliente.dadosBancarios.conta" required
+                       [disabled]="!conta.checked">
+              </div>
+
+              <div class="ui-g-1 ui-md-1 ui-fluid">
+                <label>Dígito</label>
+                <input type="text" pInputText name="contaDigito" [(ngModel)]="cliente.dadosBancarios.contaDigito" required
+                       [disabled]="!conta.checked">
+              </div>
+
+              <div class="ui-g-3 ui-md-3 ui-fluid">
+                <label>Banco</label>
+                <p-dropdown [options]="bancos" [autoWidth]="false" placeholder="Selecione: " required name="banco"
+                [(ngModel)]="cliente.dadosBancarios.banco.id"
+                            [disabled]="!conta.checked"></p-dropdown>
+              </div>
+            </div>
+
+            <div class="ui-g">
+              <div class="ui-g-3 ui-md-3 ui-fluid">
+                <label>Número do Cartão</label>
+                <p-inputMask mask="9999.9999.9999.9999" name="numeroCartao" [(ngModel)]="cliente.dadosBancarios.numeroCartao"
+                required
+                             [disabled]="!cartao.checked"></p-inputMask>
+              </div>
+
+              <div class="ui-g-2 ui-md-2 ui-fluid">
+                <label>Mês</label>
+                <p-dropdown [options]="meses" [autoWidth]="false" placeholder="Selecione: " name="mes"
+                [(ngModel)]="cliente.dadosBancarios.mes" required
+                            [disabled]="!cartao.checked"></p-dropdown>
+              </div>
+
+              <div class="ui-g-2 ui-md-2 ui-fluid">
+                <label>Ano</label>
+                <p-dropdown [options]="anos" [autoWidth]="false" placeholder="Selecione: " name="ano"
+                [(ngModel)]="cliente.dadosBancarios.ano" required
+                            [disabled]="!cartao.checked"></p-dropdown>
+              </div>
+
+              <div class="ui-g-2 ui-md-2 ui-fluid">
+                <label>Operadora</label>
+                <p-dropdown [options]="operadoras" [autoWidth]="false" placeholder="Selecione: " name="operadora"
+                [(ngModel)]="cliente.dadosBancarios.operadora.id" required
+                            [disabled]="!cartao.checked"></p-dropdown>
+              </div>
+
+            </div>
 
           </tab>
           <tab>

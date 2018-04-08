@@ -1,7 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {FormBuilder, FormControl } from '@angular/forms';
-
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import {Component, OnInit} from '@angular/core';
 
 import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 import { BancoService } from '../../../diversos/banco/banco.service';
@@ -34,6 +31,35 @@ export class ClienteDataComponent implements OnInit {
   sexos = [
     {label: 'Masculino', value: 'M'},
     {label: 'Feminino', value: 'F'}
+    ];
+  meses = [
+    {label: '01', value: '01'},
+    {label: '02', value: '02'},
+    {label: '03', value: '03'},
+    {label: '04', value: '04'},
+    {label: '05', value: '05'},
+    {label: '06', value: '06'},
+    {label: '07', value: '07'},
+    {label: '08', value: '08'},
+    {label: '08', value: '09'},
+    {label: '10', value: '10'},
+    {label: '11', value: '11'},
+    {label: '12', value: '12'}
+    ];
+  anos = [
+    {label: '18', value: '18'},
+    {label: '19', value: '19'},
+    {label: '20', value: '20'},
+    {label: '21', value: '21'},
+    {label: '22', value: '22'},
+    {label: '23', value: '23'},
+    {label: '24', value: '24'},
+    {label: '25', value: '25'},
+    {label: '26', value: '26'},
+    {label: '27', value: '27'},
+    {label: '28', value: '28'},
+    {label: '29', value: '29'},
+    {label: '30', value: '30'}
     ];
   pt = {
     firstDayOfWeek: 0,
@@ -74,12 +100,14 @@ export class ClienteDataComponent implements OnInit {
   }
 
   listarBancos() {
-    this.bancoService.listar().subscribe(dados => this.bancos = dados,
+    this.bancoService.listar().subscribe(dados => this.bancos = dados
+        .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   listarOperadoras() {
-    this.operadoraService.listar().subscribe(dados => this.operadoras = dados,
+    this.operadoraService.listar().subscribe(dados => this.operadoras = dados
+        .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 

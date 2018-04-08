@@ -84,6 +84,19 @@ export class Telefone {
   }
 }
 
+export class DadosBancarios {
+  id: number;
+  agencia: string;
+  agenciaDigito: string;
+  conta: string;
+  contaDigito: string;
+  numeroCartao: string;
+  mes: string;
+  ano: string;
+  operadora = new Operadora();
+  banco = new Banco();
+}
+
 export class Cliente {
   id: number;
   cpf: string;
@@ -101,6 +114,7 @@ export class Cliente {
   telefones = new Array<Telefone>();
   tipo = new TipoSocio();
   secretaria = new Secretaria();
+  dadosBancarios = new DadosBancarios();
 }
 
 export class Empresa {
