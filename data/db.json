@@ -264,7 +264,72 @@
       "id": 1
     }
   ],
-  "recebimentos": [],
+  "recebimentos": [
+    {
+      "dtEmissao": "2018-04-09T17:49:38.947Z",
+      "grupo": {
+        "id": 1
+      },
+      "categoria": {
+        "id": 1
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {},
+        "id": 1
+      },
+      "cliente": {
+        "endereco": {},
+        "dependentes": [],
+        "telefones": [],
+        "tipo": {},
+        "secretaria": {},
+        "dadosBancarios": {
+          "operadora": {},
+          "banco": {}
+        },
+        "id": 4
+      },
+      "situacao": {},
+      "descricao": "teste de conversao de data",
+      "dtCompetencia": "2018-04-09T03:00:00.000Z",
+      "dtVencimento": "2018-05-10T03:00:00.000Z",
+      "valor": 110,
+      "id": 1
+    },
+    {
+      "dtEmissao": "2018-04-09T17:55:57.953Z",
+      "grupo": {
+        "id": 2
+      },
+      "categoria": {
+        "id": 2
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {},
+        "id": 1
+      },
+      "cliente": {
+        "endereco": {},
+        "dependentes": [],
+        "telefones": [],
+        "tipo": {},
+        "secretaria": {},
+        "dadosBancarios": {
+          "operadora": {},
+          "banco": {}
+        },
+        "id": 2
+      },
+      "situacao": {},
+      "descricao": "novo teste",
+      "dtCompetencia": "2018-04-10T03:00:00.000Z",
+      "dtVencimento": "2018-05-10T03:00:00.000Z",
+      "valor": 10,
+      "id": 2
+    }
+  ],
   "pagamentos": [
     {
       "descricao": "REBOCO",

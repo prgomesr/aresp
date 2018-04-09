@@ -23,11 +23,21 @@ export class ContasReceberService {
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(`${environment.apiUrl}recebimentos/${id}`);
+    return this.http.get<any>(`${environment.apiUrl}recebimentos/${id}`)
+      .map(res => {
+        const recebimento = res as Recebimento;
+        this.converterStringParaData([recebimento]);
+        return recebimento;
+      });
   }
 
   editar(recebimento: Recebimento) {
-    return this.http.put<any>(environment.apiUrl + 'recebimentos/' + recebimento.id, recebimento);
+    return this.http.put<any>(environment.apiUrl + 'recebimentos/' + recebimento.id, recebimento)
+      .map(res => {
+        const recebimentoAlterado = res as Recebimento;
+        this.converterStringParaData([recebimentoAlterado]);
+        return recebimentoAlterado;
+      });
   }
 
   private converterStringParaData(recebimentos: Recebimento []) {
