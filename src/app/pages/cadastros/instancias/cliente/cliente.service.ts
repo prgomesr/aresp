@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
-import {Cliente} from '../../../../core/model';
+import { Cliente } from '../../../../core/model';
+import * as moment from 'moment';
 
 @Injectable()
 export class ClienteService {
@@ -17,15 +18,31 @@ export class ClienteService {
   }
 
   editar(cliente: Cliente) {
-    return this.http.put<any>(environment.apiUrl + 'clientes/' + cliente.id, cliente);
+    return this.http.put<any>(environment.apiUrl + 'clientes/' + cliente.id, cliente)
+      .map(res => {
+        const clienteAlterado = res as Cliente;
+        this.converterStringParaData([clienteAlterado]);
+        return clienteAlterado;
+      });
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'clientes/' + `${id}`);
+    return this.http.get<any>(environment.apiUrl + 'clientes/' + `${id}`)
+      .map(res => {
+        const cliente = res as Cliente;
+        this.converterStringParaData([cliente]);
+        return cliente;
+      });
   }
 
   getCep(cep) {
     return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json`);
+  }
+
+  private converterStringParaData(clientes: Cliente []) {
+    for (const cliente of clientes) {
+      cliente.nascimento = moment(cliente.nascimento, 'YYYY-MM-DD').toDate();
+    }
   }
 
 }

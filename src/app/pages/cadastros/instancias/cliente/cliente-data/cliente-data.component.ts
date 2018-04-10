@@ -32,6 +32,10 @@ export class ClienteDataComponent implements OnInit {
     { label: 'Divorcidado (a)', value: 'D' },
     { label: 'Viúvo (a)', value: 'V' }
   ];
+  tiposDadosBancarios = [
+    {label: 'Débito', value: 'DEBITO'},
+    {label: 'Fatura', value: 'FATURA'}
+    ];
   sexos = [
     {label: 'Masculino', value: 'M'},
     {label: 'Feminino', value: 'F'}

@@ -148,73 +148,50 @@
   ],
   "clientes": [
     {
-      "nome": "MARIA DA GLORIA MARTINS SILVEIRA",
-      "status": "EM DIA",
-      "cpf": "458.708.855-23",
-      "telefone": "17 3232-3232",
-      "email": "maria@email.com",
-      "id": 1
-    },
-    {
-      "nome": "CLADIO DANIEL GONCALVES",
-      "status": "CANCELADO",
-      "cpf": "678.532.186-72",
-      "telefone": "17 99191-9191",
-      "email": "claudio@email.com",
-      "id": 2
-    },
-    {
-      "nome": "JOAQUIM MIGUEL CARDOSO",
-      "status": "INADIMPLENTE",
-      "cpf": "431.392.655-06",
-      "telefone": "34 3434-3434",
-      "email": "joaquim@email.com",
-      "id": 3
-    },
-    {
+      "situacao": "EM DIA",
       "endereco": {
-        "cep": "15.030-520",
-        "logradouro": "Rua Sao Sebastiao",
-        "numero": "2292",
-        "bairro": "Vila Zilda",
-        "cidade": "Sao Jose do Rio Preto",
+        "cep": "15.020-020",
+        "logradouro": "Rua das Flores",
+        "numero": "1111",
+        "bairro": "Jardim Flores",
+        "cidade": "Mirassol",
         "estado": "SP"
       },
       "dependentes": [
         {
-          "nome": "anne dalben",
+          "nome": "ANA MARIA",
           "parentesco": "Cônjuge",
-          "nascimento": "1995-03-15T03:00:00.000Z"
+          "nascimento": "2011-11-11T02:00:00.000Z"
         }
       ],
       "telefones": [
         {
-          "numero": "17 99789-1990",
-          "tipo": "PRINCIPAL"
+          "numero": "11 11111-111",
+          "tipo": "CONTATO"
         }
       ],
-      "tipo": 2,
-      "secretaria": {},
+      "tipo": 1,
+      "secretaria": 2,
       "dadosBancarios": {
+        "tipo": "DEBITO",
         "operadora": {},
         "banco": {
-          "id": 1
+          "id": 2
         },
-        "agencia": "4018",
-        "agenciaDigito": "5",
-        "conta": "15279",
-        "contaDigito": "x"
+        "agencia": "1111",
+        "agenciaDigito": "1",
+        "contaDigito": "1",
+        "conta": "11111"
       },
-      "cpf": "390.824.478-19",
-      "rg": "459446381",
-      "nome": "paulo ricardo gomes rodrigues",
-      "nascimento": "1990-11-16T02:00:00.000Z",
+      "cpf": "111.111.111-11",
+      "nome": "JOSE MARQUES",
+      "nascimento": "2010-10-10T03:00:00.000Z",
       "sexo": "M",
-      "pai": "valdivino de souza rodrigues",
-      "mae": "ana lucia gomes",
+      "pai": "MARCOS",
+      "mae": "MARIA",
       "estadoCivil": "S",
-      "email": "prgomesr@gmail.com",
-      "id": 4
+      "email": "jose-masques@email.com",
+      "id": 1
     }
   ],
   "fornecedores": [
@@ -266,7 +243,7 @@
   ],
   "recebimentos": [
     {
-      "dtEmissao": "2018-04-09T17:49:38.947Z",
+      "dtEmissao": "2018-04-10T02:04:25.529Z",
       "grupo": {
         "id": 1
       },
@@ -279,31 +256,36 @@
         "id": 1
       },
       "cliente": {
+        "situacao": "EM DIA",
         "endereco": {},
         "dependentes": [],
         "telefones": [],
         "tipo": {},
+        "cancelado": {
+          "data": "2018-04-10T02:04:25.529Z"
+        },
         "secretaria": {},
         "dadosBancarios": {
+          "tipo": "DEBITO",
           "operadora": {},
           "banco": {}
         },
-        "id": 4
+        "id": 1
       },
       "situacao": {},
-      "descricao": "teste de conversao de data",
-      "dtCompetencia": "2018-04-09T03:00:00.000Z",
+      "descricao": "mensalidade",
+      "dtCompetencia": "2018-05-10T03:00:00.000Z",
       "dtVencimento": "2018-05-10T03:00:00.000Z",
-      "valor": 110,
+      "valor": 70,
       "id": 1
     },
     {
-      "dtEmissao": "2018-04-09T17:55:57.953Z",
+      "dtEmissao": "2018-04-10T02:05:41.085Z",
       "grupo": {
         "id": 2
       },
       "categoria": {
-        "id": 2
+        "id": 1
       },
       "conta": {
         "empresa": {},
@@ -311,22 +293,27 @@
         "id": 1
       },
       "cliente": {
+        "situacao": "EM DIA",
         "endereco": {},
         "dependentes": [],
         "telefones": [],
         "tipo": {},
+        "cancelado": {
+          "data": "2018-04-10T02:05:41.085Z"
+        },
         "secretaria": {},
         "dadosBancarios": {
+          "tipo": "DEBITO",
           "operadora": {},
           "banco": {}
         },
-        "id": 2
+        "id": 1
       },
       "situacao": {},
-      "descricao": "novo teste",
+      "descricao": "boleto",
       "dtCompetencia": "2018-04-10T03:00:00.000Z",
-      "dtVencimento": "2018-05-10T03:00:00.000Z",
-      "valor": 10,
+      "dtVencimento": "2018-04-10T03:00:00.000Z",
+      "valor": 70,
       "id": 2
     }
   ],

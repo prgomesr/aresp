@@ -17,7 +17,6 @@
         <tr>
           <th class="text-table-left">Nome</th>
           <th style="width: 150px">CPF</th>
-          <th style="width: 130px">Telefone</th>
           <th class="text-table-left">E-mail</th>
           <th style="width: 110px">Situação</th>
           <th style="width: 80px"></th>
@@ -27,30 +26,34 @@
         <tr>
           <td class="text-table-left">{{cliente.nome}}</td>
           <td>{{cliente.cpf}}</td>
-          <td>{{cliente.telefone}}</td>
           <td class="text-table-left">{{cliente.email}}</td>
           <td>
             <span class="badge status-span"
-                  [ngClass]="{'badge-success': cliente.status === 'EM DIA', 'badge-danger': cliente.status === 'CANCELADO',
-                'badge-warning': cliente.status === 'INADIMPLENTE'}">{{cliente.status}}</span>
+                  [ngClass]="{'badge-success': cliente.situacao === 'EM DIA', 'badge-danger': cliente.situacao === 'CANCELADO',
+                'badge-warning': cliente.situacao === 'INADIMPLENTE'}">{{cliente.situacao}}</span>
           </td>
           <td>
             <a href="javascript:void(0)" pTooltip="Ativar" tooltipPosition="top"><i class="fa fa-check"
-              *ngIf="cliente.status === 'CANCELADO'"></i></a>
+              *ngIf="cliente.situacao === 'CANCELADO'"></i></a>
             <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"
             [routerLink]="['/instancias/cliente/editar', cliente.id]"><i class="fa fa-pencil"></i></a>
             <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"><i class="fa fa-eye"></i></a>
             <a href="javascript:void(0)" pTooltip="Cancelar" tooltipPosition="top"><i class="fa fa-ban"
-              *ngIf="cliente.status === 'EM DIA' || cliente.status === 'INADIMPLENTE'"></i></a>
+              *ngIf="cliente.situacao === 'EM DIA' || cliente.situacao === 'INADIMPLENTE'"
+            (click)="prepararCancelamento(cliente)"></i></a>
           </td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td [attr.colspan]="6" class="text-table-left">
+          <td colspan="5" class="text-table-left">
             Nenhum registro encontrado.
           </td>
         </tr>
       </ng-template>
     </p-table>
   </div>
+
+<p-dialog header="Cancelamento">
+
+</p-dialog>

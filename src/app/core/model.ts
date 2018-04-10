@@ -86,6 +86,7 @@ export class Telefone {
 
 export class DadosBancarios {
   id: number;
+  tipo = 'DEBITO';
   agencia: string;
   agenciaDigito: string;
   conta: string;
@@ -95,6 +96,13 @@ export class DadosBancarios {
   ano: string;
   operadora = new Operadora();
   banco = new Banco();
+}
+
+export class Cancelamento {
+  id: number;
+  data = new Date();
+  motivo: string;
+  obs: string;
 }
 
 export class Cliente {
@@ -109,10 +117,12 @@ export class Cliente {
   obs: string;
   email: string;
   nascimento: Date;
+  situacao = 'EM DIA';
   endereco = new Endereco();
   dependentes = new Array<Dependente>();
   telefones = new Array<Telefone>();
   tipo = new TipoSocio();
+  cancelado = new Cancelamento();
   secretaria = new Secretaria();
   dadosBancarios = new DadosBancarios();
 }

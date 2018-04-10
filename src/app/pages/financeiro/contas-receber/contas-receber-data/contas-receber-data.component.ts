@@ -102,7 +102,7 @@ export class ContasReceberDataComponent implements OnInit {
   atualizar(form: FormControl) {
     this.recebimentoService.editar(this.recebimento).subscribe(dado => {
         this.recebimento = dado;
-        this.router.navigate(['/finaceiro/contas-receber']);
+        this.router.navigate(['/financeiro/contas-receber']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
       err => this.errorHandler.handle(err));

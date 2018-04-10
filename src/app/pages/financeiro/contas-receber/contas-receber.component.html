@@ -105,8 +105,10 @@
                   </td>
                   <td>
                     <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/financeiro/contas-receber/editar', recebimento.id]"><i class="fa fa-pencil"></i></a>
-                    <a href="javascript:void(0)" pTooltip="Emitir boleto" tooltipPosition="top"><i class="fa fa-barcode"></i></a>
-                    <a href="javascript:void(0)" pTooltip="Enviar boleto por e-mail" tooltipPosition="left"><i class="fa fa-share-square"></i></a>
+                    <a href="javascript:void(0)" pTooltip="Emitir boleto" tooltipPosition="top"
+                       *ngIf="recebimento.grupo.id === 2"><i class="fa fa-barcode"></i></a>
+                    <a href="javascript:void(0)" pTooltip="Enviar boleto por e-mail" tooltipPosition="left"
+                       *ngIf="recebimento.grupo.id === 2"><i class="fa fa-share-square"></i></a>
                     <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"
                        (click)="openModal(modalExclusao, recebimento.id)"><i class="fa fa-trash"></i></a>
                   </td>
