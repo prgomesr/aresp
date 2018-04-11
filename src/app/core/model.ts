@@ -100,13 +100,16 @@ export class DadosBancarios {
 
 export class Cancelamento {
   id: number;
-  data = new Date();
+  dataCancelamento = new Date();
+  dataPedido: Date;
   motivo: string;
   obs: string;
 }
 
 export class Cliente {
   id: number;
+  cadastro = new Date();
+  entrada: Date;
   cpf: string;
   rg: string;
   nome: string;
