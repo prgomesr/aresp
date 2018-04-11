@@ -43,10 +43,15 @@ export class ClienteComponent implements OnInit {
       err => this.errorHandler.handle(err));
   }
 
-  prepararCancelamento(id: number, nome: any) {
+  prepararCancelamento(id: number) {
     this.exibindoFormularioCancelamento = true;
-    console.log(nome);
+    this.carregarCliente(id);
+    console.log(this.cliente);
+  }
 
+  carregarCliente(id: number) {
+    this.clienteService.listarPorCodigo(id).subscribe(dado => this.cliente = dado,
+      err => this.errorHandler.handle(err));
   }
 
 }

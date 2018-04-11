@@ -40,7 +40,7 @@
             <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"><i class="fa fa-eye"></i></a>
             <a href="javascript:void(0)" pTooltip="Cancelar" tooltipPosition="top"><i class="fa fa-ban"
               *ngIf="cliente.situacao === 'EM DIA' || cliente.situacao === 'INADIMPLENTE'"
-            (click)="prepararCancelamento(cliente.id, cliente.nome)"></i></a>
+            (click)="prepararCancelamento(cliente.id)"></i></a>
           </td>
         </tr>
       </ng-template>
@@ -57,33 +57,33 @@
 <p-dialog header="Cancelamento" [(visible)]="exibindoFormularioCancelamento"
 [modal]="modal" *ngIf="cliente">
 
-  <form #f="ngForm" (ngSubmit)="cancelarCliente(f)" autocomplete="off">
+    <form #f="ngForm" (ngSubmit)="cancelarCliente(f)" autocomplete="off">
 
-    <div class="ui-g-12 ui-fluid">
-      <label>{{cliente | json}}</label>
-    </div>
+      <div class="ui-md-12 ui-fluid">
+        <label>{{cliente.nome}}</label>
+      </div>
 
-    <div class="ui-g-12 ui-fluid">
-      <label>Data da solicitação*</label>
-      <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true" name="dataPedido" required
-                  [(ngModel)]="cliente.cancelado.dataPedido"></p-calendar>
-    </div>
+      <div class="ui-md-6 ui-fluid">
+        <label>Data da solicitação*</label>
+        <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true" name="dataPedido" required
+                    [(ngModel)]="cliente.cancelado.dataPedido"></p-calendar>
+      </div>
 
-    <div class="ui-g-12 ui-fluid">
-      <label>Motivo*</label>
-      <p-dropdown [options]="motivos" [autoWidth]="false" name="motivo" required
-      [(ngModel)]="cliente.cancelado.motivo"></p-dropdown>
-    </div>
+      <div class="ui-md-6 ui-fluid">
+        <label>Motivo*</label>
+        <p-dropdown [options]="motivos" [autoWidth]="false" name="motivo" required
+                    [(ngModel)]="cliente.cancelado.motivo" placeholder="Selecione: "></p-dropdown>
+      </div>
 
-    <div class="ui-g-12 ui-fluid">
-      <label>Observação</label>
-      <textarea pInputTextarea name="obs" [(ngModel)]="cliente.cancelado.obs"></textarea>
-    </div>
+      <div class="ui-md-12 ui-fluid">
+        <label>Observação</label>
+        <textarea pInputTextarea name="obs" [(ngModel)]="cliente.cancelado.obs"></textarea>
+      </div>
 
-    <div class="ui-g-12">
-      <button pButton type="submit" label="Cancelar" [disabled]="f.invalid"></button>
-    </div>
+      <div class="ui-md-12">
+        <button pButton type="submit" label="Confirmar" [disabled]="f.invalid"></button>
+      </div>
 
-  </form>
+    </form>
 
 </p-dialog>
