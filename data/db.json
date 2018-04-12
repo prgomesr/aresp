@@ -148,50 +148,82 @@
   ],
   "clientes": [
     {
-      "situacao": "EM DIA",
+      "cadastro": "2018-04-11T03:00:00.000Z",
+      "situacao": "CANCELADO",
       "endereco": {
-        "cep": "15.020-020",
-        "logradouro": "Rua das Flores",
-        "numero": "1111",
-        "bairro": "Jardim Flores",
-        "cidade": "Mirassol",
-        "estado": "SP"
+        "cep": "13.015-000",
+        "logradouro": "Rua Barão de Jaguara",
+        "numero": "1010",
+        "bairro": "Centro",
+        "cidade": "Campinas",
+        "estado": "SP",
+        "complemento": "de 353/354 a 590/591"
       },
-      "dependentes": [
-        {
-          "nome": "ANA MARIA",
-          "parentesco": "Cônjuge",
-          "nascimento": "2011-11-11T02:00:00.000Z"
-        }
-      ],
-      "telefones": [
-        {
-          "numero": "11 11111-111",
-          "tipo": "CONTATO"
-        }
-      ],
+      "dependentes": [],
+      "telefones": [],
       "tipo": 1,
-      "secretaria": 2,
+      "cancelado": {
+        "dataCancelamento": "2018-04-11T03:00:00.000Z",
+        "dataPedido": "2018-04-10T03:00:00.000Z",
+        "motivo": "MUDANCA"
+      },
+      "secretaria": {},
       "dadosBancarios": {
         "tipo": "DEBITO",
         "operadora": {},
         "banco": {
-          "id": 2
+          "id": 1
         },
-        "agencia": "1111",
+        "agencia": "111",
         "agenciaDigito": "1",
-        "contaDigito": "1",
-        "conta": "11111"
+        "conta": "1111",
+        "contaDigito": "11"
       },
-      "cpf": "111.111.111-11",
-      "nome": "JOSE MARQUES",
-      "nascimento": "2010-10-10T03:00:00.000Z",
+      "cpf": "333.333.333-33",
+      "nome": "mario",
+      "nascimento": "2018-04-10T03:00:00.000Z",
       "sexo": "M",
-      "pai": "MARCOS",
-      "mae": "MARIA",
+      "pai": "aa",
+      "mae": "aa",
       "estadoCivil": "S",
-      "email": "jose-masques@email.com",
+      "email": "mamamma",
       "id": 1
+    },
+    {
+      "cadastro": "2018-04-11T22:34:04.756Z",
+      "situacao": "EM DIA",
+      "endereco": {
+        "cep": "22.222-222",
+        "logradouro": "llll",
+        "numero": "11",
+        "bairro": "lllll",
+        "cidade": "sao",
+        "estado": "sp"
+      },
+      "dependentes": [],
+      "telefones": [],
+      "tipo": 2,
+      "cancelado": {},
+      "secretaria": {},
+      "dadosBancarios": {
+        "tipo": "FATURA",
+        "operadora": {
+          "id": 1
+        },
+        "banco": {},
+        "numeroCartao": "7777.7777.7777.7777",
+        "mes": "08",
+        "ano": "25"
+      },
+      "cpf": "444.444.444-44",
+      "nome": "gisele",
+      "nascimento": "2018-04-10T03:00:00.000Z",
+      "sexo": "F",
+      "pai": "pedro",
+      "mae": "maria",
+      "estadoCivil": "C",
+      "email": "fise",
+      "id": 2
     }
   ],
   "fornecedores": [

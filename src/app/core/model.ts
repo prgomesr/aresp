@@ -86,7 +86,7 @@ export class Telefone {
 
 export class DadosBancarios {
   id: number;
-  tipo = 'DEBITO';
+  tipo = 'BOLETO';
   agencia: string;
   agenciaDigito: string;
   conta: string;
@@ -100,7 +100,7 @@ export class DadosBancarios {
 
 export class Cancelamento {
   id: number;
-  dataCancelamento = new Date();
+  dataCancelamento: Date;
   dataPedido: Date;
   motivo: string;
   obs: string;

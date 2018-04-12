@@ -42,6 +42,12 @@ export class ClienteService {
   private converterStringParaData(clientes: Cliente []) {
     for (const cliente of clientes) {
       cliente.nascimento = moment(cliente.nascimento, 'YYYY-MM-DD').toDate();
+      cliente.cadastro = moment(cliente.cadastro, 'YYYY-MM-DD').toDate();
+
+      if (cliente.cancelado.dataPedido || cliente.cancelado.dataCancelamento) {
+        cliente.cancelado.dataPedido = moment(cliente.cancelado.dataPedido, 'YYYY-MM-DD').toDate();
+        cliente.cancelado.dataCancelamento = moment(cliente.cancelado.dataCancelamento, 'YYYY-MM-DD').toDate();
+      }
     }
   }
 

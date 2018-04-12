@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ClienteService} from './cliente.service';
 import {ErrorHandlerService} from '../../../../core/error-handler.service';
 import { Cliente } from '../../../../core/model';
+import {FormControl} from '@angular/forms';
+import {ToastyService} from 'ng2-toasty';
 
 @Component({
   selector: 'app-cliente',
@@ -32,7 +34,8 @@ export class ClienteComponent implements OnInit {
     clear: 'Limpar'
   };
   constructor(private clienteService: ClienteService,
-              private errorHandler: ErrorHandlerService) {}
+              private errorHandler: ErrorHandlerService,
+              private toasty: ToastyService) {}
 
   ngOnInit() {
     this.listar();
@@ -46,11 +49,20 @@ export class ClienteComponent implements OnInit {
   prepararCancelamento(id: number) {
     this.exibindoFormularioCancelamento = true;
     this.carregarCliente(id);
-    console.log(this.cliente);
   }
 
   carregarCliente(id: number) {
     this.clienteService.listarPorCodigo(id).subscribe(dado => this.cliente = dado,
+      err => this.errorHandler.handle(err));
+  }
+
+  cancelarCliente(f: FormControl) {
+    this.clienteService.editar(this.cliente).subscribe(dado => {
+      this.cliente = dado;
+      this.toasty.success('Cliente cancelado com sucesso!');
+      this.listar();
+      this.exibindoFormularioCancelamento = false;
+    },
       err => this.errorHandler.handle(err));
   }
 

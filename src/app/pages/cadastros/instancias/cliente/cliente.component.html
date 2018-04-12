@@ -64,7 +64,13 @@
       </div>
 
       <div class="ui-md-6 ui-fluid">
-        <label>Data da solicitação*</label>
+        <label>Data do Cancelamento*</label>
+        <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true" name="dataCancelamento" required
+                    [(ngModel)]="cliente.cancelado.dataCancelamento"></p-calendar>
+      </div>
+
+      <div class="ui-md-6 ui-fluid">
+        <label>Data da Solicitação*</label>
         <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true" name="dataPedido" required
                     [(ngModel)]="cliente.cancelado.dataPedido"></p-calendar>
       </div>
