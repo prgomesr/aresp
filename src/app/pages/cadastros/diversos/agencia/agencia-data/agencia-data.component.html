@@ -2,35 +2,42 @@
 linkAnterior="/diversos/agencia" headingAnterior="Agências"></app-header-lv2>
 
 <div class="col-md">
-  <form (ngSubmit)="salvar()" autocomplete="off" [formGroup]="formulario">
+  <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
 
-    <div class="form-row">
-      <div class="col-md-2">
-        <label for="numero">Número*</label>
-        <input type="text" class="form-control" id="numero" formControlName="numero">
-        <app-message [control]="formulario.get('numero')" error="required" text="Preencha este campo."></app-message>
+    <div class="ui-g">
+
+      <div class="ui-g-2 ui-fluid">
+        <label>Número*</label>
+        <input type="text" pInputText pKeyFilter="int" required name="numero" #numero="ngModel"
+               [(ngModel)]="agencia.numero">
+        <app-message [control]="numero" error="required" text="Preencha este campo."></app-message>
       </div>
-      <div class="col-md-1">
-        <label for="digito">Dígito</label>
-        <input type="text" class="form-control" id="digito" formControlName="digito">
+
+      <div class="ui-g-1 ui-fluid">
+        <label>Dígito</label>
+        <input type="text" pInputText name="digito" [(ngModel)]="agencia.digito">
       </div>
-      <div class="col-md-3">
-        <label for="tel">Telefone</label>
-        <input type="text" class="form-control" id="tel" formControlName="telefone">
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Telefone</label>
+        <p-inputMask name="telefone" mask="(99) 9999?9-9999" [(ngModel)]="agencia.telefone">
+        </p-inputMask>
       </div>
-      <div class="col-md-3">
-        <label for="gerente">Gerente</label>
-        <input type="text" class="form-control" id="gerente" formControlName="gerente">
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Gerente</label>
+        <input type="text" pInputText name="gerente" [(ngModel)]="agencia.gerente">
       </div>
-      <div class="col-md-3 form-group" formGroupName="banco">
-        <label for="banco">Banco*</label>
-        <select class="custom-select" id="banco" formControlName="id" name="banco">
-          <option value="" disabled>Choose...</option>
-          <option [ngValue]="agencia.banco" *ngFor="let banco of bancos">{{banco.nome}}</option>
-        </select>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Banco*</label>
+       <p-dropdown [options]="bancos" [autoWidth]="false" placeholder="Selecione" name="banco" required
+       [(ngModel)]="agencia.banco"></p-dropdown>
       </div>
     </div>
-    {{formulario.value | json}}
-    <button class="btn btn-primary" type="submit" [disabled]="formulario.invalid || formulario.pristine">Salvar</button>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" [disabled]="f.invalid || f.pristine" label="Salvar"></button>
+    </div>
   </form>
 </div>

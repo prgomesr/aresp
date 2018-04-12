@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ContaCaixa} from '../../../../../core/model';
+import {EmpresaService} from '../../../instancias/empresa/empresa.service';
+import {AgenciaService} from '../../agencia/agencia.service';
+import {ErrorHandlerService} from '../../../../../core/error-handler.service';
+import {ContaCaixaService} from '../conta-caixa.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
+import {ToastyService} from 'ng2-toasty';
 
 @Component({
   selector: 'app-conta-caixa-data',
@@ -8,35 +15,74 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContaCaixaDataComponent implements OnInit {
 
-  formulario: FormGroup;
   tipos = [
-    {nome: 'C'}
+    {label: 'Corrente', value: 'C'},
+    {label: 'Poupança', value: 'P'}
   ];
-  default =  'Selecione: ';
-  constructor(private formBuilder: FormBuilder) { }
+  empresas = [];
+  agencias = [];
+  conta = new ContaCaixa();
+  constructor(private empresaService: EmpresaService,
+              private agenciaService: AgenciaService,
+              private contaService: ContaCaixaService,
+              private errorHandler: ErrorHandlerService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private toasty: ToastyService) { }
 
   ngOnInit() {
-    this.configurarFormulario();
+    this.listarEmpresas();
+    this.listarAgencias();
+    const id = this.route.snapshot.params['id'];
+
+    if (id) {
+      this.carregarConta(id);
+    }
   }
 
-  configurarFormulario() {
-    this.formulario = this.formBuilder.group({
-      id: [],
-      numero: [],
-      digito: [],
-      nome: [null, Validators.required],
-      tipo: [],
-      tx_multa: [],
-      tx_juros: [],
-      empresa: this.formBuilder.group({
-        id: [],
-        nome: [null, Validators.required],
-      }),
-      agencia: this.formBuilder.group({
-        id: [],
-        nome: [null, Validators.required],
-      })
-    });
+  listarEmpresas() {
+    this.empresaService.listar().subscribe(dados => this.empresas = dados
+      .map(d => ({label: d.fantasia, value: d.id})),
+      err => this.errorHandler.handle(err));
   }
 
+  listarAgencias() {
+    this.agenciaService.listar().subscribe(dados => this.agencias = dados
+      .map(d => ({label: d.numero, value: d.id})),
+      err => this.errorHandler.handle(err));
+  }
+
+  salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizar(form);
+    } else {
+      this.adicionar(form);
+    }
+  }
+
+  adicionar(form: FormControl) {
+    this.contaService.salvar(this.conta).subscribe(() => {
+      this.toasty.success('Registro salvo com sucesso!');
+      form.reset();
+      this.conta = new ContaCaixa();
+    }, err => this.errorHandler.handle(err));
+  }
+
+  atualiza(form: FormControl) {
+    this.contaService.editar(this.conta).subscribe(dado => {
+        this.conta = dado;
+        this.router.navigate(['/diversos/conta']);
+        this.toasty.success('Registro atualizado com sucesso!');
+      },
+      err => this.errorHandler.handle(err));
+  }
+
+  carregarConta(codigo: number) {
+    this.contaService.listarPorCodigo(codigo).subscribe(dado => this.conta = dado,
+      err => this.errorHandler.handle(err));
+  }
+
+  get editando(): any {
+    return Boolean (this.conta.id);
+  }
 }

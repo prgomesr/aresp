@@ -6,6 +6,8 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { ContaCaixaDataComponent } from './conta-caixa-data/conta-caixa-data.component';
 import { ContaCaixaComponent } from './conta-caixa.component';
 import { ContaCaixaRoutingModule } from './conta-caixa-routing.module';
+import { EmpresaService } from '../../instancias/empresa/empresa.service';
+import { AgenciaService } from '../agencia/agencia.service';
 
 @NgModule({
   imports: [
@@ -14,6 +16,6 @@ import { ContaCaixaRoutingModule } from './conta-caixa-routing.module';
     ContaCaixaRoutingModule
   ],
   declarations: [ContaCaixaComponent, ContaCaixaDataComponent],
-  providers: [ContaCaixaService]
+  providers: [ContaCaixaService, EmpresaService, AgenciaService]
 })
 export class ContaCaixaModule { }

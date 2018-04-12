@@ -36,7 +36,30 @@
       }
     }
   ],
-  "agencias": [],
+  "agencias": [
+    {
+      "numero": "0037",
+      "telefone": "(17) 32323-232",
+      "banco": 1,
+      "id": 1,
+      "gerente": "Lara"
+    },
+    {
+      "numero": "6575",
+      "digito": "7",
+      "gerente": "Lúcia",
+      "banco": 1,
+      "id": 2
+    },
+    {
+      "numero": "0596",
+      "digito": null,
+      "gerente": "Hernani",
+      "banco": 3,
+      "telefone": null,
+      "id": 3
+    }
+  ],
   "grupos": [
     {
       "nome": "BB1",

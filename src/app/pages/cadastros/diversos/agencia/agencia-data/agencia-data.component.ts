@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AgenciaService } from '../agencia.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
@@ -17,16 +17,13 @@ import {Agencia} from '../../../../../core/model';
 export class AgenciaDataComponent implements OnInit {
 
   agencia = new Agencia();
-  formulario: FormGroup;
-  default = 'Selecione:';
   bancos = [];
   constructor(private agenciaService: AgenciaService,
               private errorHandler: ErrorHandlerService,
               private toasty: ToastyService,
               private route: ActivatedRoute,
               private bancoService: BancoService,
-              private router: Router,
-              private formBuilder: FormBuilder) { }
+              private router: Router) { }
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
@@ -34,62 +31,46 @@ export class AgenciaDataComponent implements OnInit {
       this.listarPorCodigo(id);
     }
     this.listarBancos();
-    this.configurarFormulario();
   }
 
   listarPorCodigo(codigo: number) {
-    this.agenciaService.listarPorCodigo(codigo).subscribe(dado => this.formulario.patchValue(dado),
+    this.agenciaService.listarPorCodigo(codigo).subscribe(dado => this.agencia = dado,
       err => this.errorHandler.handle(err));
   }
 
   listarBancos() {
-    this.bancoService.listar().subscribe(dados => this.bancos = dados,
+    this.bancoService.listar().subscribe(dados => this.bancos = dados
+        .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   get editando(): any {
-    return Boolean (this.formulario.get('id').value);
+    return Boolean (this.agencia.id);
   }
 
-  salvar() {
+  salvar(f: FormControl) {
     if (this.editando) {
-      this.atualizarAgencia();
+      this.atualizarAgencia(f);
     } else {
-      this.adicionarAgencia();
-      console.log(this.formulario.value);
+      this.adicionarAgencia(f);
     }
   }
 
-  adicionarAgencia() {
-    this.agenciaService.salvar(this.formulario.value).subscribe(() => {
+  adicionarAgencia(f: FormControl) {
+    this.agenciaService.salvar(this.agencia).subscribe(() => {
       this.toasty.success('Registro salvo com sucesso!');
-      this.formulario.reset();
+      f.reset();
       // this.agencia = new Agencia();
     }, err => this.errorHandler.handle(err));
   }
 
-  atualizarAgencia() {
-    this.agenciaService.editar(this.formulario.value).subscribe(dado => {
-        // this.agencia = dado;
-        this.formulario.patchValue(dado);
+  atualizarAgencia(f: FormControl) {
+    this.agenciaService.editar(this.agencia).subscribe(dado => {
+        this.agencia = dado;
         this.router.navigate(['/diversos/agencia']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
       err => this.errorHandler.handle(err));
-  }
-
-  configurarFormulario() {
-    this.formulario = this.formBuilder.group({
-      id: [],
-      numero: [null, Validators.required],
-      digito: [],
-      telefone: [],
-      gerente: [],
-      banco: this.formBuilder.group({
-        id: [null, Validators.required],
-      }),
-    });
-    // this.formulario.get('banco.nome').setValue(this.default, {onlySelf: true});
   }
 
 }

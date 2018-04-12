@@ -1,16 +1,18 @@
 <app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Categoria de Pagamento" linkAnterior="/diversos/categoria-pagamento"
                 headingAnterior="Cadastro de Pagamentos"></app-header-lv2>
   <div class="col-md">
-    <form #tipoPagamentoForm="ngForm" (ngSubmit)="salvar(tipoPagamentoForm)" autocomplete="off">
+    <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
 
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="nome">Nome*</label>
-          <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel [(ngModel)]="categoria.nome">
+      <div class="ui-g">
+        <div class="ui-g-4 ui-fluid">
+          <label>Nome*</label>
+          <input type="text" pInputText required name="nome" #nome="ngModel" [(ngModel)]="categoria.nome">
           <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
         </div>
       </div>
 
-      <button class="btn btn-primary" type="submit" [disabled]="tipoPagamentoForm.invalid">Salvar</button>
+      <div class="ui-g-12">
+        <button pButton type="submit" [disabled]="f.invalid || f.pristine" label="Salvar"></button>
+      </div>
     </form>
   </div>
