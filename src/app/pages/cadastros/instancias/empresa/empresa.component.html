@@ -17,7 +17,8 @@
           <td>{{empresa.fantasia}}</td>
           <td>{{empresa.cnpj}}</td>
           <td>
-            <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"><i class="fa fa-pencil"></i></a>
+            <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"
+            [routerLink]="['/instancias/empresa/editar', empresa.id]"><i class="fa fa-pencil"></i></a>
             <a href="javascript:void(0)" pTooltip="Detalhes" tooltipPosition="top"
             (click)="modalDetalhe.show(); mostrarDetalhe(empresa.id)"><i class="fa fa-eye"></i></a>
           </td>

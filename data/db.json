@@ -190,7 +190,7 @@
       "id": 1
     },
     {
-      "cadastro": "2018-04-11T22:34:04.756Z",
+      "cadastro": "2018-04-11T03:00:00.000Z",
       "situacao": "EM DIA",
       "endereco": {
         "cep": "22.222-222",
@@ -200,7 +200,13 @@
         "cidade": "sao",
         "estado": "sp"
       },
-      "dependentes": [],
+      "dependentes": [
+        {
+          "nome": "ROBERTO ALVES",
+          "parentesco": "Cônjuge",
+          "nascimento": "1988-07-22T03:00:00.000Z"
+        }
+      ],
       "telefones": [],
       "tipo": 2,
       "cancelado": {},
@@ -224,45 +230,78 @@
       "estadoCivil": "C",
       "email": "fise",
       "id": 2
+    },
+    {
+      "cadastro": "2018-04-12T03:00:00.000Z",
+      "situacao": "EM DIA",
+      "endereco": {
+        "cep": "15.030-520",
+        "logradouro": "Rua São Sebastião",
+        "numero": "2292",
+        "complemento": "",
+        "bairro": "Vila Zilda",
+        "cidade": "São José do Rio Preto",
+        "estado": "SP"
+      },
+      "dependentes": [
+        {
+          "nome": "ANNE DALBEN",
+          "parentesco": "Cônjuge",
+          "nascimento": "1995-03-15T03:00:00.000Z"
+        },
+        {
+          "nome": "MELISSA DALBEN",
+          "parentesco": "Filho",
+          "nascimento": "2025-09-30T03:00:00.000Z"
+        }
+      ],
+      "telefones": [
+        {
+          "numero": "17 99789-1990",
+          "tipo": "PRINCIPAL"
+        },
+        {
+          "numero": "17 31218-733",
+          "tipo": "CONTATO"
+        }
+      ],
+      "tipo": 2,
+      "cancelado": {},
+      "secretaria": {},
+      "dadosBancarios": {
+        "tipo": "BOLETO",
+        "operadora": {},
+        "banco": {}
+      },
+      "cpf": "390.824.478-19",
+      "rg": "459446381",
+      "nome": "PAULO RICARDO GOMES RODRIGUES",
+      "nascimento": "1990-11-16T02:00:00.000Z",
+      "sexo": "M",
+      "pai": "VALDIVINO",
+      "mae": "ANA LUCIA",
+      "estadoCivil": "S",
+      "email": "prgomesr@gmail.com",
+      "id": 3
     }
   ],
   "fornecedores": [
     {
-      "razao": "PADARIA DO SEU ZE ME",
-      "fantasia": "PADARIA DO SEU ZE",
+      "cadastro": "2018-04-12T13:44:07.594Z",
+      "razao": "TIM CELULAR S. A.",
+      "fantasia": "TIM",
       "id": 1,
-      "cnpj": "15155155000174",
-      "email": "contato@padariadoseuze.com.br",
-      "telefone": "17 1515 5151",
-      "contato": "ANTONIO"
+      "cnpj": "04.206.050/0001-80"
     },
     {
-      "razao": "BORGES E ALMEIDA LTDA",
-      "fantasia": "ACOUGUE DOIS IRMAOS",
-      "id": 2,
-      "telefone": "17 2121 1515",
-      "contato": "RONALDO",
-      "email": "ronaldo@acouguedoisirmaos.com.br"
-    },
-    {
-      "cadastro": "2018-03-27T11:13:35.120Z",
-      "cnpj": "11111111000111",
-      "razao": "C R SILVA ME",
-      "fantasia": "RIO JARDIM",
-      "email": "riojardim@gmail.com",
-      "telefone": "17 3215 3212",
-      "contato": "ALEX",
-      "id": 4
-    },
-    {
-      "cadastro": "2018-03-28T00:12:07.013Z",
-      "cnpj": "46929667000174",
-      "razao": "assoc reg dos servidores publicos",
-      "fantasia": "aresp",
-      "email": "FINAnceiro@arespriopreto.com.br",
-      "telefone": "17 3216 5530",
-      "contato": "PAULO",
-      "id": 5
+      "cadastro": "2018-04-12T13:51:17.584Z",
+      "cnpj": "43.283.811/0041-47",
+      "razao": "KALUNGA COM E IND GRAFICA LTDA",
+      "fantasia": "KALUNGA",
+      "email": "www.kalunga.com",
+      "telefone": "(11) 33469-966",
+      "contato": "MARCIA",
+      "id": 2
     }
   ],
   "empresas": [

@@ -1,30 +1,35 @@
 <app-header-lv2 heading="Cadastro de Empresa" linkAnterior="/instancias/empresa" headingAnterior="Empresas"></app-header-lv2>
   <div class="col-md">
-    <form #empresaForm="ngForm" (ngSubmit)="(empresaForm)" autocomplete="off">
+    <form #empresaForm="ngForm" (ngSubmit)="salvar(empresaForm)" autocomplete="off">
 
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="cnpj">CNPJ*</label>
-          <input type="text" class="form-control" id="cnpj"
-                 required ngModel name="cnpj" #cnpj="ngModel" mask="99.999.999/9999-99">
+      <div class="ui-g">
+
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>CNPJ*</label>
+          <p-inputMask mask="99.999.999/9999-99" required name="cnpj" #cnpj="ngModel"
+                       [(ngModel)]="empresa.cnpj"></p-inputMask>
           <app-message [control]="cnpj" error="required" text="Preencha este campo."></app-message>
         </div>
-        <div class="form-group col-md-5">
-          <label for="razao">Razão Social*</label>
-          <input type="text" class="form-control" id="razao" required ngModel name="razao" #razao="ngModel">
+
+        <div class="ui-g-5 ui-md-5 ui-fluid">
+          <label>Razão Social*</label>
+          <input type="text" pInputText required name="razao" #razao="ngModel"
+                 [(ngModel)]="empresa.razao">
           <app-message [control]="razao" error="required" text="Preencha este campo."></app-message>
         </div>
-        <div class="form-group col-md-4">
-          <label for="fantasia">Nome Fantasia*</label>
-          <input type="text" class="form-control" id="fantasia" required ngModel name="fantasia" #fantasia="ngModel">
+
+        <div class="ui-g-4 ui-md-4 ui-fluid">
+          <label>Nome Fantasia*</label>
+          <input type="text" pInputText required name="fantasia" #fantasia="ngModel"
+                 [(ngModel)]="empresa.fantasia">
           <app-message [control]="fantasia" error="required" text="Preencha este campo."></app-message>
         </div>
-      </div>
-      <hr>
-      <div class="form-row">
-        <!-- form de contas bancarias -->
+
       </div>
 
-      <button class="btn btn-primary" type="submit" [disabled]="empresaForm.invalid">Salvar</button>
+      <div class="ui-g-12">
+        <button pButton type="submit" [disabled]="empresaForm.invalid || empresaForm.pristine" label="Salvar"></button>
+      </div>
+
     </form>
   </div>

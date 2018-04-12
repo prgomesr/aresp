@@ -1,40 +1,45 @@
 <app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Fornecedor" linkAnterior="/instancias/fornecedor" headingAnterior="Fornecedores"></app-header-lv2>
-  <div class="col-md">
+  <div class="ui-g">
       <form #fornecedorForm="ngForm" (ngSubmit)="salvar(fornecedorForm)" autocomplete="off">
 
-        <div class="form-row">
-          <div class="form-group col-md-3">
-            <label for="cnpj">CNPJ</label>
-            <input type="text" class="form-control" id="cnpj" ngModel name="cnpj" #cnpj="ngModel" mask="99.999.999/9999-99"
-                   [(ngModel)]="fornecedor.cnpj">
+          <div class="ui-g-3 ui-md-3 ui-fluid">
+            <label>CNPJ</label>
+            <p-inputMask name="cnpj" mask="99.999.999/9999-99"
+                         [(ngModel)]="fornecedor.cnpj"></p-inputMask>
           </div>
-          <div class="form-group col-md-5">
-            <label for="razao">Razão Social*</label>
-            <input type="text" class="form-control" id="razao" required ngModel name="razao" #razao="ngModel"
+
+          <div class="ui-g-5 ui-md-5 ui-fluid">
+            <label>Razão Social*</label>
+            <input type="text" pInputText required name="razao" #razao="ngModel"
                    [(ngModel)]="fornecedor.razao">
             <app-message [control]="razao" error="required" text="Preencha este campo."></app-message>
           </div>
-          <div class="form-group col-md-4">
-            <label for="fantasia">Nome Fantasia*</label>
-            <input type="text" class="form-control" id="fantasia" required ngModel name="fantasia" #fantasia="ngModel"
+
+          <div class="ui-g-4 ui-md-4 ui-fluid">
+            <label>Nome Fantasia*</label>
+            <input type="text" pInputText required name="fantasia" #fantasia="ngModel"
                    [(ngModel)]="fornecedor.fantasia">
             <app-message [control]="fantasia" error="required" text="Preencha este campo."></app-message>
           </div>
-          <div class="form-group col-md-5">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email" ngModel name="email" #email="ngModel" [(ngModel)]="fornecedor.email">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="telefone">Telefone</label>
-            <input type="text" class="form-control" id="telefone" ngModel name="telefone" #telefone="ngModel"
-                   [(ngModel)]="fornecedor.telefone">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="contato">Contato</label>
-            <input type="text" class="form-control" id="contato" required ngModel name="contato" [(ngModel)]="fornecedor.contato">
-          </div>
-        </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="fornecedorForm.invalid">Salvar</button>
+          <div class="ui-g-4 ui-md-5 ui-fluid">
+            <label>E-mail</label>
+            <input type="email" pInputText name="email" [(ngModel)]="fornecedor.email">
+          </div>
+
+          <div class="ui-g-3 ui-md-3 ui-fluid">
+            <label>Telefone</label>
+            <p-inputMask name="telefone" mask="(99) 9999?9-9999"
+                         [(ngModel)]="fornecedor.telefone"></p-inputMask>
+          </div>
+
+          <div class="ui-g-4 ui-md-4 ui-fluid">
+            <label>Contato</label>
+            <input type="text" pInputText name="contato" [(ngModel)]="fornecedor.contato">
+          </div>
+
+        <div class="ui-g-12">
+          <button pButton type="submit" [disabled]="fornecedorForm.invalid || fornecedorForm.pristine" label="Salvar"></button>
+        </div>
       </form>
     </div>

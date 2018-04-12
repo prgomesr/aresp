@@ -46,7 +46,7 @@
 
           <div class="ui-g-5 ui-fluid">
             <label>Nome</label>
-            <input type="text" pInputText name="nome" [(ngModel)]="dependente.nome">
+            <input type="text" pInputText name="nome" [(ngModel)]="dependente.nome" required>
           </div>
 
           <div class="ui-g-2 ui-fluid">
@@ -64,7 +64,7 @@
           <div class="ui-g-2 ui-fluid">
             <label>Parentesco</label>
             <p-dropdown [options]="parentesco" placeholder="Selecione: " [autoWidth]="false"
-                        name="parentesco" [(ngModel)]="dependente.parentesco"></p-dropdown>
+                        name="parentesco" [(ngModel)]="dependente.parentesco" required></p-dropdown>
           </div>
 
           <div class="ui-g-12">
