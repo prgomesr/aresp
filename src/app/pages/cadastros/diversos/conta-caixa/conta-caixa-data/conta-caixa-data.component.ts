@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ContaCaixa} from '../../../../../core/model';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
+
+import {ToastyService} from 'ng2-toasty';
+
 import {EmpresaService} from '../../../instancias/empresa/empresa.service';
 import {AgenciaService} from '../../agencia/agencia.service';
 import {ErrorHandlerService} from '../../../../../core/error-handler.service';
 import {ContaCaixaService} from '../conta-caixa.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl} from '@angular/forms';
-import {ToastyService} from 'ng2-toasty';
+import {ContaCaixa} from '../../../../../core/model';
 
 @Component({
   selector: 'app-conta-caixa-data',
@@ -68,7 +70,7 @@ export class ContaCaixaDataComponent implements OnInit {
     }, err => this.errorHandler.handle(err));
   }
 
-  atualiza(form: FormControl) {
+  atualizar(form: FormControl) {
     this.contaService.editar(this.conta).subscribe(dado => {
         this.conta = dado;
         this.router.navigate(['/diversos/conta']);

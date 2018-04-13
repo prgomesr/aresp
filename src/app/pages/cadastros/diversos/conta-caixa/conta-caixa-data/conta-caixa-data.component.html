@@ -8,7 +8,7 @@
 
       <div class="ui-g-2 ui-fluid">
         <label>Número</label>
-        <input type="text" pInputText pKeyFilter="int" name="numero" [(ngModel)]="conta.numero">
+        <input type="text" pInputText name="numero" [(ngModel)]="conta.numero">
       </div>
 
       <div class="ui-g-1 ui-fluid">
@@ -18,7 +18,7 @@
 
       <div class="ui-g-3 ui-fluid">
         <label>Nome*</label>
-        <input type="text" pInputText name="nome" #nome="ngModel" [(ngModel)]="conta.nome">
+        <input type="text" pInputText name="nome" #nome="ngModel" [(ngModel)]="conta.nome" required>
         <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
       </div>
 
@@ -30,24 +30,26 @@
 
       <div class="ui-g-2 ui-fluid">
         <label>Tx de Multa</label>
-        <input type="text" name="tx_multa" pInputText [(ngModel)]="conta.taxa_multa">
+        <input type="text" name="tx_multa" pInputText [(ngModel)]="conta.taxa_multa"
+               currencyMask [options]="{ prefix: '% ', thousands: '.', decimal: ',', allowNegative: false }">
       </div>
 
       <div class="ui-g-2 ui-fluid">
         <label>Tx de Juros</label>
-        <input type="text" name="tx_juros" pInputText [(ngModel)]="conta.taxa_juros">
+        <input type="text" name="tx_juros" pInputText [(ngModel)]="conta.taxa_juros"
+               currencyMask [options]="{ prefix: '% ', thousands: '.', decimal: ',', allowNegative: false }">
       </div>
 
       <div class="ui-g-5 ui-fluid">
         <label>Empresa*</label>
         <p-dropdown name="empresa" [options]="empresas" [autoWidth]="false" placeholder="Selecione:" required
-                    [(ngModel)]="conta.empresa"></p-dropdown>
+                    [(ngModel)]="conta.empresa.id"></p-dropdown>
       </div>
 
       <div class="ui-g-3 ui-fluid">
         <label>Agência</label>
         <p-dropdown name="agencia" [options]="agencias" [autoWidth]="false" placeholder="Selecione:"
-                    [(ngModel)]="conta.agencia"></p-dropdown>
+                    [(ngModel)]="conta.agencia.id"></p-dropdown>
       </div>
 
     </div>

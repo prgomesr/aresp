@@ -3,61 +3,36 @@
     {
       "nome": "Banco do Brasil",
       "numero": "001",
-      "id": 1,
-      "telefone": "17 3302 5199"
-    },
-    {
-      "nome": "Santander",
-      "numero": "033",
-      "telefone": "17 3214 7300",
-      "id": 2
-    },
-    {
-      "nome": "Bradesco",
-      "numero": "237",
-      "telefone": "17 2138 9500",
-      "id": 3
+      "telefone": "(11) 40041-111",
+      "id": 1
     }
   ],
   "contas": [
     {
-      "id": 1,
-      "numero": "54643",
-      "digito": 7,
-      "nome": "Conta principal",
-      "tipo": "C",
-      "taxa_multa": 0.5,
-      "taxa_juros": 0.3,
       "empresa": {
         "id": 1
       },
       "agencia": {
+        "banco": {},
         "id": 1
-      }
+      },
+      "numero": "54643",
+      "digito": "7",
+      "nome": "Conta principal",
+      "tipo": "C",
+      "taxa_multa": 1,
+      "taxa_juros": 5,
+      "id": 1
     }
   ],
   "agencias": [
     {
-      "numero": "0037",
-      "telefone": "(17) 32323-232",
-      "banco": 1,
-      "id": 1,
-      "gerente": "Lara"
-    },
-    {
+      "banco": {
+        "id": 1
+      },
       "numero": "6575",
       "digito": "7",
-      "gerente": "Lúcia",
-      "banco": 1,
-      "id": 2
-    },
-    {
-      "numero": "0596",
-      "digito": null,
-      "gerente": "Hernani",
-      "banco": 3,
-      "telefone": null,
-      "id": 3
+      "id": 1
     }
   ],
   "grupos": [
@@ -73,12 +48,10 @@
   "operadoras": [
     {
       "nome": "Visa",
-      "imagem": "imagem.jpg",
       "id": 1
     },
     {
       "nome": "Master",
-      "imagem": "imagem.jpg",
       "id": 2
     }
   ],
@@ -158,14 +131,14 @@
       "nome": "Cielo",
       "numero": "7777777",
       "telefone": "11 3131 3131",
-      "observacao": "Enviar remessa todo dia 15 antes do meio dia.",
+      "observacao": "Enviar remessa todo dia 15.\n",
       "id": 1
     },
     {
       "nome": "Bradesco",
       "numero": "565656",
       "telefone": "17 3131 3131",
-      "observacao": "Este convenio é utilizado para gerar boletos da conta 7009-2.\n",
+      "observacao": "Gerar boletos da conta 7009-2.\n",
       "id": 2
     }
   ],

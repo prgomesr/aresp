@@ -13,8 +13,7 @@ export class OperadoraComponent implements OnInit {
 
   operadoras = [];
   cols = [
-    {field: 'nome', header: 'Nome'},
-    {field: 'imagem', header: 'Imagem'}
+    {field: 'nome', header: 'Nome'}
   ];
   constructor(private operadoraService: OperadoraService,
               private errorHandler: ErrorHandlerService,

@@ -1,19 +1,18 @@
 <app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Operadora" linkAnterior="/diversos/operadora" headingAnterior="Operadoras"></app-header-lv2>
   <div class="col-md">
-    <form #operadoraForm="ngForm" (ngSubmit)="salvar(operadoraForm)" autocomplete="off">
+    <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
 
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <label for="nome">Nome*</label>
-          <input type="text" class="form-control" id="nome" required name="nome" #nome="ngModel" ngModel [(ngModel)]="operadora.nome">
+      <div class="ui-g">
+        <div class="ui-g-4 ui-fluid">
+          <label>Nome*</label>
+          <input type="text" pInputText required name="nome" #nome="ngModel" [(ngModel)]="operadora.nome">
           <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
         </div>
       </div>
-      <div class="form-row mb-3">
-        <label for="imagem">Escolha o arquivo</label>
-        <input type="text" class="form-control" id="imagem" [(ngModel)]="operadora.imagem" name="imagem" #imagem="ngModel" ngModel>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" [disabled]="f.invalid || f.pristine" label="Salvar"></button>
       </div>
 
-      <button class="btn btn-primary" type="submit" [disabled]="operadoraForm.invalid">Salvar</button>
     </form>
   </div>

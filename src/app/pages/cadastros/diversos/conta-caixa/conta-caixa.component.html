@@ -3,7 +3,7 @@
 <app-button link="/diversos/conta-caixa/novo"></app-button>
 
 <div class="col-md">
-  <p-table [value]="agencias" [paginator]="true" [responsive]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]">
+  <p-table [value]="contas" [paginator]="true" [responsive]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]">
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 100px">Número</th>
@@ -18,20 +18,20 @@
         <th style="width: 80px"></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-agencia >
+    <ng-template pTemplate="body" let-conta >
       <tr>
         <td>{{ conta.numero }}</td>
         <td>{{ conta.digito }}</td>
-        <td>{{ conta.nome }}</td>
+        <td>{{ conta.nome | uppercase}}</td>
         <td>{{ conta.tipo }}</td>
-        <td>{{ conta.taxa_multa }}</td>
-        <td>{{ conta.taxa_juros }}</td>
+        <td>{{ conta.taxa_multa | number:'1.2-2'}} %</td>
+        <td>{{ conta.taxa_juros | number:'1.2-2'}} %</td>
         <td>{{ conta.agencia.numero }}</td>
         <td>{{ conta.agencia.banco.nome }}</td>
         <td>{{ conta.empresa.fantasia }}</td>
         <td>
           <a href="javascript:void(0)" pTooltip="Editar" tooltipPosition="top"
-             [routerLink]="['/diversos/agencia/editar', conta.id]"><i class="fa fa-pencil"></i></a>
+             [routerLink]="['/diversos/conta-caixa/editar', conta.id]"><i class="fa fa-pencil"></i></a>
           <a href="javascript:void(0)" pTooltip="Excluir" tooltipPosition="top"
              (click)="openModal(modalExclusao, conta.id)"><i class="fa fa-trash"></i></a>
         </td>

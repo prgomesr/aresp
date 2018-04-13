@@ -31,7 +31,6 @@ export class Convenio {
 export class Operadora {
   id: number;
   nome: string;
-  imagem: string;
 }
 
 export class Secretaria {
@@ -122,12 +121,12 @@ export class Cliente {
   nascimento: Date;
   situacao = 'EM DIA';
   endereco = new Endereco();
-  dependentes = new Array<Dependente>();
-  telefones = new Array<Telefone>();
   tipo = new TipoSocio();
   cancelado = new Cancelamento();
   secretaria = new Secretaria();
   dadosBancarios = new DadosBancarios();
+  telefones = new Array<Telefone>();
+  dependentes = new Array<Dependente>();
 }
 
 export class Empresa {
@@ -219,5 +218,5 @@ export class Agencia {
   digito: number;
   telefone: string;
   gerente: string;
-  banco: Banco;
+  banco = new Banco();
 }
