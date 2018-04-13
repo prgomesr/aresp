@@ -16,7 +16,8 @@ export class ConvenioComponent implements OnInit {
     {field: 'nome', header: 'Nome'},
     {field: 'numero', header: 'Número'},
     {field: 'telefone', header: 'Telefone'},
-    {field: 'observacao', header: 'Observação'}
+    {field: 'observacao', header: 'Observação'},
+    {field: 'conta.numero', header: 'Conta Caixa'}
   ];
   constructor(private convenioService: ConvenioService,
               private errorHandler: ErrorHandlerService,

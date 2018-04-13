@@ -7,6 +7,7 @@ import { ToastyService } from 'ng2-toasty';
 import { Convenio} from '../../../../../core/model';
 import { ConvenioService } from '../convenio.service';
 import { ErrorHandlerService } from '../../../../../core/error-handler.service';
+import {ContaCaixaService} from '../../conta-caixa/conta-caixa.service';
 
 @Component({
   selector: 'app-convenio-data',
@@ -16,8 +17,9 @@ import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 export class ConvenioDataComponent implements OnInit {
 
   convenio = new Convenio();
-
+  contas = [];
   constructor(private convenioService: ConvenioService,
+              private contaService: ContaCaixaService,
               private errorHandler: ErrorHandlerService,
               private toasty: ToastyService,
               private route: ActivatedRoute,
@@ -29,6 +31,7 @@ export class ConvenioDataComponent implements OnInit {
     if (id) {
       this.carregarDado(id);
     }
+    this.listarContas();
   }
 
   salvar(form: FormControl) {
@@ -58,6 +61,12 @@ export class ConvenioDataComponent implements OnInit {
 
   carregarDado(codigo: number) {
     this.convenioService.listarPorCodigo(codigo).subscribe(dado => this.convenio = dado,
+      err => this.errorHandler.handle(err));
+  }
+
+  listarContas() {
+    this.contaService.listar().subscribe(dados => this.contas = dados
+        .map(d => ({label: d.numero, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 

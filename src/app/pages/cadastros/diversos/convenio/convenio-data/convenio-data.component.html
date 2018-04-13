@@ -4,21 +4,27 @@
 
       <div class="ui-g">
 
-        <div class="ui-g-4 ui-fluid">
+        <div class="ui-g-3 ui-fluid">
           <label>Nome*</label>
           <input type="text" pInputText required name="nome" #nome="ngModel" [(ngModel)]="convenio.nome">
           <app-message [control]="nome" error="required" text="Preencha este campo."></app-message>
         </div>
 
-        <div class="ui-g-4 ui-fluid">
+        <div class="ui-g-3 ui-fluid">
           <label>Número*</label>
           <input type="text" pInputText pKeyFilter="int" required name="numero" #numero="ngModel" [(ngModel)]="convenio.numero">
           <app-message [control]="numero" error="required" text="Preencha este campo."></app-message>
         </div>
 
-        <div class="ui-g-4 ui-fluid">
+        <div class="ui-g-3 ui-fluid">
           <label>Telefone</label>
           <p-inputMask type="text" mask="(99) 9999?9-9999" [(ngModel)]="convenio.telefone" name="telefone"></p-inputMask>
+        </div>
+
+        <div class="ui-g-3 ui-fluid">
+          <label>Conta</label>
+          <p-dropdown [options]="contas" [autoWidth]="false" placeholder="Selecione:" name="conta"
+          required [(ngModel)]="convenio.conta.id"></p-dropdown>
         </div>
 
         <div class="ui-g-12 ui-fluid">

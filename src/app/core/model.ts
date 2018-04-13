@@ -26,6 +26,7 @@ export class Convenio {
   numero: number;
   telefone: string;
   observacao: string;
+  conta = new ContaCaixa();
 }
 
 export class Operadora {
@@ -164,6 +165,7 @@ export class Recebimento {
   referecia: string;
   numDocumento: string;
   nossoNumero: string;
+  remessaGerada = false;
   grupo = new GrupoRecebimento();
   categoria = new CategoriaRecebimento();
   conta = new ContaCaixa();

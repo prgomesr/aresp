@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
       { path: 'financeiro/contas-pagar', loadChildren: '../pages/financeiro/contas-pagar/contas-pagar.module#ContasPagarModule' },
       { path: 'financeiro/contas-receber', loadChildren: '../pages/financeiro/contas-receber/contas-receber.module#ContasReceberModule' },
+      { path: 'financeiro/gera-remessa', loadChildren: '../pages/financeiro/gera-remessa/gera-remessa.module#GeraRemessaModule' },
       { path: 'instancias/cliente', loadChildren: '../pages/cadastros/instancias/cliente/cliente.module#ClienteModule' },
       { path: 'instancias/empresa', loadChildren: '../pages/cadastros/instancias/empresa/empresa.module#EmpresaModule' },
       { path: 'instancias/fornecedor', loadChildren: '../pages/cadastros/instancias/fornecedor/fornecedor.module#FornecedorModule' },
