@@ -1,6 +1,6 @@
 <app-header-lv1 heading="Status Parcela"></app-header-lv1>
 <app-button link="/diversos/status-parcela/novo"></app-button>
-  <div class="col-md">
+  <div class="ui-g-12">
       <app-table [dados]="dados" [cols]="cols" linkEdicao="/diversos/status-parcela/editar/" (dadoExcluido)="excluir($event)"></app-table>
   </div>
 

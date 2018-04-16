@@ -258,7 +258,7 @@
         },
         {
           "numero": "17 31218-733",
-          "tipo": "CONTATO"
+          "tipo": "PRINCIPAL"
         }
       ],
       "tipo": 2,
@@ -310,7 +310,8 @@
   ],
   "recebimentos": [
     {
-      "dtEmissao": "2018-04-13T18:35:33.696Z",
+      "dtEmissao": "2018-04-13T21:26:35.793Z",
+      "ocorrencia": 1,
       "remessaGerada": false,
       "grupo": {
         "id": 1
@@ -326,7 +327,7 @@
         "id": 1
       },
       "cliente": {
-        "cadastro": "2018-04-13T18:35:33.697Z",
+        "cadastro": "2018-04-13T21:26:35.793Z",
         "situacao": "EM DIA",
         "endereco": {},
         "tipo": {},
@@ -343,361 +344,90 @@
       },
       "situacao": {},
       "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-06-11T03:00:00.000Z",
-      "dtVencimento": "2018-06-11T03:00:00.000Z",
+      "dtCompetencia": "2018-04-10T03:00:00.000Z",
+      "dtVencimento": "2018-04-10T03:00:00.000Z",
+      "valor": 70,
+      "id": 1
+    },
+    {
+      "dtEmissao": "2018-04-13T21:28:28.101Z",
+      "ocorrencia": "6",
+      "remessaGerada": false,
+      "grupo": {
+        "id": 2
+      },
+      "categoria": {
+        "id": 2
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {
+          "banco": {}
+        },
+        "id": 1
+      },
+      "cliente": {
+        "cadastro": "2018-04-13T21:28:28.102Z",
+        "situacao": "EM DIA",
+        "endereco": {},
+        "tipo": {},
+        "cancelado": {},
+        "secretaria": {},
+        "dadosBancarios": {
+          "tipo": "BOLETO",
+          "operadora": {},
+          "banco": {}
+        },
+        "telefones": [],
+        "dependentes": [],
+        "id": 3
+      },
+      "situacao": {},
+      "descricao": "ALUGUEL",
+      "dtCompetencia": "2018-05-10T03:00:00.000Z",
+      "dtVencimento": "2018-05-10T03:00:00.000Z",
+      "valor": 300,
+      "id": 2
+    },
+    {
+      "dtEmissao": "2018-04-13T23:21:27.676Z",
+      "ocorrencia": "2",
+      "remessaGerada": false,
+      "grupo": {
+        "id": 1
+      },
+      "categoria": {
+        "id": 1
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {
+          "banco": {}
+        },
+        "id": 1
+      },
+      "cliente": {
+        "cadastro": "2018-04-13T23:21:27.676Z",
+        "situacao": "EM DIA",
+        "endereco": {},
+        "tipo": {},
+        "cancelado": {},
+        "secretaria": {},
+        "dadosBancarios": {
+          "tipo": "BOLETO",
+          "operadora": {},
+          "banco": {}
+        },
+        "telefones": [],
+        "dependentes": [],
+        "id": 3
+      },
+      "situacao": {},
+      "descricao": "MENSALIDADE",
+      "dtCompetencia": "2018-05-10T03:00:00.000Z",
+      "dtVencimento": "2018-05-10T03:00:00.000Z",
       "valor": 70,
       "id": 3
-    },
-    {
-      "dtEmissao": "2018-04-13T18:36:46.675Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T18:36:46.675Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-07-10T03:00:00.000Z",
-      "dtVencimento": "2018-07-10T03:00:00.000Z",
-      "valor": 70,
-      "id": 4
-    },
-    {
-      "dtEmissao": "2018-04-13T18:37:12.238Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T18:37:12.238Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-08-10T03:00:00.000Z",
-      "dtVencimento": "2018-08-10T03:00:00.000Z",
-      "valor": 70,
-      "id": 5
-    },
-    {
-      "dtEmissao": "2018-04-13T18:37:36.330Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T18:37:36.330Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-09-10T03:00:00.000Z",
-      "dtVencimento": "2018-09-10T03:00:00.000Z",
-      "valor": 70,
-      "id": 6
-    },
-    {
-      "dtEmissao": "2018-04-13T18:37:57.940Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T18:37:57.940Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-10-10T03:00:00.000Z",
-      "dtVencimento": "2018-10-10T03:00:00.000Z",
-      "valor": 70,
-      "id": 7
-    },
-    {
-      "dtEmissao": "2018-04-13T18:39:33.976Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T18:39:33.976Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-11-10T02:00:00.000Z",
-      "dtVencimento": "2018-11-10T02:00:00.000Z",
-      "valor": 75,
-      "id": 8
-    },
-    {
-      "dtEmissao": "2018-04-13T18:39:55.350Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T18:39:55.350Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2018-12-10T02:00:00.000Z",
-      "dtVencimento": "2018-12-10T02:00:00.000Z",
-      "valor": 75,
-      "id": 9
-    },
-    {
-      "dtEmissao": "2018-04-13T19:06:52.593Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T19:06:52.593Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2019-01-10T02:00:00.000Z",
-      "dtVencimento": "2019-01-10T02:00:00.000Z",
-      "valor": 75,
-      "id": 10
-    },
-    {
-      "dtEmissao": "2018-04-13T19:07:27.555Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T19:07:27.555Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2019-02-10T02:00:00.000Z",
-      "dtVencimento": "2019-02-10T02:00:00.000Z",
-      "valor": 75,
-      "id": 11
-    },
-    {
-      "dtEmissao": "2018-04-13T19:07:45.077Z",
-      "remessaGerada": false,
-      "grupo": {
-        "id": 1
-      },
-      "categoria": {
-        "id": 1
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "cliente": {
-        "cadastro": "2018-04-13T19:07:45.077Z",
-        "situacao": "EM DIA",
-        "endereco": {},
-        "tipo": {},
-        "cancelado": {},
-        "secretaria": {},
-        "dadosBancarios": {
-          "tipo": "BOLETO",
-          "operadora": {},
-          "banco": {}
-        },
-        "telefones": [],
-        "dependentes": [],
-        "id": 3
-      },
-      "situacao": {},
-      "descricao": "MENSALIDADE",
-      "dtCompetencia": "2019-03-10T03:00:00.000Z",
-      "dtVencimento": "2019-03-10T03:00:00.000Z",
-      "valor": 75,
-      "id": 12
     }
   ],
   "pagamentos": [

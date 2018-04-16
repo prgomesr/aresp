@@ -1,10 +1,9 @@
 <app-header-lv1 heading="Contas a Pagar"></app-header-lv1>
 
-  <div class="col-md">
 
-    <div class="row">
+    <div class="ui-g">
 
-      <div class="col-md-4">
+      <div class="ui-g-4">
         <div class="card border-success mb-3">
           <div class="card-body text-success">
             <h5 class="card-title" style="text-align: center">R$ 4.900,17</h5>
@@ -12,7 +11,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="ui-g-4">
         <div class="card border-info mb-3">
           <div class="card-body text-info">
             <h5 class="card-title" style="text-align: center">R$ 45.113,08</h5>
@@ -20,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="ui-g-4">
         <div class="card border-danger mb-3">
           <div class="card-body text-danger">
             <h5 class="card-title" style="text-align: center">R$ 0,00</h5>
@@ -31,7 +30,6 @@
 
     </div>
 
-  </div>
 
   <div class="col-md">
     <div class="btn-toolbar clearfix" role="toolbar">
@@ -54,7 +52,7 @@
     </div>
   </div>
 
-<div class="col-md mt-1">
+<div class="ui-g-12">
   <p-table [value]="contas" [paginator]="true" [responsive]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30, 50]">
     <ng-template pTemplate="header">
       <tr>

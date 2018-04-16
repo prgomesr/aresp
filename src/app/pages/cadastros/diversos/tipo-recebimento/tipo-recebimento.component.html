@@ -1,5 +1,5 @@
 <app-header-lv1 heading="Tipos de Recebimentos"></app-header-lv1>
 <app-button link="/diversos/tipo-recebimento/novo"></app-button>
-  <div class="col-md">
+  <div class="ui-g-12">
       <app-table [dados]="dados" [cols]="cols" linkEdicao="/diversos/tipo-recebimento/editar/" (dadoExcluido)="excluir($event)"></app-table>
   </div>

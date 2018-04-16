@@ -81,7 +81,7 @@
 
     <div class="ui-g-2 ui-fluid">
       <label>Ocorrências</label>
-      <input type="text" pInputText name="ocorrencia" [(ngModel)]="recebimento.referecia"
+      <input type="text" pInputText pKeyFilter="int" name="ocorrencia" [(ngModel)]="recebimento.ocorrencia"
              [disabled]="!repetir.checked" required>
     </div>
 

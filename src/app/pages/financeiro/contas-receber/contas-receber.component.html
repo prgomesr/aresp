@@ -1,10 +1,8 @@
 <app-header-lv1 heading="Contas a Receber"></app-header-lv1>
 
-  <div class="col-md">
+    <div class="ui-g">
 
-    <div class="row">
-
-      <div class="col-md-4">
+      <div class="ui-g-4">
         <div class="card border-success mb-3">
           <div class="card-body text-success">
             <h5 class="card-title" style="text-align: center">R$ 4.900,17</h5>
@@ -12,7 +10,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="ui-g-4">
         <div class="card border-info mb-3">
           <div class="card-body text-info">
             <h5 class="card-title" style="text-align: center">R$ 45.113,08</h5>
@@ -20,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="ui-g-4">
         <div class="card border-danger mb-3">
           <div class="card-body text-danger">
             <h5 class="card-title" style="text-align: center">R$ 0,00</h5>
@@ -30,8 +28,6 @@
       </div>
 
     </div>
-
-  </div>
 
   <div class="col-md">
     <div class="btn-toolbar clearfix" role="toolbar">
@@ -71,14 +67,14 @@
     </div>
   </div>
 
-  <div class="col-md mt-1">
+  <div class="ui-g-12">
       <p-table [value]="recebimentos" [responsive]="true" [paginator]="true" [rowsPerPageOptions]="[10,20,30]"
       [rows]="10" dataKey="id">
           <ng-template pTemplate="header">
               <tr>
                   <th style="width: 6.4em">Emissão</th>
                   <th style="width: 6.4em">Vencimento</th>
-                  <th style="width: 4em">Ref.</th>
+                  <th style="width: 4em"></th>
                   <th style="width: 7em">Recebimento</th>
                   <th class="text-table-left">Cliente</th>
                   <th style="width: 11em">Descrição</th>
@@ -92,7 +88,7 @@
               <tr>
                   <td>{{recebimento.dtEmissao | date: 'dd/MM/yyyy'}}</td>
                   <td>{{recebimento.dtVencimento | date: 'dd/MM/yyyy'}}</td>
-                  <td>{{recebimento.referencia}}</td>
+                  <td>{{recebimento.ocorrencia}}</td>
                   <td>{{recebimento.dtRecebimento | date: 'dd/MM/yyyy'}}</td>
                   <td class="text-table-left">{{recebimento.cliente.nome | uppercase}}</td>
                   <td>{{recebimento.descricao}}</td>

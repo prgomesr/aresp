@@ -1,10 +1,8 @@
 <app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Agência"
 linkAnterior="/diversos/agencia" headingAnterior="Agências"></app-header-lv2>
 
-<div class="col-md">
+<div class="ui-g">
   <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
-
-    <div class="ui-g">
 
       <div class="ui-g-2 ui-fluid">
         <label>Número*</label>
@@ -34,7 +32,6 @@ linkAnterior="/diversos/agencia" headingAnterior="Agências"></app-header-lv2>
        <p-dropdown [options]="bancos" [autoWidth]="false" placeholder="Selecione" name="banco" required
        [(ngModel)]="agencia.banco.id"></p-dropdown>
       </div>
-    </div>
 
     <div class="ui-g-12">
       <button pButton type="submit" [disabled]="f.invalid || f.pristine" label="Salvar"></button>

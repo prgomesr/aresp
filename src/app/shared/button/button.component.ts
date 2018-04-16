@@ -3,7 +3,7 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
   selector: 'app-button',
   template: `
-    <div class="col-md">
+    <div class="ui-g-12" style="margin-bottom: -18px">
       <a routerLink="{{ link }}"><i class="fa fa-plus"></i> Novo</a>
     </div>
   `,

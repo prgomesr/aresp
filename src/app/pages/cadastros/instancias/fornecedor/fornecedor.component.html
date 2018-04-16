@@ -1,6 +1,9 @@
 <app-header-lv1 heading="Fornecedores"></app-header-lv1>
+
 <app-button link="/instancias/fornecedor/novo"></app-button>
-  <div class="col-md">
+
+  <div class="ui-g-12">
+
     <p-table [value]="fornecedores" [paginator]="true" [responsive]="true" [rows]="10" [rowsPerPageOptions]="[10, 20]">
       <ng-template pTemplate="header">
         <tr>
@@ -33,6 +36,7 @@
         </tr>
       </ng-template>
     </p-table>
+
   </div>
 
 <ng-template #modal>
