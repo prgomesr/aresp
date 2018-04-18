@@ -1,31 +1,32 @@
 <app-header-lv2 heading="Cadastro de Empresa" linkAnterior="/instancias/empresa" headingAnterior="Empresas"></app-header-lv2>
-  <div class="ui-g">
-    <form #empresaForm="ngForm" (ngSubmit)="salvar(empresaForm)" autocomplete="off">
 
-        <div class="ui-g-3 ui-fluid">
-          <label>CNPJ*</label>
-          <p-inputMask mask="99.999.999/9999-99" required name="cnpj" #cnpj="ngModel"
-                       [(ngModel)]="empresa.cnpj"></p-inputMask>
-          <app-message [control]="cnpj" error="required" text="Preencha este campo."></app-message>
-        </div>
+<form #empresaForm="ngForm" (ngSubmit)="salvar(empresaForm)" autocomplete="off">
 
-        <div class="ui-g-5 ui-fluid">
-          <label>Razão Social*</label>
-          <input type="text" pInputText required name="razao" #razao="ngModel"
-                 [(ngModel)]="empresa.razao">
-          <app-message [control]="razao" error="required" text="Preencha este campo."></app-message>
-        </div>
-
-        <div class="ui-g-4 ui-fluid">
-          <label>Nome Fantasia*</label>
-          <input type="text" pInputText required name="fantasia" #fantasia="ngModel"
-                 [(ngModel)]="empresa.fantasia">
-          <app-message [control]="fantasia" error="required" text="Preencha este campo."></app-message>
-        </div>
-
-      <div class="ui-g-12">
-        <button pButton type="submit" [disabled]="empresaForm.invalid || empresaForm.pristine" label="Salvar"></button>
+    <div class="ui-g">
+      <div class="ui-g-3 ui-fluid">
+        <label>CNPJ*</label>
+        <p-inputMask mask="99.999.999/9999-99" required name="cnpj" #cnpj="ngModel"
+                     [(ngModel)]="empresa.cnpj"></p-inputMask>
+        <app-message [control]="cnpj" error="required" text="Preencha este campo."></app-message>
       </div>
 
-    </form>
-  </div>
+      <div class="ui-g-5 ui-fluid">
+        <label>Razão Social*</label>
+        <input type="text" pInputText required name="razao" #razao="ngModel"
+               [(ngModel)]="empresa.razao">
+        <app-message [control]="razao" error="required" text="Preencha este campo."></app-message>
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Nome Fantasia*</label>
+        <input type="text" pInputText required name="fantasia" #fantasia="ngModel"
+               [(ngModel)]="empresa.fantasia">
+        <app-message [control]="fantasia" error="required" text="Preencha este campo."></app-message>
+      </div>
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" [disabled]="empresaForm.invalid || empresaForm.pristine" label="Salvar"></button>
+    </div>
+
+</form>

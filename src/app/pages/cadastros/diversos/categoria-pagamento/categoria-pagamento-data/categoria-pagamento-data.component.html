@@ -1,6 +1,5 @@
 <app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Categoria de Pagamento" linkAnterior="/diversos/categoria-pagamento"
                 headingAnterior="Cadastro de Pagamentos"></app-header-lv2>
-  <div class="ui-g">
     <form #f="ngForm" (ngSubmit)="salvar(f)" autocomplete="off">
 
       <div class="ui-g">
@@ -15,4 +14,3 @@
         <button pButton type="submit" [disabled]="f.invalid || f.pristine" label="Salvar"></button>
       </div>
     </form>
-  </div>
