@@ -432,43 +432,54 @@
   ],
   "pagamentos": [
     {
-      "descricao": "REBOCO",
-      "categoria": "Obras",
-      "conta": "54.643-7",
-      "competencia": "10/04/2018",
-      "vencimento": "10/04/2018",
-      "fornecedor": "TRANSCAL",
-      "valor": "160,00",
-      "pagamento": "",
-      "parcela": "1/1",
-      "status": "A VENCER",
+      "dtEmissao": "2018-04-19T00:52:42.876Z",
+      "chequeEmitido": false,
+      "categoria": {
+        "id": 1
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {
+          "banco": {}
+        },
+        "id": 1
+      },
+      "fornecedor": {
+        "cadastro": "2018-04-19T00:52:42.876Z",
+        "id": 2
+      },
+      "situacao": {},
+      "descricao": "ALUGUEL DE CACAMBA",
+      "numNf": "002.001",
+      "documento": "A001-01",
+      "dtCompetencia": "2018-05-10T03:00:00.000Z",
+      "dtVencimento": "2018-04-10T03:00:00.000Z",
+      "valor": 160,
       "id": 1
     },
     {
-      "descricao": "MATERIAS P/ CONSTRUCAO",
-      "categoria": "Obras",
-      "conta": "54.643-7",
-      "competencia": "10/03/2018",
-      "vencimento": "10/03/2018",
-      "fornecedor": "RIO JARDIM",
-      "valor": "1.560,00",
-      "pagamento": "12/03/2018",
-      "parcela": "2/3",
-      "status": "PAGA",
+      "dtEmissao": "2018-04-19T01:01:45.660Z",
+      "chequeEmitido": false,
+      "categoria": {
+        "id": 2
+      },
+      "conta": {
+        "empresa": {},
+        "agencia": {
+          "banco": {}
+        },
+        "id": 1
+      },
+      "fornecedor": {
+        "cadastro": "2018-04-19T01:01:45.660Z",
+        "id": 1
+      },
+      "situacao": {},
+      "descricao": "CONTA TIM MOVEL",
+      "dtCompetencia": "2018-05-10T03:00:00.000Z",
+      "dtVencimento": "2018-05-20T03:00:00.000Z",
+      "valor": 222.18,
       "id": 2
-    },
-    {
-      "descricao": "DADOS MÓVEIS",
-      "categoria": "Conta Fixa",
-      "conta": "54.643-7",
-      "competencia": "20/03/2018",
-      "vencimento": "20/03/2018",
-      "fornecedor": "CLARO",
-      "valor": "210,00",
-      "pagamento": "",
-      "parcela": "1/1",
-      "status": "VENCIDA",
-      "id": 3
     }
   ]
 }

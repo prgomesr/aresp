@@ -185,6 +185,7 @@ export class Pagamento {
   valorPago: number;
   parcela: number;
   numNf: string;
+  documento: string;
   chequeEmitido = false;
   categoria = new CategoriaPagamento();
   conta = new ContaCaixa();

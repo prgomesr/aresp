@@ -1,0 +1,36 @@
+<app-header-lv1 heading="Cheques"></app-header-lv1>
+
+<div class="ui-g-12">
+  <p-table [value]="pagamentos" [responsive]="true" selectionMode="multiple" [(selection)]="pagamentosSelecionados"
+  [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30, 50]">
+    <ng-template pTemplate="header" >
+      <tr>
+        <th class="text-table-left">Fornecedor</th>
+        <th>Descrição</th>
+        <th style="width: 100px">Documento</th>
+        <th style="width: 120px">Vencimento</th>
+        <th style="width: 120px">Valor</th>
+        <th style="width: 100px">Conta</th>
+        <th style="width: 120px">Categoria</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-p let-rowData let-rowIndex="rowIndex">
+      <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+        <td class="text-table-left">{{p.fornecedor.fantasia | uppercase}}</td>
+        <td style="width: 150px">{{p.descricao}}</td>
+        <td style="width: 100px">{{p.documento}}</td>
+        <td style="width: 120px">{{p.dtVencimento | date: 'dd/MM/yyyy'}}</td>
+        <td style="width: 120px">{{p.valor | number: '1.2-2'}}</td>
+        <td style="width: 100px">{{p.conta.numero}}</td>
+        <td style="width: 120px">{{p.categoria.nome}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td colspan="7" class="text-table-left">
+          Nenhum pagamento encontrado!
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

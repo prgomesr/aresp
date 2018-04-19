@@ -69,11 +69,11 @@
     <ng-template pTemplate="body" let-conta let-rowData>
       <tr>
         <td class="text-table-left">{{conta.descricao}}</td>
-        <td class="text-table-left">{{conta.fornecedor}}</td>
-        <td>{{conta.vencimento}}</td>
-        <td>{{conta.pagamento}}</td>
-        <td>{{conta.parcela}}</td>
-        <td>{{conta.valor}}</td>
+        <td class="text-table-left">{{conta.fornecedor.fantasia}}</td>
+        <td>{{conta.dtVencimento | date: 'dd/MM/yyyy'}}</td>
+        <td>{{conta.dtPagamento}}</td>
+        <td>{{conta.ocorrencia}}</td>
+        <td>{{conta.valor | number: '1.2-2'}}</td>
         <td>
             <span class="badge status-span"
                   [ngClass]="{'badge-success': conta.status === 'PAGA', 'badge-danger': conta.status === 'VENCIDA',
