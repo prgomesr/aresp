@@ -432,10 +432,10 @@
   ],
   "pagamentos": [
     {
-      "dtEmissao": "2018-04-19T00:52:42.876Z",
+      "dtEmissao": "2018-04-23T16:32:01.378Z",
       "chequeEmitido": false,
       "categoria": {
-        "id": 1
+        "id": 2
       },
       "conta": {
         "empresa": {},
@@ -445,41 +445,17 @@
         "id": 1
       },
       "fornecedor": {
-        "cadastro": "2018-04-19T00:52:42.876Z",
+        "cadastro": "2018-04-23T16:32:01.378Z",
         "id": 2
       },
       "situacao": {},
-      "descricao": "ALUGUEL DE CACAMBA",
-      "numNf": "002.001",
-      "documento": "A001-01",
+      "cheque": {},
+      "descricao": "MATERIAIS DE ESCRITORIO",
+      "numNf": "55556",
       "dtCompetencia": "2018-05-10T03:00:00.000Z",
-      "dtVencimento": "2018-04-10T03:00:00.000Z",
-      "valor": 160,
+      "dtVencimento": "2018-05-10T03:00:00.000Z",
+      "valor": 178.92,
       "id": 1
-    },
-    {
-      "dtEmissao": "2018-04-19T01:01:45.660Z",
-      "chequeEmitido": false,
-      "categoria": {
-        "id": 2
-      },
-      "conta": {
-        "empresa": {},
-        "agencia": {
-          "banco": {}
-        },
-        "id": 1
-      },
-      "fornecedor": {
-        "cadastro": "2018-04-19T01:01:45.660Z",
-        "id": 1
-      },
-      "situacao": {},
-      "descricao": "CONTA TIM MOVEL",
-      "dtCompetencia": "2018-05-10T03:00:00.000Z",
-      "dtVencimento": "2018-05-20T03:00:00.000Z",
-      "valor": 222.18,
-      "id": 2
     }
   ]
 }

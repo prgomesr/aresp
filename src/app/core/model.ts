@@ -191,6 +191,7 @@ export class Pagamento {
   conta = new ContaCaixa();
   fornecedor = new Fornecedor();
   situacao = new StatusParcela();
+  cheque = new Cheque();
 }
 
 export class Fornecedor {
@@ -223,4 +224,13 @@ export class Agencia {
   telefone: string;
   gerente: string;
   banco = new Banco();
+}
+
+export class Cheque {
+  id: number;
+  numero: string;
+  nominal: string;
+  valor: number;
+  bom_para: Date;
+  data_compensacao: Date;
 }

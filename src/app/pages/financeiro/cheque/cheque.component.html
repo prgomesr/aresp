@@ -1,6 +1,10 @@
 <app-header-lv1 heading="Cheques"></app-header-lv1>
 
 <div class="ui-g-12">
+  <button type="button" pButton label="Imprimir" (click)="prepararEmissao()"></button>
+</div>
+
+<div class="ui-g-12">
   <p-table [value]="pagamentos" [responsive]="true" selectionMode="multiple" [(selection)]="pagamentosSelecionados"
   [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30, 50]">
     <ng-template pTemplate="header" >
@@ -11,7 +15,7 @@
         <th style="width: 120px">Vencimento</th>
         <th style="width: 120px">Valor</th>
         <th style="width: 100px">Conta</th>
-        <th style="width: 120px">Categoria</th>
+        <th style="width: 120px">Cheque</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-p let-rowData let-rowIndex="rowIndex">
@@ -22,7 +26,7 @@
         <td style="width: 120px">{{p.dtVencimento | date: 'dd/MM/yyyy'}}</td>
         <td style="width: 120px">{{p.valor | number: '1.2-2'}}</td>
         <td style="width: 100px">{{p.conta.numero}}</td>
-        <td style="width: 120px">{{p.categoria.nome}}</td>
+        <td style="width: 120px">{{p.cheque.numero}}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage" let-columns>
@@ -34,3 +38,37 @@
     </ng-template>
   </p-table>
 </div>
+
+<p-dialog header="Imprimir Cheque" [(visible)]="exibindoFormularioCheque"
+          [modal]="modal" *ngIf="pagamento">
+
+  <form #f="ngForm" (ngSubmit)="emitirCheque(f)" autocomplete="off">
+
+    <div class="ui-md-12 ui-fluid">
+      <label>Nominal a</label>
+      <input type="text" pInputText [(ngModel)]="pagamento.cheque.nominal" name="nominal">
+    </div>
+
+    <div class="ui-md-6 ui-fluid">
+      <label>Número*</label>
+      <input type="text" pInputText [(ngModel)]="pagamento.cheque.numero" required name="numero">
+    </div>
+
+    <div class="ui-md-12 ui-fluid">
+      <label>Bom para</label>
+      <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true" name="bomPara"
+                  [(ngModel)]="pagamento.cheque.bom_para"></p-calendar>
+    </div>
+
+    <div class="ui-md-8 ui-fluid">
+      <label>Valor</label>
+      <input type="text" pInputText [(ngModel)]="pagamento.cheque.valor" required name="valor">
+    </div>
+
+    <div class="ui-md-12">
+      <button pButton type="submit" label="Confirmar" [disabled]="f.invalid"></button>
+    </div>
+
+  </form>
+
+</p-dialog>
