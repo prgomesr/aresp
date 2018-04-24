@@ -62,7 +62,8 @@
 
     <div class="ui-md-8 ui-fluid">
       <label>Valor</label>
-      <input type="text" pInputText [(ngModel)]="pagamento.cheque.valor" required name="valor">
+      <input type="text" pInputText [(ngModel)]="pagamento.cheque.valor" required name="valor"
+             currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }">
     </div>
 
     <div class="ui-md-12">

@@ -41,7 +41,7 @@
   <form #fTel="ngForm" (ngSubmit)="adicionarTelefone(fTel)" autocomplete="off">
             <div class="ui-md-12 ui-fluid">
               <label>Telefone</label>
-              <p-inputMask name="numero" mask="99 9999?9-9999" required [(ngModel)]="telefone.numero" #numero="ngModel"></p-inputMask>
+              <p-inputMask name="numero" mask="99 99999999?9" required [(ngModel)]="telefone.numero" #numero="ngModel"></p-inputMask>
               <app-message [control]="numero" error="required" text="Preencha este campo."></app-message>
             </div>
 

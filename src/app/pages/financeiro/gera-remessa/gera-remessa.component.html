@@ -33,6 +33,11 @@
           </td>
         </tr>
       </ng-template>
+      <ng-template pTemplate="summary">
+        <div style="text-align: left">
+          Total R$
+        </div>
+      </ng-template>
     </p-table>
   </div>
 
@@ -46,8 +51,6 @@
     <button type="submit" pButton label="Filtrar" class="ui-button-secondary"
     (click)="ExibirDialagoFiltro()"
             [disabled]="recebimento.remessaGerada === true"></button>
-
-    <label>Total R$ </label>
 
   </div>
 </div>
