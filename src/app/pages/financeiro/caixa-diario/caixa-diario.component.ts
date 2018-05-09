@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaixaDiarioComponent implements OnInit {
 
+  lancamentos = [
+    {id: 1, instancia: 'Maria Magda Silva', descricao: '', }
+  ];
+
   constructor() { }
 
   ngOnInit() {
