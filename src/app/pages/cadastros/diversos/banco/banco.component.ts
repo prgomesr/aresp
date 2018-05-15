@@ -29,12 +29,15 @@ export class BancoComponent implements OnInit {
   }
 
   consultar() {
-    this.bancoService.listar().subscribe(bancos => this.bancos = bancos,
+    this.bancoService.listar().subscribe((bancos:any) => {
+      this.bancos = bancos.result;
+      console.log(bancos);
+      },
       err => this.errorHandler.handle(err));
   }
 
   excluir(codigo: number) {
-    this.bancoService.excluir(codigo).subscribe(res => {
+    this.bancoService.excluir(codigo, 10).subscribe(res => {
       this.toasty.success('Registro excluído com sucesso!');
       this.consultar();
     }, err => this.errorHandler.handle(err));

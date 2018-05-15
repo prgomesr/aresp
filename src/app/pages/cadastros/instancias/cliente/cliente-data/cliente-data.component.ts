@@ -143,9 +143,9 @@ export class ClienteDataComponent implements OnInit {
   }
 
   listarBancos() {
-    this.bancoService.listar().subscribe(dados => this.bancos = dados
+    /*this.bancoService.listar().subscribe(dados => this.bancos = dados
         .map(d => ({label: d.nome, value: d.id})),
-      err => this.errorHandler.handle(err));
+      err => this.errorHandler.handle(err));*/
   }
 
   listarOperadoras() {

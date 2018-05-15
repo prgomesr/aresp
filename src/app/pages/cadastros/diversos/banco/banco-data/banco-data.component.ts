@@ -40,7 +40,7 @@ export class BancoDataComponent implements OnInit {
   }
 
   adicionarBanco(form: FormControl) {
-    this.bancoService.salvar(this.banco).subscribe(() => {
+    this.bancoService.salvar(this.banco).subscribe((data: any) => {
       this.toasty.success('Registro salvo com sucesso!');
       form.reset();
       this.banco = new Banco();
@@ -48,7 +48,8 @@ export class BancoDataComponent implements OnInit {
   }
 
   atualizarBanco(form: FormControl) {
-    this.bancoService.editar(this.banco).subscribe(banco => {
+    console.log(form);
+    this.bancoService.editar(this.banco, 10).subscribe((banco: any) => {
       this.banco = banco;
       this.router.navigate(['/diversos/banco']);
       this.toasty.success('Registro atualizado com sucesso!');
@@ -57,7 +58,9 @@ export class BancoDataComponent implements OnInit {
   }
 
   carregarBanco(codigo: number) {
-  this.bancoService.listarPorCodigo(codigo).subscribe(dado => this.banco = dado,
+  this.bancoService.listarPorCodigo(codigo).subscribe((dado: any) => {
+    this.banco = dado.result;
+    },
     err => this.errorHandler.handle(err));
   }
 

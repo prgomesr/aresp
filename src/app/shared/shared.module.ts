@@ -33,6 +33,7 @@ import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import {HttpService} from './http/http.service';
 
 
 @NgModule({

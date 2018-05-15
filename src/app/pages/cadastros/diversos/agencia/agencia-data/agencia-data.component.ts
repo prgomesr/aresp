@@ -39,9 +39,12 @@ export class AgenciaDataComponent implements OnInit {
   }
 
   listarBancos() {
-    this.bancoService.listar().subscribe(dados => this.bancos = dados
-        .map(d => ({label: d.nome, value: d.id})),
-      err => this.errorHandler.handle(err));
+    this.bancoService.listar().subscribe((dados:any)=>{
+
+    });
+    /*(dados:any[] => this.bancos = dados
+      .map(d => ({label: d.nome, value: d.id})),
+      err => this.errorHandler.handle(err)*/
   }
 
   get editando(): any {
