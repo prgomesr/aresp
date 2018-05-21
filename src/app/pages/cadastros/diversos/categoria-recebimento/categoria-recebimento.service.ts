@@ -3,30 +3,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 import { CategoriaRecebimento } from '../../../../core/model';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class CategoriaRecebimentoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar() {
-    return this.http.get<any[]>(environment.apiUrl + 'categoriasRecebimentos');
+    return this.http.get('CategoriasRecebimento');
   }
 
   salvar(categoria: CategoriaRecebimento) {
-    return this.http.post(environment.apiUrl + 'categoriasRecebimentos', categoria);
+    return this.http.post('CategoriaRecebimento', categoria);
   }
 
   editar(categoria: CategoriaRecebimento) {
-    return this.http.put<any>(environment.apiUrl + 'categoriasRecebimentos/' + categoria.id, categoria);
+    return this.http.put('CategoriaRecebimento/' + categoria.id, categoria);
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'categoriasRecebimentos/' + `${id}`);
+    return this.http.get('CategoriaRecebimento/' + `${id}`);
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'categoriasRecebimentos'}/${codigo}`);
+    return this.http.delete( 'CategoriaRecebimento/'+codigo);
   }
 
 }

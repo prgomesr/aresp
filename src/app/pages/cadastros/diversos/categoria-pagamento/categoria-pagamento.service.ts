@@ -3,30 +3,32 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../../environments/environment';
 import { CategoriaPagamento } from '../../../../core/model';
+import {HttpService} from '../../../../shared/http/http.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class CategoriaPagamentoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpService: HttpService) { }
 
-  listar () {
-    return this.http.get<any []>(environment.apiUrl + 'categoriasPagamentos');
+  listar (): Observable<Response> {
+    return this.httpService.get('CategoriasPagamento');
   }
 
-  salvar(categoria: CategoriaPagamento) {
-    return this.http.post(environment.apiUrl + 'categoriasPagamentos', categoria);
+  salvar(categoria: CategoriaPagamento): Observable<Response> {
+    return this.httpService.post('CategoriaPagamento', categoria);
   }
 
-  editar(categoria: CategoriaPagamento) {
-    return this.http.put<any>(environment.apiUrl + 'categoriasPagamentos/' + categoria.id, categoria);
+  editar(categoria: CategoriaPagamento): Observable<Response> {
+    return this.httpService.put('CategoriaPagamento/' + categoria.id, categoria);
   }
 
-  listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'categoriasPagamentos/' + `${id}`);
+  listarPorCodigo(id: number): Observable<Response> {
+    return this.httpService.get('CategoriaPagamento/' + `${id}`);
   }
 
-  excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'categoriasPagamentos'}/${codigo}`);
+  excluir(codigo: number): Observable<Response> {
+    return this.httpService.delete('CategoriaPagamento/' + codigo);
   }
 
 }

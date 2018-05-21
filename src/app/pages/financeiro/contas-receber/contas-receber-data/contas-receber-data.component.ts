@@ -60,9 +60,9 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarCategorias() {
-    this.categoriaService.listar().subscribe(tipos => this.categorias = tipos
+    /*this.categoriaService.listar().subscribe(tipos => this.categorias = tipos
         .map(c => ({label: c.nome, value: c.id})),
-      err => this.errorHandler.handle(err));
+      err => this.errorHandler.handle(err));*/
   }
 
   listarGrupoRecebimento() {

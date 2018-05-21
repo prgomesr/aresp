@@ -34,7 +34,10 @@ export class AgenciaComponent implements OnInit {
   }
 
   listar() {
-    this.agenciaService.listar().subscribe(dados => this.agencias = dados,
+    this.agenciaService.listar().subscribe((dados:any) => {
+      console.log(dados);
+      this.agencias = dados.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

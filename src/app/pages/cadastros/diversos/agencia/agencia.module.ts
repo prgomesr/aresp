@@ -7,6 +7,7 @@ import { AgenciaComponent } from './agencia.component';
 import { AgenciaDataComponent } from './agencia-data/agencia-data.component';
 import { AgenciaService } from './agencia.service';
 import {BancoService} from '../banco/banco.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import {BancoService} from '../banco/banco.service';
     AgenciaRoutingModule
   ],
   declarations: [AgenciaComponent, AgenciaDataComponent],
-  providers: [AgenciaService, BancoService]
+  providers: [AgenciaService, BancoService, HttpService]
 })
 export class AgenciaModule { }

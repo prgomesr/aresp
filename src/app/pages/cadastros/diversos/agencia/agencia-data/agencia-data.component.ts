@@ -34,17 +34,18 @@ export class AgenciaDataComponent implements OnInit {
   }
 
   listarPorCodigo(codigo: number) {
-    this.agenciaService.listarPorCodigo(codigo).subscribe(dado => this.agencia = dado,
-      err => this.errorHandler.handle(err));
+     this.agenciaService.listarPorCodigo(codigo).subscribe((dado:any) => {
+       this.agencia = dado.result;
+       console.log(this.agencia);
+    });
   }
 
   listarBancos() {
-    this.bancoService.listar().subscribe((dados:any)=>{
-
+    this.bancoService.listar().subscribe((dados: any) => {
+      dados.result.map(value => {
+        this.bancos.push({label: value.nome, value: value.id});
+      });
     });
-    /*(dados:any[] => this.bancos = dados
-      .map(d => ({label: d.nome, value: d.id})),
-      err => this.errorHandler.handle(err)*/
   }
 
   get editando(): any {
@@ -69,7 +70,6 @@ export class AgenciaDataComponent implements OnInit {
 
   atualizarAgencia(f: FormControl) {
     this.agenciaService.editar(this.agencia).subscribe(dado => {
-        this.agencia = dado;
         this.router.navigate(['/diversos/agencia']);
         this.toasty.success('Registro atualizado com sucesso!');
       },

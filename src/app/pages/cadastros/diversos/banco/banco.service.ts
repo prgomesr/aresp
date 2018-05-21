@@ -21,14 +21,14 @@ export class BancoService {
   }
 
   editar(banco: Banco, id: number): Observable<Response>{
-    return this.httpService.put('bancos/' + id, banco);
+    return this.httpService.put('Banco/' + id, banco);
   }
 
   listarPorCodigo(id: number): Observable<Response>{
-    return this.httpService.get('Bancos/' + id);
+    return this.httpService.get('Banco/' + id);
   }
 
   excluir(codigo: number, id: number): Observable<Response>{
-    return this.httpService.delete('bancos/' + id);
+    return this.httpService.delete('Banco/' + id);
   }
 }

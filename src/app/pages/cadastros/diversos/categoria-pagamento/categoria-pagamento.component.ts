@@ -24,7 +24,9 @@ export class CategoriaPagamentoComponent implements OnInit {
   }
 
   consultar() {
-    this.categoriaPagamentoService.listar().subscribe(dados => this.categorias = dados,
+    this.categoriaPagamentoService.listar().subscribe((dados:any) => {
+        this.categorias = dados.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

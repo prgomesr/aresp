@@ -48,7 +48,7 @@ export class CategoriaRecebimentoDataComponent implements OnInit {
   }
 
   atualizarCategoria(form: FormControl) {
-    this.categoriaService.editar(this.categoria).subscribe(categoria => {
+    this.categoriaService.editar(this.categoria).subscribe((categoria:any) => {
         this.categoria = categoria;
         this.router.navigate(['/diversos/categoria-recebimento']);
         this.toasty.success('Registro atualizado com sucesso!');
@@ -57,7 +57,9 @@ export class CategoriaRecebimentoDataComponent implements OnInit {
   }
 
   carregarCategoria(codigo: number) {
-    this.categoriaService.listarPorCodigo(codigo).subscribe(categoria => this.categoria = categoria,
+    this.categoriaService.listarPorCodigo(codigo).subscribe((categoria:any) => {
+        this.categoria = categoria.result;
+     },
       err => this.errorHandler.handle(err));
   }
 

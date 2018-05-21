@@ -6,6 +6,7 @@ import { CategoriaRecebimentoComponent } from './categoria-recebimento.component
 import { SharedModule } from '../../../../shared/shared.module';
 import { CategoriaRecebimentoRoutingModule } from './categoria-recebimento-routing.module';
 import { CategoriaRecebimentoService } from './categoria-recebimento.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { CategoriaRecebimentoService } from './categoria-recebimento.service';
     CategoriaRecebimentoRoutingModule
   ],
   declarations: [CategoriaRecebimentoDataComponent, CategoriaRecebimentoComponent],
-  providers: [CategoriaRecebimentoService]
+  providers: [CategoriaRecebimentoService, HttpService]
 })
 export class CategoriaRecebimentoModule { }

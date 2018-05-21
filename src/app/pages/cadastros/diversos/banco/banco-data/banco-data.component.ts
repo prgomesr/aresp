@@ -16,6 +16,7 @@ import { ErrorHandlerService } from '../../../../../core/error-handler.service';
 export class BancoDataComponent implements OnInit {
 
   banco = new Banco();
+  idBanco: number;
 
   constructor(private bancoService: BancoService,
               private errorHandler: ErrorHandlerService,
@@ -25,6 +26,7 @@ export class BancoDataComponent implements OnInit {
 
   ngOnInit() {
     const idBanco = this.route.snapshot.params['id'];
+    this.idBanco = idBanco;
 
     if (idBanco) {
       this.carregarBanco(idBanco);
@@ -49,7 +51,7 @@ export class BancoDataComponent implements OnInit {
 
   atualizarBanco(form: FormControl) {
     console.log(form);
-    this.bancoService.editar(this.banco, 10).subscribe((banco: any) => {
+    this.bancoService.editar(this.banco, this.idBanco).subscribe((banco: any) => {
       this.banco = banco;
       this.router.navigate(['/diversos/banco']);
       this.toasty.success('Registro atualizado com sucesso!');

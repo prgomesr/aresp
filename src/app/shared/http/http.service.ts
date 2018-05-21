@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Subject} from "rxjs/Subject";
 import {Router} from "@angular/router";
+import {ErrorHandlerService} from '../../core/error-handler.service';
 
 @Injectable()
 export class HttpService {
@@ -17,7 +18,8 @@ export class HttpService {
   private url = 'http://localhost/ARESP-PHP/';
 
   constructor(private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private errorHandler: ErrorHandlerService) {
     this.load = this.changeLoad.asObservable();
   }
 
@@ -34,7 +36,8 @@ export class HttpService {
         this.enableLoad(false);
         subscriber.complete();
       }, (error) => {
-
+        console.log(error);
+          this.errorHandler.handle(error.error.msg);
       });
 
     });

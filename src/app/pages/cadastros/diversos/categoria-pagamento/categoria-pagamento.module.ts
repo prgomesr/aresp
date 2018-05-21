@@ -6,6 +6,7 @@ import { CategoriaPagamentoRoutingModule } from './categoria-pagamento-routing.m
 import { CategoriaPagamentoComponent } from './categoria-pagamento.component';
 import { CategoriaPagamentoDataComponent } from './categoria-pagamento-data/categoria-pagamento-data.component';
 import { CategoriaPagamentoService } from './categoria-pagamento.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { CategoriaPagamentoService } from './categoria-pagamento.service';
     CategoriaPagamentoRoutingModule
   ],
   declarations: [CategoriaPagamentoComponent, CategoriaPagamentoDataComponent],
-  providers: [CategoriaPagamentoService]
+  providers: [CategoriaPagamentoService, HttpService]
 })
 export class CategoriaPagamentoModule { }

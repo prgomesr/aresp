@@ -3,30 +3,32 @@ import { HttpClient } from '@angular/common/http';
 
 import { Agencia } from '../../../../core/model';
 import { environment } from '../../../../../environments/environment';
+import {HttpService} from '../../../../shared/http/http.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AgenciaService {
   agencia = new Agencia();
-  constructor(private http: HttpClient) { }
+  constructor(private httpService: HttpService) { }
 
-  salvar(agencia: Agencia) {
-    return this.http.post(environment.apiUrl + 'agencias', agencia);
+  salvar(agencia: Agencia): Observable<Response> {
+    return this.httpService.post('Agencia', agencia);
   }
 
-  editar(agencia: Agencia) {
-    return this.http.put<any>(environment.apiUrl + 'agencias/' + agencia.id, agencia);
+  editar(agencia: Agencia): Observable<Response> {
+    return this.httpService.put('Agencia/' + agencia.id, agencia);
   }
 
-  listar() {
-    return this.http.get<any[]>(environment.apiUrl + 'agencias');
+  listar(): Observable<Response> {
+    return this.httpService.get('Agencias');
   }
 
-  listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'agencias/' + `${id}`);
+  listarPorCodigo(id: number): Observable<Response> {
+    return this.httpService.get('Agencia/' + `${id}`);
   }
 
-  excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'agencias'}/${codigo}`);
+  excluir(codigo: number): Observable<Response> {
+    return this.httpService.delete('Agencia/' + codigo);
   }
 
 }

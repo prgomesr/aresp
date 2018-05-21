@@ -37,7 +37,7 @@ export class BancoComponent implements OnInit {
   }
 
   excluir(codigo: number) {
-    this.bancoService.excluir(codigo, 10).subscribe(res => {
+    this.bancoService.excluir(codigo, codigo).subscribe(res => {
       this.toasty.success('Registro excluído com sucesso!');
       this.consultar();
     }, err => this.errorHandler.handle(err));

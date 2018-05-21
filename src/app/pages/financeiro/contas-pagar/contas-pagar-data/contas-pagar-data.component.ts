@@ -54,9 +54,9 @@ export class ContasPagarDataComponent implements OnInit {
   }
 
   listarCategorias() {
-    this.categoriaService.listar().subscribe(dados => this.categorias = dados
+    /*this.categoriaService.listar().subscribe(dados => this.categorias = dados
         .map(d => ({label: d.nome, value: d.id})),
-      err => this.errorHandler.handle(err));
+      err => this.errorHandler.handle(err));*/
   }
 
   listarFornecedores() {

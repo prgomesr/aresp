@@ -26,7 +26,9 @@ export class CategoriaRecebimentoComponent implements OnInit {
   }
 
   listar() {
-    this.categoriaService.listar().subscribe(dados => this.categorias = dados,
+    this.categoriaService.listar().subscribe((dados:any) => {
+        this.categorias = dados.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

@@ -49,9 +49,9 @@ export class ContaCaixaDataComponent implements OnInit {
   }
 
   listarAgencias() {
-    this.agenciaService.listar().subscribe(dados => this.agencias = dados
+    /*this.agenciaService.listar().subscribe(dados => this.agencias = dados
       .map(d => ({label: d.numero, value: d.id})),
-      err => this.errorHandler.handle(err));
+      err => this.errorHandler.handle(err));*/
   }
 
   salvar(form: FormControl) {

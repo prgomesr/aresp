@@ -47,7 +47,6 @@ export class CategoriaPagamentoDataComponent implements OnInit {
 
   atualizarCategoria(form: FormControl) {
     this.categoriaService.editar(this.categoria).subscribe(banco => {
-        this.categoria = banco;
         this.router.navigate(['/diversos/categoria-pagamento']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
@@ -55,7 +54,9 @@ export class CategoriaPagamentoDataComponent implements OnInit {
   }
 
   carregarCategoria(codigo: number) {
-    this.categoriaService.listarPorCodigo(codigo).subscribe(dado => this.categoria = dado,
+    this.categoriaService.listarPorCodigo(codigo).subscribe((dado:any) => {
+        this.categoria = dado.result;
+      },
       err => this.errorHandler.handle(err));
   }
 
