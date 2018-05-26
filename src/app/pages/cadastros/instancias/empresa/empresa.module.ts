@@ -5,6 +5,7 @@ import { EmpresaDataComponent } from './empresa-data/empresa-data.component';
 import {EmpresaComponent} from './empresa.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { EmpresaService } from './empresa.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { EmpresaService } from './empresa.service';
     EmpresaRoutingModule
   ],
   declarations: [EmpresaComponent, EmpresaDataComponent],
-  providers: [EmpresaService]
+  providers: [EmpresaService, HttpService]
 })
 export class EmpresaModule { }

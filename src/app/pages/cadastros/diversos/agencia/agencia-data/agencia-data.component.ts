@@ -26,10 +26,6 @@ export class AgenciaDataComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.listarPorCodigo(id);
-    }
     this.listarBancos();
   }
 
@@ -45,6 +41,10 @@ export class AgenciaDataComponent implements OnInit {
       dados.result.map(value => {
         this.bancos.push({label: value.nome, value: value.id});
       });
+      const id = this.route.snapshot.params['id'];
+      if (id) {
+        this.listarPorCodigo(id);
+      }
     });
   }
 
@@ -69,6 +69,7 @@ export class AgenciaDataComponent implements OnInit {
   }
 
   atualizarAgencia(f: FormControl) {
+    console.log(this.agencia);
     this.agenciaService.editar(this.agencia).subscribe(dado => {
         this.router.navigate(['/diversos/agencia']);
         this.toasty.success('Registro atualizado com sucesso!');

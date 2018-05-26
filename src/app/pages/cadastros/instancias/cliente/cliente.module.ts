@@ -12,6 +12,7 @@ import { TipoSocioService } from '../../diversos/tipo-socio/tipo-socio.service';
 import { SecretariaService } from '../../diversos/secretaria/secretaria.service';
 import { ClienteDataTelefoneComponent } from './cliente-data/cliente-data-telefone/cliente-data-telefone.component';
 import { ClienteDataDependenteComponent } from './cliente-data/cliente-data-dependente/cliente-data-dependente.component';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { ClienteDataDependenteComponent } from './cliente-data/cliente-data-depe
     ClienteRoutingModule
   ],
   declarations: [ClienteComponent, ClienteDataComponent, ClienteDataTelefoneComponent, ClienteDataDependenteComponent],
-  providers: [ClienteService, BancoService, OperadoraService, TipoSocioService, SecretariaService]
+  providers: [ClienteService, BancoService, OperadoraService, TipoSocioService, SecretariaService, HttpService]
 })
 export class ClienteModule { }

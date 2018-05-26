@@ -60,9 +60,9 @@ export class ContasPagarDataComponent implements OnInit {
   }
 
   listarFornecedores() {
-    this.fornecedorService.listar().subscribe(dados => this.fornecedores = dados
+    /*this.fornecedorService.listar().subscribe(dados => this.fornecedores = dados
         .map(d => ({label: d.fantasia, value: d.id})),
-      err => this.errorHandler.handle(err));
+      err => this.errorHandler.handle(err));*/
   }
 
   listarContas() {

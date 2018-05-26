@@ -21,12 +21,16 @@ export class EmpresaComponent implements OnInit {
   }
 
   listar() {
-    this.empresaService.listar().subscribe(empresas => this.empresas = empresas,
+    this.empresaService.listar().subscribe((empresas:any) => {
+      this.empresas = empresas.result;
+    },
       err => this.errorHandler.handle(err));
   }
 
   mostrarDetalhe(codigo: number) {
-    this.empresaService.listarPorCodigo(codigo).subscribe(dado => this.empresa = dado,
+    this.empresaService.listarPorCodigo(codigo).subscribe((dado:any) => {
+        this.empresa = dado.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

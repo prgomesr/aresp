@@ -48,7 +48,7 @@ export class FornecedorDataComponent implements OnInit {
   }
 
   atualizarDado(form: FormControl) {
-    this.dadoService.editar(this.fornecedor).subscribe(dado => {
+    this.dadoService.editar(this.fornecedor).subscribe((dado:any) => {
         this.fornecedor = dado;
         this.router.navigate(['/instancias/fornecedor']);
         this.toasty.success('Registro atualizado com sucesso!');
@@ -57,7 +57,9 @@ export class FornecedorDataComponent implements OnInit {
   }
 
   carregarDado(codigo: number) {
-    this.dadoService.listarPorCodigo(codigo).subscribe(dado => this.fornecedor = dado,
+    this.dadoService.listarPorCodigo(codigo).subscribe((dado:any) => {
+      this.fornecedor = dado.result;
+    },
       err => this.errorHandler.handle(err));
   }
 

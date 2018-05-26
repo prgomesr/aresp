@@ -44,7 +44,7 @@ export class EmpresaDataComponent implements OnInit {
   }
 
   atualizar(form: FormControl) {
-    this.empresaService.editar(this.empresa).subscribe(dado => {
+    this.empresaService.editar(this.empresa).subscribe((dado:any) => {
         this.empresa = dado;
         this.router.navigate(['/instancias/empresa']);
         this.toasty.success('Registro atualizado com sucesso!');
@@ -53,7 +53,9 @@ export class EmpresaDataComponent implements OnInit {
   }
 
   carregar(codigo: number) {
-    this.empresaService.listarPorCodigo(codigo).subscribe(dado => this.empresa = dado,
+    this.empresaService.listarPorCodigo(codigo).subscribe((dado:any) => {
+        this.empresa = dado.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

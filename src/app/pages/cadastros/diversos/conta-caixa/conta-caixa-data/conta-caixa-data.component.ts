@@ -43,9 +43,9 @@ export class ContaCaixaDataComponent implements OnInit {
   }
 
   listarEmpresas() {
-    this.empresaService.listar().subscribe(dados => this.empresas = dados
+    /*this.empresaService.listar().subscribe(dados => this.empresas = dados
       .map(d => ({label: d.fantasia, value: d.id})),
-      err => this.errorHandler.handle(err));
+      err => this.errorHandler.handle(err));*/
   }
 
   listarAgencias() {

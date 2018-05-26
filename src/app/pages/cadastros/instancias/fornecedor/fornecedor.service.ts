@@ -3,32 +3,33 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../../environments/environment';
 import { Fornecedor } from '../../../../core/model';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class FornecedorService {
 
   fornecedor = new Fornecedor();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar() {
-    return this.http.get<any[]>(environment.apiUrl + 'fornecedores');
+    return this.http.get('Fornecedores');
   }
 
   salvar(fornecedor: Fornecedor) {
-    return this.http.post(environment.apiUrl + 'fornecedores', fornecedor);
+    return this.http.post('Fornecedor', fornecedor);
   }
 
   editar(fornecedor: Fornecedor) {
-    return this.http.put<any>(environment.apiUrl + 'fornecedores/' + fornecedor.id, fornecedor);
+    return this.http.put('Fornecedor/' + fornecedor.id, fornecedor);
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'fornecedores/' + `${id}`);
+    return this.http.get('Fornecedor/' + `${id}`);
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'fornecedores'}/${codigo}`);
+    return this.http.delete('Fornecedor/' + codigo);
   }
 
 }

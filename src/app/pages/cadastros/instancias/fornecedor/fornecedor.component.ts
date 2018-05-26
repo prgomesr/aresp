@@ -28,7 +28,9 @@ export class FornecedorComponent implements OnInit {
   }
 
   listar() {
-    this.fornecedorService.listar().subscribe(fornecedores => this.fornecedores = fornecedores,
+    this.fornecedorService.listar().subscribe((fornecedores:any) => {
+      this.fornecedores = fornecedores.result;
+      },
         err => this.errorHandler.handle(err));
   }
 
@@ -55,7 +57,9 @@ export class FornecedorComponent implements OnInit {
   }
 
   mostrarDetalhe(codigo: number) {
-    this.fornecedorService.listarPorCodigo(codigo).subscribe(dado => this.fornecedor = dado,
+    this.fornecedorService.listarPorCodigo(codigo).subscribe((dado:any) => {
+        this.fornecedor = dado.result;
+      },
     err => this.errorHandler.handle(err));
   }
 

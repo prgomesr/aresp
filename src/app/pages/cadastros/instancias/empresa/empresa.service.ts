@@ -2,30 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import { Empresa } from '../../../../core/model';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class EmpresaService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar() {
-    return this.http.get<any []>(environment.apiUrl + 'empresas');
+    return this.http.get('Empresas');
   }
 
   listarPorCodigo(codigo: number) {
-    return this.http.get<any>(environment.apiUrl + 'empresas/' + codigo);
+    return this.http.get('Empresa/' + codigo);
   }
 
   salvar(empresa: Empresa) {
-    return this.http.post(environment.apiUrl + 'empresas', empresa);
+    return this.http.post('Empresa', empresa);
   }
 
   editar(empresa: Empresa) {
-    return this.http.put<any>(environment.apiUrl + 'empresas/' + empresa.id, empresa);
+    return this.http.put('Empresa/' + empresa.id, empresa);
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'empresas'}/${codigo}`);
+    return this.http.delete('Empresa/' + codigo);
   }
 
 }
