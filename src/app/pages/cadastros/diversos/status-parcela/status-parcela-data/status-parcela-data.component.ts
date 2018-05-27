@@ -48,8 +48,8 @@ export class StatusParcelaDataComponent implements OnInit {
   }
 
   atualizarDado(form: FormControl) {
-    this.dadoService.editar(this.statusParcela).subscribe(dado => {
-        this.statusParcela = dado;
+    this.dadoService.editar(this.statusParcela).subscribe((dado:any) => {
+        this.statusParcela = dado.result;
         this.router.navigate(['/diversos/status-parcela']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
@@ -57,7 +57,7 @@ export class StatusParcelaDataComponent implements OnInit {
   }
 
   carregarDado(codigo: number) {
-    this.dadoService.listarPorCodigo(codigo).subscribe(dado => this.statusParcela = dado,
+    this.dadoService.listarPorCodigo(codigo).subscribe((dado:any) => this.statusParcela = dado.result,
       err => this.errorHandler.handle(err));
   }
 

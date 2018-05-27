@@ -24,7 +24,9 @@ export class SecretariaComponent implements OnInit {
   }
 
   consultar() {
-    this.secretariaService.listar().subscribe(dados => this.secretarias = dados,
+    this.secretariaService.listar().subscribe((dados:any) => {
+        this.secretarias = dados.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

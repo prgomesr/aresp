@@ -24,7 +24,7 @@ export class OperadoraComponent implements OnInit {
   }
 
   consultar() {
-    this.operadoraService.listar().subscribe(dados => this.operadoras = dados,
+    this.operadoraService.listar().subscribe((dados:any) => this.operadoras = dados.result,
       err => this.errorHandler.handle(err));
   }
 

@@ -48,8 +48,8 @@ export class TipoRecebimentoDataComponent implements OnInit {
   }
 
   atualizarDado(form: FormControl) {
-    this.dadoService.editar(this.tipo).subscribe(dado => {
-        this.tipo = dado;
+    this.dadoService.editar(this.tipo).subscribe((dado:any) => {
+        this.tipo = dado.result;
         this.router.navigate(['/diversos/tipo-recebimento']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
@@ -57,12 +57,11 @@ export class TipoRecebimentoDataComponent implements OnInit {
   }
 
   carregarDado(codigo: number) {
-    this.dadoService.listarPorCodigo(codigo).subscribe(dado => this.tipo = dado,
+    this.dadoService.listarPorCodigo(codigo).subscribe((dado:any) => this.tipo = dado.result,
       err => this.errorHandler.handle(err));
   }
 
   get editando(): any {
     return Boolean (this.tipo.id);
   }
-
 }

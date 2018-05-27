@@ -131,31 +131,31 @@ export class ClienteDataComponent implements OnInit {
   }
 
   listarTiposSocios() {
-    this.tipoSocioService.listar().subscribe(dados => this.tiposSocios = dados
+    this.tipoSocioService.listar().subscribe((dados:any) => this.tiposSocios = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   listarSecretarias() {
-    this.secretariaService.listar().subscribe(dados => this.secretarias = dados
+    this.secretariaService.listar().subscribe((dados:any) => this.secretarias = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   listarBancos() {
-    /*this.bancoService.listar().subscribe(dados => this.bancos = dados
+    this.bancoService.listar().subscribe((dados:any) => this.bancos = dados.result
         .map(d => ({label: d.nome, value: d.id})),
-      err => this.errorHandler.handle(err));*/
+      err => this.errorHandler.handle(err));
   }
 
   listarOperadoras() {
-    this.operadoraService.listar().subscribe(dados => this.operadoras = dados
+    this.operadoraService.listar().subscribe((dados:any) => this.operadoras = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   carregarCliente(codigo: number) {
-    this.clienteService.listarPorCodigo(codigo).subscribe(dado => this.cliente = dado,
+    this.clienteService.listarPorCodigo(codigo).subscribe((dado:any) => this.cliente = dado.result,
       err => this.errorHandler.handle(err));
   }
 

@@ -48,8 +48,8 @@ export class OperadoraDataComponent implements OnInit {
   }
 
   atualizarDado(form: FormControl) {
-    this.dadoService.editar(this.operadora).subscribe(dado => {
-        this.operadora = dado;
+    this.dadoService.editar(this.operadora).subscribe((dado:any) => {
+        this.operadora = dado.result;
         this.router.navigate(['/diversos/operadora']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
@@ -57,7 +57,7 @@ export class OperadoraDataComponent implements OnInit {
   }
 
   carregarDado(codigo: number) {
-    this.dadoService.listarPorCodigo(codigo).subscribe(dado => this.operadora = dado,
+    this.dadoService.listarPorCodigo(codigo).subscribe((dado:any) => this.operadora = dado.result,
       err => this.errorHandler.handle(err));
   }
 

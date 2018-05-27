@@ -24,7 +24,9 @@ export class TipoSocioComponent implements OnInit {
   }
 
   consultar () {
-    this.tipoSocioService.listar().subscribe(dados => this.dados = dados,
+    this.tipoSocioService.listar().subscribe((dados:any) => {
+        this.dados = dados.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

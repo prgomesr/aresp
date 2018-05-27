@@ -48,8 +48,8 @@ export class SecretariaDataComponent implements OnInit {
   }
 
   atualizarDado(form: FormControl) {
-    this.dadoService.editar(this.secretaria).subscribe(dado => {
-        this.secretaria = dado;
+    this.dadoService.editar(this.secretaria).subscribe((dado:any) => {
+        this.secretaria = dado.result;
         this.router.navigate(['/diversos/secretaria']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
@@ -57,7 +57,7 @@ export class SecretariaDataComponent implements OnInit {
   }
 
   carregarDado(codigo: number) {
-    this.dadoService.listarPorCodigo(codigo).subscribe(dado => this.secretaria = dado,
+    this.dadoService.listarPorCodigo(codigo).subscribe((dado:any) => this.secretaria = dado.result,
       err => this.errorHandler.handle(err));
   }
 

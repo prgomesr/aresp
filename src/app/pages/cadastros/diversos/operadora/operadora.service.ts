@@ -3,32 +3,33 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../../environments/environment';
 import { Operadora } from '../../../../core/model';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class OperadoraService {
 
   operadora = new Operadora();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar () {
-    return this.http.get<any []>(environment.apiUrl + 'operadoras');
+    return this.http.get('Operadoras');
   }
 
   salvar(dado: Operadora) {
-    return this.http.post(environment.apiUrl + 'operadoras', dado);
+    return this.http.post('Operadora', dado);
   }
 
   editar(dado: Operadora) {
-    return this.http.put<any>(environment.apiUrl + 'operadoras/' + dado.id, dado);
+    return this.http.put('Operadora/' + dado.id, dado);
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'operadoras/' + `${id}`);
+    return this.http.get('Operadora/' + `${id}`);
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'operadoras'}/${codigo}`);
+    return this.http.delete('Operadora/' + codigo);
   }
 
 }

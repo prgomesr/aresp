@@ -25,7 +25,7 @@ export class StatusParcelaComponent implements OnInit {
   }
 
   consultar() {
-    this.statusParcelaService.listar().subscribe(dados => this.dados = dados,
+    this.statusParcelaService.listar().subscribe((dados:any) => this.dados = dados.result,
       err => this.errorHandler.handle(err));
   }
 

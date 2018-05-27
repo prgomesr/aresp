@@ -6,6 +6,7 @@ import { TipoSocioRoutingModule } from './tipo-socio-routing.module';
 import { TipoSocioComponent } from './tipo-socio.component';
 import { TipoSocioDataComponent } from './tipo-socio-data/tipo-socio-data.component';
 import { TipoSocioService } from './tipo-socio.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { TipoSocioService } from './tipo-socio.service';
     TipoSocioRoutingModule
   ],
   declarations: [TipoSocioComponent, TipoSocioDataComponent],
-  providers: [TipoSocioService]
+  providers: [TipoSocioService, HttpService]
 })
 export class TipoSocioModule { }

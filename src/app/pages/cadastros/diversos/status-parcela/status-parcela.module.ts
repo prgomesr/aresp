@@ -6,6 +6,7 @@ import { StatusParcelaRoutingModule } from './status-parcela-routing.module';
 import { StatusParcelaComponent } from './status-parcela.component';
 import { StatusParcelaDataComponent } from './status-parcela-data/status-parcela-data.component';
 import { StatusParcelaService } from './status-parcela.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { StatusParcelaService } from './status-parcela.service';
     StatusParcelaRoutingModule
   ],
   declarations: [StatusParcelaComponent, StatusParcelaDataComponent],
-  providers: [StatusParcelaService]
+  providers: [StatusParcelaService, HttpService]
 })
 export class StatusParcelaModule { }

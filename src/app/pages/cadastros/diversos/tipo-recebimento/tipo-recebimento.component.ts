@@ -24,7 +24,7 @@ export class TipoRecebimentoComponent implements OnInit {
   }
 
   consultar() {
-    this.tipoRecebimentoService.listar().subscribe(dados => this.dados = dados,
+    this.tipoRecebimentoService.listar().subscribe((dados:any) => this.dados = dados.result,
       err => this.errorHandler.handle(err));
   }
 

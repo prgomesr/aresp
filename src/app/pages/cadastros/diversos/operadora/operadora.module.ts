@@ -6,6 +6,7 @@ import { OperadoraRoutingModule } from './operadora-routing.module';
 import { OperadoraComponent } from './operadora.component';
 import { OperadoraDataComponent } from './operadora-data/operadora-data.component';
 import { OperadoraService } from './operadora.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { OperadoraService } from './operadora.service';
     OperadoraRoutingModule
   ],
   declarations: [OperadoraComponent, OperadoraDataComponent],
-  providers: [OperadoraService]
+  providers: [OperadoraService, HttpService]
 })
 export class OperadoraModule { }
