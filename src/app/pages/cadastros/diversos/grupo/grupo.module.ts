@@ -6,6 +6,7 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { GrupoComponent } from './grupo.component';
 import { GrupoDataComponent } from './grupo-data/grupo-data.component';
 import { GrupoService } from './grupo.service';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { GrupoService } from './grupo.service';
     SharedModule
   ],
   declarations: [GrupoComponent, GrupoDataComponent],
-  providers: [GrupoService]
+  providers: [GrupoService, HttpService]
 })
 export class GrupoModule { }

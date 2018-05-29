@@ -3,31 +3,32 @@ import { HttpClient } from '@angular/common/http';
 
 import { ContaCaixa } from '../../../../core/model';
 import { environment } from '../../../../../environments/environment';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class ContaCaixaService {
 
   conta = new ContaCaixa();
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   salvar(conta: ContaCaixa) {
-    return this.http.post(environment.apiUrl + 'contas', conta);
+    return this.http.post('ContaCaixa', conta);
   }
 
   editar(conta: ContaCaixa) {
-    return this.http.put<any>(environment.apiUrl + 'contas/' + conta.id, conta);
+    return this.http.put('ContaCaixa/' + conta.id, conta);
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'contas/' + `${id}`);
+    return this.http.get('ContaCaixa/' + `${id}`);
   }
 
   listar() {
-    return this.http.get<any[]>(environment.apiUrl + 'contas');
+    return this.http.get('ContasCaixa');
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'contas'}/${codigo}`);
+    return this.http.delete('ContaCaixa/' + codigo);
   }
 
 }

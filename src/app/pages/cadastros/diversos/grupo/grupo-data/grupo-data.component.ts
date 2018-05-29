@@ -48,7 +48,7 @@ export class GrupoDataComponent implements OnInit {
   }
 
   atualizarDado(form: FormControl) {
-    this.grupoService.editar(this.grupo).subscribe(dado => {
+    this.grupoService.editar(this.grupo).subscribe((dado:any) => {
         this.grupo = dado;
         this.router.navigate(['/diversos/grupo']);
         this.toasty.success('Registro atualizado com sucesso!');
@@ -57,7 +57,7 @@ export class GrupoDataComponent implements OnInit {
   }
 
   carregarDado(codigo: number) {
-    this.grupoService.listarPorCodigo(codigo).subscribe(dado => this.grupo = dado,
+    this.grupoService.listarPorCodigo(codigo).subscribe((dado:any) => this.grupo = dado.result,
       err => this.errorHandler.handle(err));
   }
 

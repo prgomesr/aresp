@@ -51,8 +51,8 @@ export class ConvenioDataComponent implements OnInit {
   }
 
   atualizarDado(form: FormControl) {
-    this.convenioService.editar(this.convenio).subscribe(dado => {
-        this.convenio = dado;
+    this.convenioService.editar(this.convenio).subscribe((dado:any) => {
+        this.convenio = dado.result;
         this.router.navigate(['/diversos/convenio']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
@@ -60,12 +60,12 @@ export class ConvenioDataComponent implements OnInit {
   }
 
   carregarDado(codigo: number) {
-    this.convenioService.listarPorCodigo(codigo).subscribe(dado => this.convenio = dado,
+    this.convenioService.listarPorCodigo(codigo).subscribe((dado:any) => this.convenio = dado.result,
       err => this.errorHandler.handle(err));
   }
 
   listarContas() {
-    this.contaService.listar().subscribe(dados => this.contas = dados
+    this.contaService.listar().subscribe((dados:any) => this.contas = dados.result
         .map(d => ({label: d.numero, value: d.id})),
       err => this.errorHandler.handle(err));
   }

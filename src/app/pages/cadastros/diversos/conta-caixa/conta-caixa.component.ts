@@ -25,7 +25,9 @@ export class ContaCaixaComponent implements OnInit {
   }
 
   listar() {
-    this.contaService.listar().subscribe(dados => this.contas = dados,
+    this.contaService.listar().subscribe((dados:any) => {
+      this.contas = dados.result;
+      },
       err => this.errorHandler.handle(err));
   }
 

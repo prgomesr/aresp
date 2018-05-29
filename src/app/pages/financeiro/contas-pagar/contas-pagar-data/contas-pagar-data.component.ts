@@ -66,7 +66,7 @@ export class ContasPagarDataComponent implements OnInit {
   }
 
   listarContas() {
-    this.contaService.listar().subscribe(dados => this.contas = dados
+    this.contaService.listar().subscribe((dados:any) => this.contas = dados.result
         .map(d => ({label: d.numero, value: d.id})),
       err => this.errorHandler.handle(err));
   }

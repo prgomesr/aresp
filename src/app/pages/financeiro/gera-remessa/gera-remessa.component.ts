@@ -40,7 +40,7 @@ export class GeraRemessaComponent implements OnInit {
   }
 
   listarGrupos() {
-    this.grupoService.listar().subscribe(dados => this.grupos = dados
+    this.grupoService.listar().subscribe((dados:any) => this.grupos = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }

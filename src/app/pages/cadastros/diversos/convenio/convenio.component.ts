@@ -28,7 +28,7 @@ export class ConvenioComponent implements OnInit {
   }
 
   consultar() {
-    this.convenioService.listar().subscribe(dados => this.convenios = dados,
+    this.convenioService.listar().subscribe((dados:any) => this.convenios = dados.result,
       err => this.errorHandler.handle(err));
   }
 

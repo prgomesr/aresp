@@ -43,15 +43,15 @@ export class ContaCaixaDataComponent implements OnInit {
   }
 
   listarEmpresas() {
-    /*this.empresaService.listar().subscribe(dados => this.empresas = dados
+    this.empresaService.listar().subscribe((dados:any) => this.empresas = dados.result
       .map(d => ({label: d.fantasia, value: d.id})),
-      err => this.errorHandler.handle(err));*/
+      err => this.errorHandler.handle(err));
   }
 
   listarAgencias() {
-    /*this.agenciaService.listar().subscribe(dados => this.agencias = dados
+    this.agenciaService.listar().subscribe((dados:any) => this.agencias = dados.result
       .map(d => ({label: d.numero, value: d.id})),
-      err => this.errorHandler.handle(err));*/
+      err => this.errorHandler.handle(err));
   }
 
   salvar(form: FormControl) {
@@ -71,8 +71,8 @@ export class ContaCaixaDataComponent implements OnInit {
   }
 
   atualizar(form: FormControl) {
-    this.contaService.editar(this.conta).subscribe(dado => {
-        this.conta = dado;
+    this.contaService.editar(this.conta).subscribe((dado:any) => {
+        this.conta = dado.result;
         this.router.navigate(['/diversos/conta']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
@@ -80,7 +80,7 @@ export class ContaCaixaDataComponent implements OnInit {
   }
 
   carregarConta(codigo: number) {
-    this.contaService.listarPorCodigo(codigo).subscribe(dado => this.conta = dado,
+    this.contaService.listarPorCodigo(codigo).subscribe((dado:any) => this.conta = dado.result,
       err => this.errorHandler.handle(err));
   }
 

@@ -3,32 +3,33 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../../environments/environment';
 import { Convenio } from '../../../../core/model';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class ConvenioService {
 
   convenio = new Convenio();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar () {
-    return this.http.get<any []>(environment.apiUrl + 'convenios');
+    return this.http.get('Convenios');
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'convenios'}/${codigo}`);
+    return this.http.delete('Convenio/' + codigo);
   }
 
   salvar(dado: Convenio) {
-    return this.http.post(environment.apiUrl + 'convenios', dado);
+    return this.http.post('Convenio', dado);
   }
 
   editar(dado: Convenio) {
-    return this.http.put<any>(environment.apiUrl + 'convenios/' + dado.id, dado);
+    return this.http.put('Convenio/' + dado.id, dado);
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'convenios/' + `${id}`);
+    return this.http.get('Convenio/' + `${id}`);
   }
 
 }

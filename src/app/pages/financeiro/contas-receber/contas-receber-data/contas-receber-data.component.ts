@@ -66,7 +66,7 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarGrupoRecebimento() {
-    this.grupoService.listar().subscribe(grupos => this.gruposRecebimentos = grupos
+    this.grupoService.listar().subscribe((grupos:any) => this.gruposRecebimentos = grupos.result
         .map(g => ({label: g.nome, value: g.id})),
       err => this.errorHandler.handle(err));
   }
@@ -78,7 +78,7 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarContas() {
-    this.contaService.listar().subscribe(dados => this.contas = dados
+    this.contaService.listar().subscribe((dados:any) => this.contas = dados.result
         .map(c => ({label: c.numero, value: c.id})),
       err => this.errorHandler.handle(err));
   }

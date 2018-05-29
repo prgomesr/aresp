@@ -3,32 +3,33 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../../environments/environment';
 import {GrupoRecebimento} from '../../../../core/model';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class GrupoService {
 
   grupo = new GrupoRecebimento();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar () {
-    return this.http.get<any []>(environment.apiUrl + 'grupos');
+    return this.http.get('GruposRecebimento');
   }
 
   salvar(dado: GrupoRecebimento) {
-    return this.http.post(environment.apiUrl + 'grupos', dado);
+    return this.http.post('GrupoRecebimento', dado);
   }
 
   editar(dado: GrupoRecebimento) {
-    return this.http.put<any>(environment.apiUrl + 'grupos/' + dado.id, dado);
+    return this.http.put('GrupoRecebimento/' + dado.id, dado);
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'grupos/' + `${id}`);
+    return this.http.get('GrupoRecebimento/' + `${id}`);
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl + 'grupos'}/${codigo}`);
+    return this.http.delete('GrupoRecebimento/' + codigo);
   }
 
 }
