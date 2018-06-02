@@ -122,7 +122,7 @@ export class ClienteDataComponent implements OnInit {
   }
 
   atualizarCliente(form: FormControl) {
-    this.clienteService.editar(this.cliente).subscribe(dado => {
+    this.clienteService.editar(this.cliente).subscribe((dado:any) => {
         this.cliente = dado;
         this.router.navigate(['/instancias/cliente']);
         this.toasty.success('Registro atualizado com sucesso!');

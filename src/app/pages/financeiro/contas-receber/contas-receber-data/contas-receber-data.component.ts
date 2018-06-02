@@ -60,9 +60,9 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarCategorias() {
-    /*this.categoriaService.listar().subscribe(tipos => this.categorias = tipos
+    this.categoriaService.listar().subscribe((tipos:any) => this.categorias = tipos.reuslt
         .map(c => ({label: c.nome, value: c.id})),
-      err => this.errorHandler.handle(err));*/
+      err => this.errorHandler.handle(err));
   }
 
   listarGrupoRecebimento() {
@@ -72,7 +72,7 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarClientes() {
-    this.clienteService.listar().subscribe(clientes => this.clientes = clientes
+    this.clienteService.listar().subscribe((clientes:any) => this.clientes = clientes
         .map(c => ({label: c.nome, value: c.id})),
       err => this.errorHandler.handle(err));
   }

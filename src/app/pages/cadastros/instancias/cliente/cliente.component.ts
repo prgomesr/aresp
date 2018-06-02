@@ -42,7 +42,7 @@ export class ClienteComponent implements OnInit {
   }
 
   listar() {
-    this.clienteService.listar().subscribe(clientes => this.clientes = clientes,
+    this.clienteService.listar().subscribe((clientes:any) => this.clientes = clientes,
       err => this.errorHandler.handle(err));
   }
 

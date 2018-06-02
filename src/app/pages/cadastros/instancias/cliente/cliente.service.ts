@@ -3,23 +3,24 @@ import { HttpClient } from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {Cliente, Dependente} from '../../../../core/model';
 import * as moment from 'moment';
+import {HttpService} from '../../../../shared/http/http.service';
 
 @Injectable()
 export class ClienteService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService, private httpC:  HttpClient) { }
 
   listar() {
-    return this.http.get<any[]>(environment.apiUrl + 'clientes');
+    return this.http.get('Clientes');
   }
 
   salvar(dado: Cliente) {
-    return this.http.post(environment.apiUrl + 'clientes', dado);
+    return this.http.post('Cliente', dado);
   }
 
   editar(cliente: Cliente) {
-    return this.http.put<any>(environment.apiUrl + 'clientes/' + cliente.id, cliente)
-      .map(res => {
+    return this.http.put('Cliente/' + cliente.id, cliente)
+      .map((res:any) => {
         const clienteAlterado = res as Cliente;
         const dependenteAlterado = res as Dependente;
         this.converterStringParaData([clienteAlterado], [dependenteAlterado]);
@@ -28,8 +29,8 @@ export class ClienteService {
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(environment.apiUrl + 'clientes/' + `${id}`)
-      .map(res => {
+    return this.http.get( 'Cliente/' + `${id}`)
+      .map((res:any) => {
         const cliente = res as Cliente;
         const dependente = res as Dependente;
         this.converterStringParaData([cliente], [dependente]);
@@ -38,7 +39,7 @@ export class ClienteService {
   }
 
   getCep(cep) {
-    return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json`);
+    return this.httpC.get<any>(`https://viacep.com.br/ws/${cep}/json`);
   }
 
   private converterStringParaData(clientes: Cliente [], dependentes: Dependente []) {
