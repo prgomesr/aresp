@@ -108,6 +108,7 @@ export class Cancelamento {
 
 export class Cliente {
   id: number;
+  ativo = true;
   cadastro = new Date();
   entrada: Date;
   cpf: string;
@@ -135,6 +136,7 @@ export class Cliente {
 
 export class Empresa {
   id: number;
+  ativo = true;
   razao: string;
   fantasia: string;
   cnpj: string;
@@ -198,6 +200,7 @@ export class Pagamento {
 
 export class Fornecedor {
   id: number;
+  ativo = true;
   cnpj: string;
   razao: string;
   fantasia: string;
