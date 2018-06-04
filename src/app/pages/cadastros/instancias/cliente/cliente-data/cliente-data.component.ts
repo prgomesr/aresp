@@ -11,6 +11,7 @@ import { SecretariaService } from '../../../diversos/secretaria/secretaria.servi
 import { TipoSocioService } from '../../../diversos/tipo-socio/tipo-socio.service';
 import { Cliente } from '../../../../../core/model';
 import { ClienteService } from '../cliente.service';
+import {GrupoService} from '../../../diversos/grupo/grupo.service';
 
 @Component({
   selector: 'app-cliente-data',
@@ -23,6 +24,7 @@ export class ClienteDataComponent implements OnInit {
   secretarias = [];
   bancos = [];
   operadoras = [];
+  grupos = [];
   cliente = new Cliente();
 
   estCivil = [
@@ -88,6 +90,7 @@ export class ClienteDataComponent implements OnInit {
               private operadoraService: OperadoraService,
               private secretariaService: SecretariaService,
               private tipoSocioService: TipoSocioService,
+              private grupoService: GrupoService,
               private toasty: ToastyService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -103,6 +106,7 @@ export class ClienteDataComponent implements OnInit {
     this.listarOperadoras();
     this.listarSecretarias();
     this.listarTiposSocios();
+    this.listarGrupos();
   }
 
   salvar(form: FormControl) {
@@ -122,7 +126,7 @@ export class ClienteDataComponent implements OnInit {
   }
 
   atualizarCliente(form: FormControl) {
-    this.clienteService.editar(this.cliente).subscribe((dado:any) => {
+    this.clienteService.editar(this.cliente).subscribe((dado: any) => {
         this.cliente = dado;
         this.router.navigate(['/instancias/cliente']);
         this.toasty.success('Registro atualizado com sucesso!');
@@ -131,21 +135,27 @@ export class ClienteDataComponent implements OnInit {
   }
 
   listarTiposSocios() {
-    this.tipoSocioService.listar().subscribe((dados:any) => this.tiposSocios = dados.result
+    this.tipoSocioService.listar().subscribe((dados: any) => this.tiposSocios = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   listarSecretarias() {
-    this.secretariaService.listar().subscribe((dados:any) => this.secretarias = dados.result
+    this.secretariaService.listar().subscribe((dados: any) => this.secretarias = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   listarBancos() {
-    this.bancoService.listar().subscribe((dados:any) => this.bancos = dados.result
+    this.bancoService.listar().subscribe((dados: any) => this.bancos = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
+  }
+
+  listarGrupos() {
+    this.grupoService.listar().subscribe((dados: any) => this.grupos = dados.result
+      .map(d => ({label: d.nome, value: d.id})),
+      error1 => this.errorHandler.handle(error1));
   }
 
   listarOperadoras() {

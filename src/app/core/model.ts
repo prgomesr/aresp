@@ -120,6 +120,8 @@ export class Cliente {
   obs: string;
   email: string;
   nascimento: Date;
+  numAverbacao: string;
+  matricula: string;
   situacao = 'EM DIA';
   grupo = new GrupoRecebimento();
   endereco = new Endereco();

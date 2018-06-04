@@ -70,8 +70,24 @@
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Secretaria</label>
+          <p-dropdown [options]="grupos" placeholder="Selecione: " [autoWidth]="false" name="grupo"
+                      [(ngModel)]="cliente.grupo.id"></p-dropdown>
+        </div>
+
+        <div class="ui-g-2 ui-md-2 ui-fluid">
+          <label>Grupo</label>
           <p-dropdown [options]="secretarias" placeholder="Selecione: " [autoWidth]="false" name="secretaria"
-                      [(ngModel)]="cliente.secretaria.id"></p-dropdown>
+                      [(ngModel)]="cliente.secretaria.id" required></p-dropdown>
+        </div>
+
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Número de Averbação</label>
+          <input type="text" pInputText name="num_averbacao" [(ngModel)]="cliente.numAverbacao">
+        </div>
+
+        <div class="ui-g-3 ui-md-3 ui-fluid">
+          <label>Matrícula</label>
+          <input type="text" pInputText name="matricula" [(ngModel)]="cliente.matricula">
         </div>
 
         <div class="ui-g-12 ui-md-12 ui-fluid">
