@@ -98,15 +98,14 @@ export class ClienteDataComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-
-    if (id) {
-      this.carregarCliente(id);
-    }
     this.listarBancos();
     this.listarOperadoras();
     this.listarSecretarias();
     this.listarTiposSocios();
     this.listarGrupos();
+    if (id) {
+      this.carregarCliente(id);
+    }
   }
 
   salvar(form: FormControl) {
@@ -165,7 +164,9 @@ export class ClienteDataComponent implements OnInit {
   }
 
   carregarCliente(codigo: number) {
-    this.clienteService.listarPorCodigo(codigo).subscribe((dado:any) => this.cliente = dado.result,
+    this.clienteService.listarPorCodigo(codigo).subscribe((dado:any) => {
+      this.cliente = dado;
+      },
       err => this.errorHandler.handle(err));
   }
 

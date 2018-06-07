@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Subject} from "rxjs/Subject";
 import {Router} from "@angular/router";
 import {ErrorHandlerService} from '../../core/error-handler.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class HttpService {
@@ -19,7 +20,8 @@ export class HttpService {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private errorHandler: ErrorHandlerService) {
+              private errorHandler: ErrorHandlerService,
+              private spinner: NgxSpinnerService) {
     this.load = this.changeLoad.asObservable();
   }
 
@@ -30,12 +32,13 @@ export class HttpService {
    */
   private configurateResponse(http: Observable<any> ): Observable<Response> {
     return new Observable<Response>( (subscriber) => {
-
       http.subscribe((data) => {
+        this.spinner.hide();
         subscriber.next(data);
         this.enableLoad(false);
         subscriber.complete();
       }, (error) => {
+        this.spinner.hide();
         console.log(error);
           this.errorHandler.handle(error.error.msg);
       });
@@ -50,6 +53,7 @@ export class HttpService {
    * @details POST method that executes according to url entered by the user
    */
   post(url: string, body: any): Observable<Response> {
+    this.spinner.show();
     return this.configurateResponse(
       this.http.post<any>(this.url + url, body, {headers: this.headers})
     );
@@ -62,6 +66,7 @@ export class HttpService {
    * @details POST method that executes according to url entered by the user
    */
   put(url: string, body: any): Observable<Response> {
+    this.spinner.show();
     return this.configurateResponse(
       this.http.put<any>(this.url + url, body, {headers: this.headers})
     );
@@ -74,6 +79,7 @@ export class HttpService {
    * @details POST method that executes according to url entered by the user
    */
   get(url: string): Observable<Response> {
+    this.spinner.show();
     return this.configurateResponse(
       this.http.get<any>(this.url + url, {headers: this.headers})
     );
@@ -86,6 +92,7 @@ export class HttpService {
    * @details POST method that executes according to url entered by the user
    */
   delete(url: string): Observable<Response> {
+    this.spinner.show();
     return this.configurateResponse(
       this.http.delete<any>(this.url + url, {headers: this.headers})
     );

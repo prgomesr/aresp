@@ -47,7 +47,7 @@ export class ClienteService {
       cliente.nascimento = moment(cliente.nascimento, 'YYYY-MM-DD').toDate();
       cliente.cadastro = moment(cliente.cadastro, 'YYYY-MM-DD').toDate();
 
-      if (cliente.cancelado.dataPedido || cliente.cancelado.dataCancelamento ) {
+      if (cliente.cancelado) {
         cliente.cancelado.dataPedido = moment(cliente.cancelado.dataPedido, 'YYYY-MM-DD').toDate();
         cliente.cancelado.dataCancelamento = moment(cliente.cancelado.dataCancelamento, 'YYYY-MM-DD').toDate();
       }
