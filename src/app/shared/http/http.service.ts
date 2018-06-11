@@ -1,8 +1,8 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Subject} from "rxjs/Subject";
-import {Router} from "@angular/router";
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 import {ErrorHandlerService} from '../../core/error-handler.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
