@@ -39,7 +39,7 @@ export class ContasReceberComponent implements OnInit {
   }
 
   consultar() {
-    this.recebimentoService.listar().subscribe(recebimentos => this.recebimentos = recebimentos,
+    this.recebimentoService.listar().subscribe((recebimentos:any) => this.recebimentos = recebimentos.result,
       erro => this.errorHandler.handle(erro));
   }
 

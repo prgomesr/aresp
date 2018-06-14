@@ -54,6 +54,7 @@ export class HttpService {
    */
   post(url: string, body: any): Observable<Response> {
     this.spinner.show();
+    this.addHeader('Content-Type','application/json')
     return this.configurateResponse(
       this.http.post<any>(this.url + url, body, {headers: this.headers})
     );

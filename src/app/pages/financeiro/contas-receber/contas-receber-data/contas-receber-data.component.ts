@@ -60,7 +60,7 @@ export class ContasReceberDataComponent implements OnInit {
   }
 
   listarCategorias() {
-    this.categoriaService.listar().subscribe((tipos:any) => this.categorias = tipos.reuslt
+    this.categoriaService.listar().subscribe((tipos:any) => this.categorias = tipos.result
         .map(c => ({label: c.nome, value: c.id})),
       err => this.errorHandler.handle(err));
   }

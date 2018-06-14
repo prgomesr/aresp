@@ -4,36 +4,37 @@ import { HttpClient } from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {Recebimento} from '../../../core/model';
 import * as moment from 'moment';
+import {HttpService} from '../../../shared/http/http.service';
 
 @Injectable()
 export class ContasReceberService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar() {
-    return this.http.get<any []>(`${environment.apiUrl}recebimentos`);
+    return this.http.get(`Recebimentos`);
   }
 
   excluir(codigo: number) {
-    return this.http.delete(`${environment.apiUrl}recebimentos/${codigo}`);
+    return this.http.delete(`Recebimento/${codigo}`);
   }
 
   salvar(recebimento: Recebimento) {
-    return this.http.post(`${environment.apiUrl}recebimentos/`, recebimento);
+    return this.http.post(`Recebimento/`, recebimento);
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get<any>(`${environment.apiUrl}recebimentos/${id}`)
-      .map(res => {
-        const recebimento = res as Recebimento;
+    return this.http.get(`Recebimento/${id}`)
+      .map((res:any) => {
+        const recebimento = res.result as Recebimento;
         this.converterStringParaData([recebimento]);
         return recebimento;
       });
   }
 
   editar(recebimento: Recebimento) {
-    return this.http.put<any>(environment.apiUrl + 'recebimentos/' + recebimento.id, recebimento)
-      .map(res => {
+    return this.http.put('Recebimento/' + recebimento.id, recebimento)
+      .map((res:any) => {
         const recebimentoAlterado = res as Recebimento;
         this.converterStringParaData([recebimentoAlterado]);
         return recebimentoAlterado;

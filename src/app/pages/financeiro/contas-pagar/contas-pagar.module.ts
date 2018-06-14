@@ -9,6 +9,7 @@ import { ContasPagarService } from './contas-pagar.service';
 import { CategoriaPagamentoService } from '../../cadastros/diversos/categoria-pagamento/categoria-pagamento.service';
 import { FornecedorService } from '../../cadastros/instancias/fornecedor/fornecedor.service';
 import { ContaCaixaService } from '../../cadastros/diversos/conta-caixa/conta-caixa.service';
+import {HttpService} from '../../../shared/http/http.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ContaCaixaService } from '../../cadastros/diversos/conta-caixa/conta-ca
     ContasPagarRoutingModule
   ],
   declarations: [ContasPagarComponent, ContasPagarDataComponent],
-  providers: [ContasPagarService, CategoriaPagamentoService, FornecedorService, ContaCaixaService]
+  providers: [ContasPagarService, CategoriaPagamentoService, FornecedorService, ContaCaixaService, HttpService]
 })
 export class ContasPagarModule { }

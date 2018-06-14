@@ -35,7 +35,7 @@ export class GeraRemessaComponent implements OnInit {
   }
 
   listarRecebimentos() {
-    this.recebimentoService.listar().subscribe(dados => this.recebimentos = dados,
+    this.recebimentoService.listar().subscribe((dados:any) => this.recebimentos = dados.result,
       err => this.errorHandler.handle(err));
   }
 
