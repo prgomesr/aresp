@@ -1,3 +1,4 @@
+
 export class Banco {
   id: number;
   nome: string;
@@ -120,7 +121,7 @@ export class Cliente {
   estadoCivil: string;
   obs: string;
   email: string;
-  nascimento: Date;
+  nascimento: any;
   numAverbacao: string;
   matricula: string;
   situacao = 'EM DIA';

@@ -15,12 +15,14 @@ export class ClienteService {
   }
 
   salvar(dado: Cliente) {
-    return this.http.post('Cliente', dado);
+    const cliente = dado;
+    this.converterFormatoDate(cliente);
+    return this.http.post('Cliente', cliente);
   }
 
   editar(cliente: Cliente) {
     return this.http.put('Cliente/' + cliente.id, cliente)
-      .map((res:any) => {
+      .map((res: any) => {
         const clienteAlterado = res as Cliente;
         const dependenteAlterado = res as Dependente;
         this.converterStringParaData([clienteAlterado], [dependenteAlterado]);
@@ -30,7 +32,7 @@ export class ClienteService {
 
   listarPorCodigo(id: number) {
     return this.http.get( 'Cliente/' + `${id}`)
-      .map((res:any) => {
+      .map((res: any) => {
         const cliente = res as Cliente;
         const dependente = res as Dependente;
         this.converterStringParaData([cliente], [dependente]);
@@ -57,6 +59,10 @@ export class ClienteService {
       }
     }
     }
+  }
+
+  private converterFormatoDate(cliente: Cliente) {
+    cliente.nascimento = moment(cliente.nascimento).format('YYYY-MM-DD HH:mm');
   }
 
 }

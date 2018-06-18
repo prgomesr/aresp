@@ -158,13 +158,13 @@ export class ClienteDataComponent implements OnInit {
   }
 
   listarOperadoras() {
-    this.operadoraService.listar().subscribe((dados:any) => this.operadoras = dados.result
+    this.operadoraService.listar().subscribe((dados: any) => this.operadoras = dados.result
         .map(d => ({label: d.nome, value: d.id})),
       err => this.errorHandler.handle(err));
   }
 
   carregarCliente(codigo: number) {
-    this.clienteService.listarPorCodigo(codigo).subscribe((dado:any) => {
+    this.clienteService.listarPorCodigo(codigo).subscribe((dado: any) => {
       this.cliente = dado;
       },
       err => this.errorHandler.handle(err));
