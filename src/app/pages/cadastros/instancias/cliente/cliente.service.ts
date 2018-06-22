@@ -20,7 +20,9 @@ export class ClienteService {
     return this.http.post('Cliente', cliente);
   }
 
-  editar(cliente: Cliente) {
+  editar(dado: Cliente) {
+    const cliente = dado;
+    this.converterFormatoDate(cliente);
     return this.http.put('Cliente/' + cliente.id, cliente)
       .map((res: any) => {
         const clienteAlterado = res as Cliente;
@@ -62,7 +64,26 @@ export class ClienteService {
   }
 
   private converterFormatoDate(cliente: Cliente) {
-    cliente.nascimento = moment(cliente.nascimento).format('YYYY-MM-DD HH:mm');
+    if (cliente.nascimento) {
+      cliente.nascimento = moment(cliente.nascimento).format('YYYY-MM-DD HH:mm');
+    }
+    if (cliente.cadastro) {
+      cliente.cadastro = moment(cliente.cadastro).format('YYYY-MM-DD HH:mm');
+    }
+    if (cliente.entrada) {
+      cliente.entrada = moment(cliente.entrada).format('YYYY-MM-DD HH:mm');
+    }
+    if (cliente.cancelado.dataCancelamento) {
+      cliente.cancelado.dataCancelamento = moment(cliente.cancelado.dataCancelamento).format('YYYY-MM-DD HH:mm');
+    }
+    if (cliente.cancelado.dataPedido) {
+      cliente.cancelado.dataPedido = moment(cliente.cancelado.dataPedido).format('YYYY-MM-DD HH:mm');
+    }
+    for (const dependente of cliente.dependentes) {
+      if (dependente.nascimento) {
+        dependente.nascimento = moment(dependente.nascimento).format('YYYY-MM-DD HH:mm');
+      }
+    }
   }
 
 }

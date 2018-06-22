@@ -45,13 +45,13 @@ export class Dependente {
   nome: string;
   rg: string;
   parentesco: string;
-  nascimento: Date;
+  nascimento: any;
 
   constructor(id?: number,
               nome?: string,
               rg?: string,
               parentesco?: string,
-              nascimento?: Date) {
+              nascimento?: any) {
     this.id = id;
     this.nome = nome;
     this.parentesco = parentesco;
@@ -101,8 +101,8 @@ export class DadosBancarios {
 
 export class Cancelamento {
   id: number;
-  dataCancelamento: Date;
-  dataPedido: Date;
+  dataCancelamento: any;
+  dataPedido: any;
   motivo: string;
   obs: string;
 }
@@ -110,8 +110,8 @@ export class Cancelamento {
 export class Cliente {
   id: number;
   ativo = true;
-  cadastro = new Date();
-  entrada: Date;
+  cadastro: any;
+  entrada: any;
   cpf: string;
   rg: string;
   nome: string;
@@ -162,10 +162,10 @@ export class StatusParcela {
 export class Recebimento {
   id: number;
   descricao: string;
-  dtEmissao = new Date();
-  dtCompetencia: Date;
-  dtVencimento: Date;
-  dtRecebimento: Date;
+  dtEmissao: any;
+  dtCompetencia: any;
+  dtVencimento: any;
+  dtRecebimento: any;
   valor: number;
   ocorrencia = 1;
   numDocumento: string;
@@ -182,10 +182,10 @@ export class Recebimento {
 export class Pagamento {
   id: number;
   descricao: string;
-  dtEmissao = new Date();
-  dtCompetencia: Date;
-  dtVencimento: Date;
-  dtPagamento: Date;
+  dtEmissao: any;
+  dtCompetencia: any;
+  dtVencimento: any;
+  dtPagamento: any;
   valor: number;
   valorPago: number;
   parcela: number;

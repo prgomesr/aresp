@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import {environment} from '../../../../environments/environment';
-import {Recebimento} from '../../../core/model';
+import {Cliente, Recebimento} from '../../../core/model';
 import * as moment from 'moment';
 import {HttpService} from '../../../shared/http/http.service';
 
@@ -20,6 +20,7 @@ export class ContasReceberService {
   }
 
   salvar(recebimento: Recebimento) {
+    this.converterFormatoDate(recebimento);
     return this.http.post(`Recebimento/`, recebimento);
   }
 
@@ -33,8 +34,9 @@ export class ContasReceberService {
   }
 
   editar(recebimento: Recebimento) {
+    this.converterFormatoDate(recebimento);
     return this.http.put('Recebimento/' + recebimento.id, recebimento)
-      .map((res:any) => {
+      .map((res: any) => {
         const recebimentoAlterado = res as Recebimento;
         this.converterStringParaData([recebimentoAlterado]);
         return recebimentoAlterado;
@@ -50,6 +52,21 @@ export class ContasReceberService {
       }
     }
 
+  }
+
+  private converterFormatoDate(recebimento: Recebimento) {
+    if (recebimento.dtCompetencia) {
+      recebimento.dtCompetencia = moment(recebimento.dtCompetencia).format('YYYY-MM-DD HH:mm');
+    }
+    if (recebimento.dtVencimento) {
+      recebimento.dtVencimento = moment(recebimento.dtVencimento).format('YYYY-MM-DD HH:mm');
+    }
+    if (recebimento.dtRecebimento) {
+      recebimento.dtRecebimento = moment(recebimento.dtRecebimento).format('YYYY-MM-DD HH:mm');
+    }
+    if (recebimento.dtEmissao) {
+      recebimento.dtEmissao = moment(recebimento.dtEmissao).format('YYYY-MM-DD HH:mm');
+    }
   }
 
 }
