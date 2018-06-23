@@ -208,7 +208,7 @@ export class Fornecedor {
   email: string;
   telefone: string;
   contato: string;
-  cadastro = new Date();
+  cadastro: any;
 }
 
 export class ContaCaixa {

@@ -70,13 +70,13 @@
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Secretaria</label>
-          <p-dropdown [options]="grupos" placeholder="Selecione: " [autoWidth]="false" name="grupo"
+          <p-dropdown [options]="secretarias" placeholder="Selecione: " [autoWidth]="false" name="grupo"
                       [(ngModel)]="cliente.grupo.id"></p-dropdown>
         </div>
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Grupo</label>
-          <p-dropdown [options]="secretarias" placeholder="Selecione: " [autoWidth]="false" name="secretaria"
+          <p-dropdown [options]="grupos" placeholder="Selecione: " [autoWidth]="false" name="secretaria"
                       [(ngModel)]="cliente.secretaria.id" required></p-dropdown>
         </div>
 

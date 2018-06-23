@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../../environments/environment';
-import { Fornecedor } from '../../../../core/model';
+import {Fornecedor} from '../../../../core/model';
 import {HttpService} from '../../../../shared/http/http.service';
+import * as moment from 'moment';
 
 @Injectable()
 export class FornecedorService {
@@ -30,6 +31,12 @@ export class FornecedorService {
 
   excluir(codigo: number) {
     return this.http.delete('Fornecedor/' + codigo);
+  }
+
+  private converterFormatoDate(fornecedor: Fornecedor) {
+    if (fornecedor.cadastro) {
+      fornecedor.cadastro = moment(fornecedor.cadastro).format('YYYY-MM-DD HH:mm');
+    }
   }
 
 }

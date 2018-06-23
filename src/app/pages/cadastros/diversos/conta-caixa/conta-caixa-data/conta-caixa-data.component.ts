@@ -73,7 +73,7 @@ export class ContaCaixaDataComponent implements OnInit {
   atualizar(form: FormControl) {
     this.contaService.editar(this.conta).subscribe((dado:any) => {
         this.conta = dado.result;
-        this.router.navigate(['/diversos/conta']);
+        this.router.navigate(['/diversos/conta-caixa']);
         this.toasty.success('Registro atualizado com sucesso!');
       },
       err => this.errorHandler.handle(err));
