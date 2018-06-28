@@ -74,7 +74,6 @@
               <tr>
                   <th style="width: 6.4em">Emissão</th>
                   <th style="width: 6.4em">Vencimento</th>
-                  <th style="width: 4em"></th>
                   <th style="width: 7em">Recebimento</th>
                   <th class="text-table-left">Cliente</th>
                   <th style="width: 11em">Descrição</th>
@@ -88,7 +87,6 @@
               <tr>
                   <td>{{recebimento.dtEmissao | date: 'dd/MM/yyyy'}}</td>
                   <td>{{recebimento.dtVencimento | date: 'dd/MM/yyyy'}}</td>
-                  <td>{{recebimento.ocorrencia}}</td>
                   <td>{{recebimento.dtRecebimento | date: 'dd/MM/yyyy'}}</td>
                   <td class="text-table-left">{{recebimento.cliente.nome | uppercase}}</td>
                   <td>{{recebimento.descricao}}</td>

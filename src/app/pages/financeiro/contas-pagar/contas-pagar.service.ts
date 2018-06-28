@@ -4,18 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import {Pagamento} from '../../../core/model';
 import * as moment from 'moment';
+import { HttpService } from '../../../shared/http/http.service';
 
 @Injectable()
 export class ContasPagarService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   listar () {
-    return this.http.get<any []>(environment.apiUrl + 'pagamentos');
+    return this.http.get('Pagamentos');
   }
 
   salvar(pagamento: Pagamento) {
-    return this.http.post(environment.apiUrl + 'pagamentos', pagamento);
+    return this.http.post('Pagamento', pagamento);
   }
 
   listarPorCodigo(id: number) {

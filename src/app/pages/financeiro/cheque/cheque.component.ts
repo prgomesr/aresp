@@ -32,7 +32,7 @@ export class ChequeComponent implements OnInit {
   }
 
   listarPagamentos() {
-    this.pagamentoService.listar().subscribe(dados => this.pagamentos = dados,
+    this.pagamentoService.listar().subscribe((dados:any) => this.pagamentos = dados.result,
       err => this.errorHandler.handle(err));
   }
 

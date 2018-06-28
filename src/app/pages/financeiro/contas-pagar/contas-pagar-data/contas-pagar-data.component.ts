@@ -54,15 +54,15 @@ export class ContasPagarDataComponent implements OnInit {
   }
 
   listarCategorias() {
-    /*this.categoriaService.listar().subscribe(dados => this.categorias = dados
+    this.categoriaService.listar().subscribe((dados:any) => this.categorias = dados.result
         .map(d => ({label: d.nome, value: d.id})),
-      err => this.errorHandler.handle(err));*/
+      err => this.errorHandler.handle(err));
   }
 
   listarFornecedores() {
-    /*this.fornecedorService.listar().subscribe(dados => this.fornecedores = dados
+    this.fornecedorService.listar().subscribe((dados:any) => this.fornecedores = dados.result
         .map(d => ({label: d.fantasia, value: d.id})),
-      err => this.errorHandler.handle(err));*/
+      err => this.errorHandler.handle(err));
   }
 
   listarContas() {
@@ -104,5 +104,4 @@ export class ContasPagarDataComponent implements OnInit {
   get editando(): any {
     return Boolean (this.pagamento.id);
   }
-
 }

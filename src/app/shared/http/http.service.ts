@@ -16,7 +16,7 @@ export class HttpService {
    * @type {string}
    * @details URL const
    */
-  private url = 'http://167.99.157.120/aresp/';
+  private url = 'http://localhost/ARESP-PHP/';
 
   constructor(private http: HttpClient,
               private router: Router,
