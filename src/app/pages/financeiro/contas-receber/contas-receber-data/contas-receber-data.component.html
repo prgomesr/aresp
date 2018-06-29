@@ -1,4 +1,4 @@
-<app-header-lv2 heading="Cadastro de Contas a Receber" linkAnterior="/financeiro/contas-receber"
+<app-header-lv2 heading="{{editando ? 'Edição' : 'Cadastro'}} de Contas a Receber" linkAnterior="/financeiro/contas-receber"
       headingAnterior="Contas a Receber"></app-header-lv2>
 
 <div class="ui-g">
@@ -69,20 +69,22 @@
       <p-checkbox name="grupo" value="repetir" label="Lançar por grupo?" #grupo></p-checkbox>
     </div>
 
-    <div class="ui-g-12 ui-md-12">
-      <p-checkbox name="repetir" value="repetir" label="Repetir?" #repetir></p-checkbox>
-    </div>
+    <div [hidden]="editando">
+      <div class="ui-g-12 ui-md-12">
+        <p-checkbox name="repetir" value="repetir" label="Repetir?" #repetir></p-checkbox>
+      </div>
 
-    <div class="ui-g-2 ui-fluid">
-      <label>Período</label>
-      <p-dropdown [options]="periodos" name="periodo" [autoWidth]="false"
-                  [disabled]="!repetir.checked" required></p-dropdown>
-    </div>
+      <div class="ui-g-2 ui-fluid">
+        <label>Período</label>
+        <p-dropdown [options]="periodos" name="periodo" [autoWidth]="false"
+                    [disabled]="!repetir.checked" required></p-dropdown>
+      </div>
 
-    <div class="ui-g-2 ui-fluid">
-      <label>Ocorrências</label>
-      <input type="text" pInputText pKeyFilter="int" name="ocorrencia" [(ngModel)]="recebimento.ocorrencia"
-             [disabled]="!repetir.checked" required>
+      <div class="ui-g-2 ui-fluid">
+        <label>Ocorrências</label>
+        <input type="text" pInputText pKeyFilter="int" name="ocorrencia" [(ngModel)]="recebimento.ocorrencia"
+               [disabled]="!repetir.checked" required>
+      </div>
     </div>
 
     <div class="ui-g-12">

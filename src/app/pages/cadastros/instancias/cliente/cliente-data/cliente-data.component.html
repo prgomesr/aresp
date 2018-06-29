@@ -65,19 +65,19 @@
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Tipo de Sócio</label>
           <p-dropdown [options]="tiposSocios" placeholder="Selecione: " [autoWidth]="false" name="tipo"
-                      [(ngModel)]="cliente.tipo" required></p-dropdown>
+                      [(ngModel)]="cliente.tipo.id" required></p-dropdown>
         </div>
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Secretaria</label>
-          <p-dropdown [options]="secretarias" placeholder="Selecione: " [autoWidth]="false" name="grupo"
-                      [(ngModel)]="cliente.grupo.id"></p-dropdown>
+          <p-dropdown [options]="secretarias" placeholder="Selecione: " [autoWidth]="false" name="secretaria"
+                      [(ngModel)]="cliente.secretaria.id"></p-dropdown>
         </div>
 
         <div class="ui-g-2 ui-md-2 ui-fluid">
           <label>Grupo</label>
-          <p-dropdown [options]="grupos" placeholder="Selecione: " [autoWidth]="false" name="secretaria"
-                      [(ngModel)]="cliente.secretaria.id" required></p-dropdown>
+          <p-dropdown [options]="grupos" placeholder="Selecione: " [autoWidth]="false" name="grupo"
+                      [(ngModel)]="cliente.grupo.id" required></p-dropdown>
         </div>
 
         <div class="ui-g-3 ui-md-3 ui-fluid">

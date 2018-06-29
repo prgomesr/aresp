@@ -128,7 +128,7 @@ export class Cliente {
   grupo = new GrupoRecebimento();
   endereco = new Endereco();
   tipo = new TipoSocio();
-  cancelado = new Cancelamento();
+  cancelamento = new Cancelamento();
   secretaria = new Secretaria();
   dadosBancarios = new DadosBancarios();
   telefones = new Array<Telefone>();
@@ -217,8 +217,8 @@ export class ContaCaixa {
   digito: number;
   nome: string;
   tipo: string;
-  taxa_multa: number;
-  taxa_juros: number;
+  taxa_multa = 0;
+  taxa_juros = 0;
   empresa = new Empresa();
   agencia = new Agencia();
 }
