@@ -12,6 +12,7 @@ import { TipoSocioService } from '../../../diversos/tipo-socio/tipo-socio.servic
 import { Cliente } from '../../../../../core/model';
 import { ClienteService } from '../cliente.service';
 import {GrupoService} from '../../../diversos/grupo/grupo.service';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-cliente-data',
@@ -26,7 +27,6 @@ export class ClienteDataComponent implements OnInit {
   operadoras = [];
   grupos = [];
   cliente = new Cliente();
-
   estCivil = [
     { label: 'Solteiro (a)', value: 'S' },
     { label: 'Casado (a)', value: 'C' },
@@ -37,8 +37,7 @@ export class ClienteDataComponent implements OnInit {
   tiposDadosBancarios = [
     {label: 'Boleto', value: 'BOLETO'},
     {label: 'Débito', value: 'DEBITO'},
-    {label: 'Fatura', value: 'FATURA'},
-    {label: 'Holerite', value: 'HOLERITE'}
+    {label: 'Fatura', value: 'FATURA'}
     ];
   sexos = [
     {label: 'Masculino', value: 'M'},
@@ -53,7 +52,7 @@ export class ClienteDataComponent implements OnInit {
     {label: '06', value: '06'},
     {label: '07', value: '07'},
     {label: '08', value: '08'},
-    {label: '08', value: '09'},
+    {label: '09', value: '09'},
     {label: '10', value: '10'},
     {label: '11', value: '11'},
     {label: '12', value: '12'}
@@ -75,11 +74,12 @@ export class ClienteDataComponent implements OnInit {
     ];
   pt = {
     firstDayOfWeek: 0,
-    dayNames: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
-    dayNamesShort: ["D", "S", "T", "Q", "Q", "S", "S"],
-    dayNamesMin: ["D", "S", "T", "Q", "Q", "S", "S"],
-    monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
-    monthNamesShort: [ "Jan", "Fev", "Mar", "Abr", "Mai", "Jun","Jul", "Ago", "Set", "Out", "Nov", "Dez" ],
+    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+    dayNamesShort: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+      'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+    monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
     today: 'Hoje',
     clear: 'Limpar'
   };
@@ -93,7 +93,8 @@ export class ClienteDataComponent implements OnInit {
               private grupoService: GrupoService,
               private toasty: ToastyService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -178,8 +179,15 @@ export class ClienteDataComponent implements OnInit {
       const validacep = /^[0-9]{8}$/;
       // Valida o formato do CEP.
       if (validacep.test(cep)) {
-        this.clienteService.getCep(cep).subscribe(dados => this.popularEndereco(dados, form),
-          err => this.errorHandler.handle(err));
+        this.spinner.show();
+        this.clienteService.getCep(cep).subscribe(dados => {
+            this.spinner.hide();
+            this.popularEndereco(dados, form);
+          },
+          err => {
+            this.spinner.hide();
+            this.errorHandler.handle(err);
+          });
       }
     }
   }
