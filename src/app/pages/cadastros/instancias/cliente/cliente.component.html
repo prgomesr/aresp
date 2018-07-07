@@ -66,24 +66,24 @@
       <div class="ui-md-6 ui-fluid">
         <label>Data do Cancelamento*</label>
         <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true" name="dataCancelamento" required
-                    [(ngModel)]="cliente.cancelamento.dataCancelamento"></p-calendar>
+                    [(ngModel)]="cliente.dataCancelamento"></p-calendar>
       </div>
 
       <div class="ui-md-6 ui-fluid">
         <label>Data da Solicitação*</label>
         <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showIcon]="true" name="dataPedido" required
-                    [(ngModel)]="cliente.cancelamento.dataPedido"></p-calendar>
+                    [(ngModel)]="cliente.dataPedidoCancelamento"></p-calendar>
       </div>
 
       <div class="ui-md-6 ui-fluid">
         <label>Motivo*</label>
         <p-dropdown [options]="motivos" [autoWidth]="false" name="motivo" required
-                    [(ngModel)]="cliente.cancelamento.motivo" placeholder="Selecione: "></p-dropdown>
+                    [(ngModel)]="cliente.motivoCancelamento" placeholder="Selecione: "></p-dropdown>
       </div>
 
       <div class="ui-md-12 ui-fluid">
         <label>Observação</label>
-        <textarea pInputTextarea name="obs" [(ngModel)]="cliente.cancelamento.obs"></textarea>
+        <textarea pInputTextarea name="obs" [(ngModel)]="cliente.obs"></textarea>
       </div>
 
       <div class="ui-md-12">

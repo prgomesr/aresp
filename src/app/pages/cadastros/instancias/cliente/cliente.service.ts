@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {environment} from '../../../../../environments/environment';
 import {Cliente, Dependente} from '../../../../core/model';
 import * as moment from 'moment';
 import {HttpService} from '../../../../shared/http/http.service';
@@ -51,11 +50,11 @@ export class ClienteService {
       cliente.nascimento = moment(cliente.nascimento, 'YYYY-MM-DD').toDate();
       cliente.cadastro = moment(cliente.cadastro, 'YYYY-MM-DD').toDate();
 
-        if (cliente.cancelamento.dataPedido) {
-          cliente.cancelamento.dataPedido = moment(cliente.cancelamento.dataPedido, 'YYYY-MM-DD').toDate();
+        if (cliente.dataPedidoCancelamento) {
+          cliente.dataPedidoCancelamento = moment(cliente.dataPedidoCancelamento, 'YYYY-MM-DD').toDate();
         }
-        if (cliente.cancelamento.dataCancelamento) {
-          cliente.cancelamento.dataCancelamento = moment(cliente.cancelamento.dataCancelamento, 'YYYY-MM-DD').toDate();
+        if (cliente.dataCancelamento) {
+          cliente.dataCancelamento = moment(cliente.dataCancelamento, 'YYYY-MM-DD').toDate();
         }
     for (const dependente of cliente.dependentes) {
       if (dependente.nascimento) {
@@ -75,11 +74,11 @@ export class ClienteService {
     if (cliente.entrada) {
       cliente.entrada = moment(cliente.entrada).format('YYYY-MM-DD HH:mm');
     }
-    if (cliente.cancelamento.dataCancelamento) {
-      cliente.cancelamento.dataCancelamento = moment(cliente.cancelamento.dataCancelamento).format('YYYY-MM-DD HH:mm');
+    if (cliente.dataCancelamento) {
+      cliente.dataCancelamento = moment(cliente.dataCancelamento).format('YYYY-MM-DD HH:mm');
     }
-    if (cliente.cancelamento.dataPedido) {
-      cliente.cancelamento.dataPedido = moment(cliente.cancelamento.dataPedido).format('YYYY-MM-DD HH:mm');
+    if (cliente.dataPedidoCancelamento) {
+      cliente.dataPedidoCancelamento = moment(cliente.dataPedidoCancelamento).format('YYYY-MM-DD HH:mm');
     }
     for (const dependente of cliente.dependentes) {
       if (dependente.nascimento) {

@@ -99,14 +99,6 @@ export class DadosBancarios {
   banco = new Banco();
 }
 
-export class Cancelamento {
-  id: number;
-  dataCancelamento: any;
-  dataPedido: any;
-  motivo: string;
-  obs: string;
-}
-
 export class Cliente {
   id: number;
   ativo = true;
@@ -128,7 +120,9 @@ export class Cliente {
   grupo = new GrupoRecebimento();
   endereco = new Endereco();
   tipo = new TipoSocio();
-  cancelamento = new Cancelamento();
+  dataCancelamento: any;
+  dataPedidoCancelamento: any;
+  motivoCancelamento: string;
   secretaria = new Secretaria();
   dadosBancarios = new DadosBancarios();
   telefones = new Array<Telefone>();

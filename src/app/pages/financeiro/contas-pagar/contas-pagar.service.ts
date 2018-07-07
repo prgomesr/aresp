@@ -20,7 +20,7 @@ export class ContasPagarService {
   }
 
   listarPorCodigo(id: number) {
-    return this.http.get(`Recebimento/${id}`)
+    return this.http.get(`Pagamento/${id}`)
       .map((res: any) => {
         const pagamento = res.result as Pagamento;
         this.converterStringParaData([pagamento]);

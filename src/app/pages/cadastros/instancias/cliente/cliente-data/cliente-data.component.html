@@ -242,7 +242,7 @@
                                 [(ngModel)]="cliente.dadosBancarios.operadora.id" required
                                 [disabled]="cliente.dadosBancarios.tipo === 'DEBITO' || cliente.dadosBancarios.tipo === 'BOLETO'"></p-dropdown>
                   </div>
-
+                  <pre>{{f.value | json}}</pre>
                 </div>
               </p-panel>
             </div>
